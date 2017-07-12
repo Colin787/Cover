@@ -1,2 +1,24 @@
-# Cover
-A marketplace matching restaurants with on-demand temporary workers. Restaurants can obtain workers on short notice, to cover absentees and unexpected rushes. Workers find temporary work at premium rates, allowing supplemental income or a flexible lifestyle.
+# README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
