@@ -1,2 +1,0 @@
-class RestaurantReview < ApplicationRecord
-end
