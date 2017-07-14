@@ -1,13 +1,11 @@
-class CreatePostings < ActiveRecord::Migration[5.1]
+class CreateJobs < ActiveRecord::Migration[5.1]
   def change
-    create_table :postings do |t|
+    create_table :jobs do |t|
       t.integer :restaurant_id
       t.datetime :start_time
       t.datetime :end_time
       t.integer :rate
-      t.string :tips
-      t.string :skill
-      t.decimal :experience
+      t.text :description
       t.string :status
 
       t.timestamps
