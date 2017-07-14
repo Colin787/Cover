@@ -1,11 +1,10 @@
 class Worker < ApplicationRecord
 
+  belongs_to :user
   has_many :applications
-  has_many :reviews
-  
-  validates :postal_code,
-            :image,
-            presence: true
+  has_many :comments
 
+  validates :postal_code,
+            presence: true
 
 end

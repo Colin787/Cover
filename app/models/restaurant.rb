@@ -1,7 +1,6 @@
 class Restaurant < ApplicationRecord
-  
-  has_many :postings
-  has_many :reviews 
+
+  has_many :jobs
 
   validates :restaurant_name,
             :street_address,
@@ -9,7 +8,6 @@ class Restaurant < ApplicationRecord
             :province,
             :postal_code,
             :description,
-            :image,
             presence: true
-  
+
 end
