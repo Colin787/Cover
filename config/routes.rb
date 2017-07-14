@@ -13,6 +13,14 @@ Rails.application.routes.draw do
     resources :skills, only: [:new, :create, :destroy, :update]
   end
 
+  resources :posting_comments, only: [:new, :create, :destroy]
+  resources :restaurant_reviews, only: [:new, :create, :destroy]
+  resources :worker_reviews, only: [:new, :create, :destroy]
+
+  resources :acceptances, only: [:index, :show]
+
+
+
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
