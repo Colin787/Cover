@@ -10,29 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170714043039) do
+ActiveRecord::Schema.define(version: 20170714042622) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "applications", force: :cascade do |t|
-    t.integer "posting_id"
+    t.integer "job_id"
     t.integer "worker_id"
-    t.datetime "expiration_time"
     t.string "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "categories", force: :cascade do |t|
-    t.string "category"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "categories_restaurants", force: :cascade do |t|
-    t.integer "restaurant_id"
-    t.integer "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -45,14 +31,12 @@ ActiveRecord::Schema.define(version: 20170714043039) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "postings", force: :cascade do |t|
+  create_table "jobs", force: :cascade do |t|
     t.integer "restaurant_id"
     t.datetime "start_time"
     t.datetime "end_time"
     t.integer "rate"
-    t.string "tips"
-    t.string "skill"
-    t.decimal "experience"
+    t.text "description"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -71,34 +55,11 @@ ActiveRecord::Schema.define(version: 20170714043039) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "reviews", force: :cascade do |t|
-    t.integer "restaurant_id"
-    t.integer "worker_id"
-    t.text "comment"
-    t.integer "rating"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "skills", force: :cascade do |t|
-    t.string "skill"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "skills_workers", force: :cascade do |t|
-    t.integer "worker_id"
-    t.integer "skill_id"
-    t.decimal "experience"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "email"
+    t.integer "cell"
     t.string "password_digest"
     t.string "user_type"
     t.datetime "created_at", null: false
