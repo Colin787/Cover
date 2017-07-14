@@ -2,15 +2,13 @@ class CreatePostings < ActiveRecord::Migration[5.1]
   def change
     create_table :postings do |t|
       t.integer :restaurant_id
-      t.date :start_date
-      t.date :end_date
-      t.time :start_time
-      t.time :end_time
-      t.decimal :payment_rate
-      t.boolean :tips
-      t.string :job_type
-      t.decimal :years_experience
-      t.text :comments
+      t.datetime :start_time
+      t.datetime :end_time
+      t.integer :rate
+      t.string :tips
+      t.string :skill
+      t.decimal :experience
+      t.string :status
 
       t.timestamps
     end

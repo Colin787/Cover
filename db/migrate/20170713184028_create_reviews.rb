@@ -1,6 +1,6 @@
-class CreateRestaurantReviews < ActiveRecord::Migration[5.1]
+class CreateReviews < ActiveRecord::Migration[5.1]
   def change
-    create_table :restaurant_reviews do |t|
+    create_table :reviews do |t|
       t.integer :restaurant_id
       t.integer :worker_id
       t.text    :comment
