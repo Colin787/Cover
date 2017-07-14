@@ -1,3 +1,23 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  root to: 'users#index'
+
+  resources :restaurants, only: [:index, :show] do
+    resources :postings, only: [:new, :create, :update, :edit, :destroy]
+    resources :reviews, only: [:new, :create, :destroy]
+  end
+
+  resources :workers, only: [:index, :show] do
+    resources :comments, only: [:new, :create, :edit, :destroy]
+    resources :reviews, only: [:new, :create, :destroy]
+    resources :skills, only: [:new, :create, :destroy, :update]
+  end
+
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
+
 end
