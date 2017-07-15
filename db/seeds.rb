@@ -152,3 +152,5 @@ User.create!({
                  description: '',
                  image: 'http://lorempixel.com/400/200/people/',
              })
+
+puts "Done..."
