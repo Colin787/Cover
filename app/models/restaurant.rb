@@ -1,7 +1,8 @@
 class Restaurant < ApplicationRecord
-  
+
   has_many :postings
-  has_many :reviews 
+  has_many :reviews
+  belongs_to :user
 
   validates :restaurant_name,
             :street_address,
@@ -11,5 +12,4 @@ class Restaurant < ApplicationRecord
             :description,
             :image,
             presence: true
-  
 end
