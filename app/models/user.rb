@@ -1,14 +1,12 @@
 class User < ApplicationRecord
 
-  has_many :restaurants
-  #todo does has_one require one, or does it mean zero or one?
-  has_one :worker
+  has_many :jobs
+  has_many :comments
 
-  validates :first_name,
-            :last_name,
+  validates :user_type,
             :email,
-            :cell,
             :password_digest,
-            :user_type,
+            :cell,
+            :postal_code,
             presence: true
 end

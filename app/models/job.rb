@@ -1,8 +1,8 @@
 class Job < ApplicationRecord
 
-  belongs_to :restaurants
-  has_many :comments
+  belongs_to :user
   has_many :applications
+  has_many :comments
 
   validates :start_time,
             :end_time,
