@@ -16,26 +16,26 @@ ActiveRecord::Schema.define(version: 20170714042622) do
   enable_extension "plpgsql"
 
   create_table "applications", force: :cascade do |t|
-    t.integer "job_id"
-    t.integer "worker_id"
+    t.bigint "job_id"
+    t.bigint "user_id"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer "worker_id"
-    t.integer "posting_id"
+    t.bigint "job_id"
+    t.bigint "user_id"
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "jobs", force: :cascade do |t|
-    t.integer "restaurant_id"
+    t.bigint "user_id"
     t.datetime "start_time"
     t.datetime "end_time"
-    t.integer "rate"
+    t.bigint "rate"
     t.text "description"
     t.string "status"
     t.datetime "created_at", null: false
@@ -43,12 +43,19 @@ ActiveRecord::Schema.define(version: 20170714042622) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "user_type"
+    t.string "email"
+    t.string "password_digest"
+    t.bigint "cell"
     t.string "first_name"
     t.string "last_name"
-    t.string "email"
-    t.integer "cell"
-    t.string "password_digest"
-    t.string "user_type"
+    t.string "restaurant_name"
+    t.string "street_address"
+    t.string "city"
+    t.string "province"
+    t.string "postal_code"
+    t.text "description"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
