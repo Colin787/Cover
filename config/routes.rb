@@ -4,16 +4,17 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
-  resources :users, only: [:new, :create]
-  resources :jobs, only: [:new, :create, :show, :index]
-  resources :comments, only: [:new, :create, :edit, :destroy]
-  resources :applications ,only: [:new, :create, :show, :index, :destroy]
+  resources :users, except: [:index]
+
+  shallow do
+    resources :jobs do
+      resources :applications
+      resources :comments
+    end
+  end
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
-
-  get '/signup' => 'users#new'
-  post '/users' => 'users#create'
 
 end
