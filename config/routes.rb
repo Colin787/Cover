@@ -2,24 +2,10 @@ Rails.application.routes.draw do
 
   root to: 'users#index'
 
-  resources :restaurants, only: [:index, :show] do
-    resources :postings, only: [:new, :create, :update, :edit, :destroy]
-    resources :reviews, only: [:new, :create, :destroy]
-  end
-
-  resources :workers, only: [:index, :show] do
-    resources :comments, only: [:new, :create, :edit, :destroy]
-    resources :reviews, only: [:new, :create, :destroy]
-    resources :skills, only: [:new, :create, :destroy, :update]
-  end
-
-  resources :posting_comments, only: [:new, :create, :destroy]
-  resources :restaurant_reviews, only: [:new, :create, :destroy]
-  resources :worker_reviews, only: [:new, :create, :destroy]
-
-  resources :acceptances, only: [:index, :show]
-
-
+  resources :users, only: [:new, :create]
+  resources :jobs, only: [:new, :create, :show, :index]
+  resources :comments, only: [:new, :create, :edit, :destroy]
+  resources :applications ,only: [:new, :create, :show, :index, :destroy]
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
