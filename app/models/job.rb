@@ -7,7 +7,5 @@ class Job < ApplicationRecord
   validates :start_time,
             :end_time,
             :rate,
-            presence : true
-
-
+            presence: true
 end
