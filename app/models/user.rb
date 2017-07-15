@@ -1,12 +1,12 @@
 class User < ApplicationRecord
-  has_one: restaurant
-  has_one: worker
-  has_secure_password
 
-  validates :first_name,
-            :last_name,
+  has_many :jobs
+  has_many :comments
+
+  validates :user_type,
             :email,
+            :password_digest,
             :cell,
-            :user_type,
+            :postal_code,
             presence: true
 end

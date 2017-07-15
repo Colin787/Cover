@@ -1,12 +1,13 @@
 class Job < ApplicationRecord
 
-  belongs_to :restaurant
-  has_many   :comments
-  has_many   :applications
+  belongs_to :user
+  has_many :applications
+  has_many :comments
 
   validates :start_time,
             :end_time,
             :rate,
-            :description,
-            presence: true
+            presence : true
+
+
 end

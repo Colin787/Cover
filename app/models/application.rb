@@ -1,5 +1,7 @@
-class Application < ActiveRecord::Base
-  belongs_to: job
-  belongs_to: worker
+class Application < ApplicationRecord
 
+  belongs_to :user
+  belongs_to :job
+
+  validates :status, presence: true
 end
