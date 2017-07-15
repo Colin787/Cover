@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  root to: 'users#index'
+  get 'home/index'
+
+  root to: 'home#index'
 
   resources :restaurants, only: [:index, :show] do
     resources :postings, only: [:new, :create, :update, :edit, :destroy]
