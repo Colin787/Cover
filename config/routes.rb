@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  root to: 'users#index'
+  get 'home/index'
+
+  root to: 'home#index'
 
   resources :users, only: [:new, :create]
   resources :jobs, only: [:new, :create, :show, :index]
