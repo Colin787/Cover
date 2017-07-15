@@ -42,19 +42,6 @@ ActiveRecord::Schema.define(version: 20170714042622) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "restaurants", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "restaurant_name"
-    t.string "street_address"
-    t.string "city"
-    t.string "province"
-    t.string "postal_code"
-    t.text "description"
-    t.string "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -62,14 +49,6 @@ ActiveRecord::Schema.define(version: 20170714042622) do
     t.integer "cell"
     t.string "password_digest"
     t.string "user_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "workers", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "postal_code"
-    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
