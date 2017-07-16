@@ -36,50 +36,50 @@ puts "Finding or creating Users..."
 
 User.destroy_all
 
-typeRestaurant.users.create!({
-                                 email: 'colinpark4@gmail.com',
-                                 password_digest: '1234',
-                                 cell: '17788884322',
-                                 first_name: 'Colin',
-                                 last_name: 'Park',
-                                 restaurant_name: 'Hawksworth Restaurant',
-                                 street_address: '801 West Georgia Street',
-                                 city: 'Vancouver',
-                                 province: 'BC',
-                                 postal_code: 'V6C 1P7',
-                                 description: 'Inventive Pacific Northwest cuisine & extensive wine list served in the Rosewood Hotel Georgia.',
-                                 image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTL-A8kRLKY_AxISxj6diUGNrwlLO61o4XwoVXi7ponKr83Xhbe7A',
-                             })
+userColin = typeRestaurant.users.create!({
+                                             email: 'colinpark4@gmail.com',
+                                             password_digest: '1234',
+                                             cell: '17788884322',
+                                             first_name: 'Colin',
+                                             last_name: 'Park',
+                                             restaurant_name: 'Hawksworth Restaurant',
+                                             street_address: '801 West Georgia Street',
+                                             city: 'Vancouver',
+                                             province: 'BC',
+                                             postal_code: 'V6C 1P7',
+                                             description: 'Inventive Pacific Northwest cuisine & extensive wine list served in the Rosewood Hotel Georgia.',
+                                             image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTL-A8kRLKY_AxISxj6diUGNrwlLO61o4XwoVXi7ponKr83Xhbe7A',
+                                         })
 
-typeRestaurant.users.create!({
-                                 email: 'prezcabellomanuel@gmail.com',
-                                 password_digest: '1234',
-                                 cell: '16047679548',
-                                 first_name: 'Manuel',
-                                 last_name: 'Cabello',
-                                 restaurant_name: 'Meat & Bread',
-                                 street_address: '370 Cambie Street',
-                                 city: 'Vancouver',
-                                 province: 'BC',
-                                 postal_code: 'V6B 1H7',
-                                 description: 'We make sandwiches that are high quality, of good value, and prepared with skill as well as heart. The essence of our food simple, fast, delicious is the foundation of Meat & Bread.',
-                                 image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdtrR8w6mYA9934vUiFgQZwJjRRxICExwmEkpdR-Qb82Smh5Ex',
-                             })
+userManuel = typeRestaurant.users.create!({
+                                              email: 'prezcabellomanuel@gmail.com',
+                                              password_digest: '1234',
+                                              cell: '16047679548',
+                                              first_name: 'Manuel',
+                                              last_name: 'Cabello',
+                                              restaurant_name: 'Meat & Bread',
+                                              street_address: '370 Cambie Street',
+                                              city: 'Vancouver',
+                                              province: 'BC',
+                                              postal_code: 'V6B 1H7',
+                                              description: 'We make sandwiches that are high quality, of good value, and prepared with skill as well as heart. The essence of our food simple, fast, delicious is the foundation of Meat & Bread.',
+                                              image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdtrR8w6mYA9934vUiFgQZwJjRRxICExwmEkpdR-Qb82Smh5Ex',
+                                          })
 
-typeRestaurant.users.create!({
-                                 email: 'zlymike@outlook.com',
-                                 password_digest: '1234',
-                                 cell: '17788620328',
-                                 first_name: 'Michael',
-                                 last_name: 'Zhu',
-                                 restaurant_name: 'Bestie',
-                                 street_address: '105 E Pender Street',
-                                 city: 'Vancouver',
-                                 province: 'BC',
-                                 postal_code: 'V6A 1T5',
-                                 description: 'German-inspired eatery serving sausages, currywurst, pretzels, beer & wine in cool environs.',
-                                 image: 'https://vanfoodies.files.wordpress.com/2014/02/img_20140207_185734.jpg',
-                             })
+userMike = typeRestaurant.users.create!({
+                                            email: 'zlymike@outlook.com',
+                                            password_digest: '1234',
+                                            cell: '17788620328',
+                                            first_name: 'Michael',
+                                            last_name: 'Zhu',
+                                            restaurant_name: 'Bestie',
+                                            street_address: '105 E Pender Street',
+                                            city: 'Vancouver',
+                                            province: 'BC',
+                                            postal_code: 'V6A 1T5',
+                                            description: 'German-inspired eatery serving sausages, currywurst, pretzels, beer & wine in cool environs.',
+                                            image: 'https://vanfoodies.files.wordpress.com/2014/02/img_20140207_185734.jpg',
+                                        })
 
 typeWorker.users.create!({
                              email: 'bergeretforestier.francois@gmail.com',
@@ -156,4 +156,55 @@ typeWorker.users.create!({
                              image: 'http://lorempixel.com/400/200/people/',
                          })
 
-puts "Done..."
+
+## JOBS
+
+puts "Creates Jobs..."
+
+User.destroy_all
+
+jobColin1 = userColin.jobs.create!({
+                                       start_time: '2017-07-22 14:00:00',
+                                       end_time: '2017-07-22 20:00:00',
+                                       rate: '2000',
+                                       description: 'This will be a very busy shift so tips should be good!',
+                                       status: 'open',
+                                   })
+
+jobColin2 = userColin.jobs.create!({
+                                       start_time: '2017-06-28 06:00:00',
+                                       end_time: '2017-06-28 12:00:00',
+                                       rate: '1400',
+                                       description: 'Breakfast rush.',
+                                       status: 'closed',
+                                   })
+
+jobManuel1 = userManuel.jobs.create!({
+                                         start_time: '2017-07-20 18:00:00',
+                                         end_time: '2017-07-20 23:30:00',
+                                         rate: '1800',
+                                         description: 'We are looking for an experienced busboy. Five years of experience at minimum please!',
+                                         status: 'open',
+                                     })
+
+jobMike1 = userMike.jobs.create!({
+                                     start_time: '2017-07-21 10:00:00',
+                                     end_time: '2017-07-21 19:00:00',
+                                     rate: '2400',
+                                     description: 'We really need a line cook ASAP!',
+                                     status: 'open',
+                                 })
+
+
+## APPLICATIONS
+
+# puts "Creates Applications..."
+#
+# Application.destroy_all
+#
+# jobColin1.applications.create!({
+#                                   user_id: '5',
+#                                   status: 'open',
+#                                })
+
+puts "Done y'all..."
