@@ -14,6 +14,11 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :jobs do ##not to sure bout this one
+                     ##thought it was polymorphic
+    resources :comments
+  end
+
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
