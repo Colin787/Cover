@@ -8,4 +8,26 @@
 // Global
 body {
   padding-top: 70px;
+  margin: 0;
+  .main-message{
+    background-color:rgba(200,200,200,0.5);
+    color: white;
+  }
+ 
 } 
+
+.homepage-bg {
+  background: url(https://static.pexels.com/photos/466691/pexels-photo-466691.jpeg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.login-bg {
+  background: url(https://static.pexels.com/photos/469157/pexels-photo-469157.jpeg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
