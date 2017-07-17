@@ -1,23 +1,24 @@
 class JobsController < ApplicationController
 
-  before_action :user_login
+  # before_action :user_login
 
   def new
-
+    @job = Job.new
   end
 
   def create
-    job = Job.new(job_params)
-    job.user_id = current_user.id
+    @job = Job.new(job_params)
+    @job.user_id = current_user.id
     if review.save!
-      redirect_to jobs_path(job.user_id)
+      redirect_to jobs_path(@job)
     else
-      redirect_to jobs_path(job.user_id)
+      # ?!?!?
+      redirect_to jobs_path(@job)
     end
   end
 
   def show
-    @jobs = Job.find params[:id]
+    @job = Job.find params[:id]
 
     @comment = Comment.new
     @comment.job_id = @job.id

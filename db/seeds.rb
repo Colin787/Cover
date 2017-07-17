@@ -25,9 +25,9 @@ puts "Finding or creating Usertypes..."
 
 Usertype.destroy_all
 
-typeWorker = Usertype.find_or_create_by! user_type: 'restaurant'
+typeRestaurant = Usertype.find_or_create_by! name: 'restaurant'
 
-typeRestaurant = Usertype.find_or_create_by! user_type: 'worker'
+typeWorker = Usertype.find_or_create_by! name: 'worker'
 
 
 ## USERS
@@ -161,7 +161,7 @@ typeWorker.users.create!({
 
 puts "Creates Jobs..."
 
-User.destroy_all
+Job.destroy_all
 
 jobColin1 = userColin.jobs.create!({
                                        start_time: '2017-07-22 14:00:00',
