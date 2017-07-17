@@ -196,15 +196,20 @@ jobMike1 = userMike.jobs.create!({
                                  })
 
 
-## APPLICATIONS
+# APPLICATIONS
 
-# puts "Creates Applications..."
-#
-# Application.destroy_all
-#
-# jobColin1.applications.create!({
-#                                   user_id: '5',
-#                                   status: 'open',
-#                                })
+puts "Creates Applications..."
+
+Application.destroy_all
+
+jobColin1.applications.create!({
+                                   user_id: '5',
+                                   status: 'open',
+                               })
+
+jobColin1.applications.create!({
+                                   user_id: '5',
+                                   status: 'open',
+                               })
 
 puts "Done y'all..."

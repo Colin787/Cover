@@ -3,6 +3,7 @@
 class ApplicationsController < ApplicationController
 
   def index
+    @jobs = Job.all
   end
 
   def new
@@ -12,6 +13,8 @@ class ApplicationsController < ApplicationController
   end
 
   def show
+    @jobs = Job.all
+  end
   end
 
   def edit

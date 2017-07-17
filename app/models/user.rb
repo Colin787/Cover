@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 
+  has_secure_password
+
   belongs_to :usertype
   has_many :jobs
   has_many :comments
