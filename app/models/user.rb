@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
   def user_validation
     puts "usertype is #{usertype}"
-    if usertype&.name == "worker"
+    if usertype.name == "worker"
       if first_name == false
         error.add(:firs_name, "First name can't be blank")
       end
@@ -31,7 +31,7 @@ class User < ApplicationRecord
         error.add(:postal_code, "Postal code can't be blank")
       end
     end
-    if usertype&.name == "restaurant"
+    if usertype.name == "restaurant"
       if restaurant_name == false
         error.add(:restaurant_name, "Restaurant name can't be blank")
       end
