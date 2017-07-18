@@ -20,7 +20,7 @@ class JobsController < ApplicationController
     @job = Job.new(job_params)
     @job.user_id = current_user.id
     if @job.save
-      redirect_to jobs_path(@job)
+      redirect_to @job
     else
 
       render :new
