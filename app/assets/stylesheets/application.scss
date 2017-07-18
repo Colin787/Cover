@@ -6,6 +6,7 @@
 // App
 @import "navbar";
 @import "home";
+@import "jobs";
 $oswald: 'Oswald', sans-serif;
 // Global
 body {
@@ -16,11 +17,11 @@ body {
     font-size: 4em;
     color: #eee;
   }
- 
-} 
+
+}
 
 .homepage-bg {
-  background: url(https://static.pexels.com/photos/260922/pexels-photo-260922.jpeg) no-repeat center center fixed; 
+  background: url(https://static.pexels.com/photos/260922/pexels-photo-260922.jpeg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -36,7 +37,7 @@ body {
 }
 
 .signup-bg {
-  background: url(https://static.pexels.com/photos/370984/pexels-photo-370984.jpeg) no-repeat center center fixed; 
+  background: url(https://static.pexels.com/photos/370984/pexels-photo-370984.jpeg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
