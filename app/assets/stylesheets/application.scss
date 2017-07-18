@@ -1,11 +1,45 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
+@import url('https://fonts.googleapis.com/css?family=Oswald:400,700');
 
 // App
 @import "navbar";
 @import "home";
+$oswald: 'Oswald', sans-serif;
 // Global
 body {
   padding-top: 70px;
+  margin: 0;
+  .main-message{
+    font-family: $oswald;
+    font-size: 4em;
+    color: #eee;
+  }
+ 
 } 
+
+.homepage-bg {
+  background: url(https://static.pexels.com/photos/260922/pexels-photo-260922.jpeg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.login-bg {
+  background: url(https://static.pexels.com/photos/469157/pexels-photo-469157.jpeg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.signup-bg {
+  background: url(https://static.pexels.com/photos/370984/pexels-photo-370984.jpeg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
