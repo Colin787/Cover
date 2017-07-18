@@ -29,16 +29,18 @@ class JobsController < ApplicationController
       # @job.errors.full_messages
     end
   end
+  
 
+  
   def show
     @job = Job.find params[:id]
 
     @comment = Comment.new
-    @comment.job_id = @job.id
+    # @comment.job_id = @job.id
   end
 
   def index
-    @jobs = Job.all.order(created_at: :desc)
+    @jobs = Job.all.order(created_at: :desc)       
   end
 
   def destroy
