@@ -1,3 +1,15 @@
-<p class="job_card">
-  <%= job.description %>
-</p>
+<div style="border-bottom: 1px solid black;">
+  <p class="job_card">
+    <%= job.description %>
+  </p>
+  <p class="job_card">
+    <%= job.start_time %>
+  </p>
+  <p class="job_card">
+    <%= job.end_time %>
+  </p>
+  <p class="job_card">
+    <%= job.rate %>
+  </p>
+  <%= link_to 'Delete Job', job, class: 'btn btn-info', :method => :delete %>
+</div>
