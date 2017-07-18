@@ -5,24 +5,24 @@ class JobsController < ApplicationController
   def new
     @job = Job.new
 
-    # render :new
+    render :new
 
     # there should be new.html.erb
     # AND it uses @job
 
     # it probably will use
     # form_for(@job) do |form| ...
+
+
   end
 
   def create
     @job = Job.new(job_params)
     @job.user_id = current_user.id
     if @job.save
-      redirect_to jobs_path(@job)
+      redirect_to @job
     else
-      # ?!?!?
 
-      # do we have @job ? yes
       render :new
       # renders new.html.erb
       # with @job filled with params
