@@ -2,6 +2,7 @@
 @import "bootstrap";
 @import "font-awesome";
 @import url('https://fonts.googleapis.com/css?family=Oswald:400,700');
+@import url('../images');
 
 // App
 @import "navbar";
@@ -20,7 +21,7 @@ body {
 } 
 
 .homepage-bg {
-  background: url(https://static.pexels.com/photos/260922/pexels-photo-260922.jpeg) no-repeat center center fixed; 
+  background: url('home2.jpeg') no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -28,7 +29,7 @@ body {
 }
 
 .login-bg {
-  background: url(https://static.pexels.com/photos/469157/pexels-photo-469157.jpeg) no-repeat center center fixed;
+  background: url('login.jpeg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -36,7 +37,7 @@ body {
 }
 
 .signup-bg {
-  background: url(https://static.pexels.com/photos/370984/pexels-photo-370984.jpeg) no-repeat center center fixed; 
+  background: url('signup.jpeg') no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
