@@ -31,19 +31,12 @@ class UsersController < ApplicationController
 
 
   def create
-<<<<<<< HEAD
-    @user = User.new(user_params)
-    if @user.save
-      session[:users_id] = @user.id
-      redirect_to :root
-=======
     user = User.new(user_params)
 
     # binding.pry
     if user.save!
       session[:users_id] = user.id
       redirect_to '/'
->>>>>>> c94cfeeebd7829613703e1f021095e7f7395736d
     else
 
 
