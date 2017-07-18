@@ -12,6 +12,10 @@
         <dt>Description</dt>
         <dd><%= @job.description %></dd>
       </dl>
+      <%= form_for [@job, @comment] do |f| %>
+        <%= f.text_field :comment %>
+        <%= f.button :submit %>
+      <% end %>
     </div>
   </div>
 </div>
