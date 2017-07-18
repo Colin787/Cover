@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170715214329) do
+ActiveRecord::Schema.define(version: 20170717210325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 20170715214329) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "usertype_id"
     t.string "email"
     t.string "password_digest"
     t.bigint "cell"
@@ -58,12 +57,15 @@ ActiveRecord::Schema.define(version: 20170715214329) do
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "usertype_id"
+    t.index ["usertype_id"], name: "index_users_on_usertype_id"
   end
 
   create_table "usertypes", force: :cascade do |t|
-    t.string "user_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
   end
 
+  add_foreign_key "users", "usertypes"
 end

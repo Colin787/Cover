@@ -1,23 +1,37 @@
 class JobsController < ApplicationController
 
-  before_action :user_login
+  # before_action :user_login
 
   def new
+    @job = Job.new
 
+    # render :new
+
+    # there should be new.html.erb
+    # AND it uses @job
+
+    # it probably will use
+    # form_for(@job) do |form| ...
   end
 
   def create
-    job = Job.new(job_params)
-    job.user_id = current_user.id
-    if review.save!
-      redirect_to jobs_path(job.user_id)
+    @job = Job.new(job_params)
+    @job.user_id = current_user.id
+    if @job.save
+      redirect_to jobs_path(@job)
     else
-      redirect_to jobs_path(job.user_id)
+      # ?!?!?
+
+      # do we have @job ? yes
+      render :new
+      # renders new.html.erb
+      # with @job filled with params
+      # @job.errors.full_messages
     end
   end
 
   def show
-    @jobs = Job.find params[:id]
+    @job = Job.find params[:id]
 
     @comment = Comment.new
     @comment.job_id = @job.id
@@ -29,16 +43,15 @@ class JobsController < ApplicationController
 
   def destroy
     @job = Job.find params[:id]
-    id = @job.id
     @job.destroy
-    redirect_to jobs_path(id)
+    redirect_to jobs_path(@job)
   end
 
   def update
   end
 
   def job_params
-    params.require(:jobs).permit(:start_time, :end_time, :user_id, :description, :rate, :status)
+    params.require(:job).permit(:start_time, :end_time, :user_id, :description, :rate, :status)
   end
 
 end
