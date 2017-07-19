@@ -1,15 +1,38 @@
 
+
 <section>
+<!-- View for a user, restaurant -->
+<% if current_user.usertype_id == 1 %>
+    <section>
+      <header>
+        <h3>Here are your current jobs, <%= current_user.restaurant_name %>.</h3>
+      </header>
+      <body>
+      <div class="jobs">
+        <% if @userjobs == nil %>
+            <h4>You have no jobs!</h4>
+        <% else %>
+            <%= render @userjobs %>
+            <div class="well">
+              <%= link_to '+ New Job', [:new, :job], class: 'btn btn-info' %>
+        <% end %>
+        </div>
+      </div>
+      </body>
+    </section>
+<% else %>
 
-  <header>
-    <h1>Jobs</h1>
-  </header>
-
-  <div class="jobs">
-    <%= render @jobs %>
-    <div class="well">
-    <%= link_to '+ New Job', [:new, :job], class: 'btn btn-info' %>
-    </div>
-
-  </div>
-</section>
+    <!-- View for a user, worker -->
+    <h3>Here are the available jobs, <%= current_user.first_name %>.</h3>
+    <section>
+      <header>
+        <h1>Jobs</h1>
+      </header>
+      <div class="jobs">
+        <%= render @jobs %>
+        <div class="well">
+          <%= link_to '+ New Job', [:new, :job], class: 'btn btn-info' %>
+        </div>
+      </div>
+    </section>
+<% end %>
