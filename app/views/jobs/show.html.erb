@@ -12,17 +12,23 @@
         <dt>Description</dt>
         <dd><%= @job.description %></dd>
       </dl>
-      <%= form_for [@job, @comment] do |f| %>
-        <%= f.text_field :comment %>
-        <%= f.button :submit %>
-      <% end %>
     </div>
   </div>
 </div>
 
-<div>
-  <%= link_to 'Add a comment', [:jobs], class: 'btn btn-info' %>
+
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  Add comment
+</button>
+<div class="collapse" id="collapseExample">
+  <div class="well">
+    <%= form_for [@job, @comment] do |f| %>
+      <%= f.text_area :comment %>
+      <%= f.button :submit, class: 'btn btn-primary' %>
+    <% end %>
+  </div>
 </div>
+
 <div>
-  <%= link_to 'All jobs', [:jobs], class: 'btn btn-info' %>
+  <%= link_to 'All jobs', [:jobs], class: 'btn btn-primary' %>
 </div>
