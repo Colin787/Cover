@@ -5,10 +5,14 @@ class User < ApplicationRecord
   belongs_to :usertype
 
   has_many :jobs
-  
+
   has_many :applications
 
+  validates_uniqueness_of :email
   validate :user_validation
+
+
+
   private
 
 
