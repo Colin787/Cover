@@ -40,7 +40,8 @@ class JobsController < ApplicationController
   end
 
   def index
-    @jobs = Job.all.order(created_at: :desc)       
+    @userjobs = Job.find_by user_id: current_user.id
+    @jobs = Job.all      
   end
   
 
