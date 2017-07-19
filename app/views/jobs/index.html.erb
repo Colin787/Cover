@@ -8,6 +8,9 @@
       <div class="jobs">
         <% if @userjobs == nil %>
             <h4>You have no jobs!</h4>
+            <div class="well">
+              <%= link_to '+ New Job', [:new, :job], class: 'btn btn-info' %>
+            </div>
         <% else %>
             <%= render @userjobs %>
             <div class="well">
