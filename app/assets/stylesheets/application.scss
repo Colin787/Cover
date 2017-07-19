@@ -7,6 +7,7 @@
 // App
 @import "navbar";
 @import "home";
+@import "jobs";
 $oswald: 'Oswald', sans-serif;
 // Global
 body {
@@ -17,8 +18,8 @@ body {
     font-size: 4em;
     color: #eee;
   }
- 
-} 
+
+}
 
 .homepage-bg {
   background: url('home2.jpeg') no-repeat center center fixed; 
