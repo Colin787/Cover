@@ -36,11 +36,11 @@ class UsersController < ApplicationController
     # binding.pry
     if user.save!
       session[:users_id] = user.id
-      redirect_to '/'
+      redirect_to '/login'
     else
 
 
-      if user.type.name == "restaurant"
+      if usertype.name == "restaurant"
         render :restaurant
       else
         render :worker
