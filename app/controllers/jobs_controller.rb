@@ -40,9 +40,9 @@ class JobsController < ApplicationController
   end
 
   def index
-    @userjobs = Job.find_by user_id: current_user.id
-    @jobs = Job.all
+    @jobs = Job.all.order(created_at: :desc)       
   end
+  
 
   def destroy
     @job = Job.find params[:id]
