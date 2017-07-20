@@ -20,18 +20,6 @@
   <%= link_to 'Update Job', edit_job_path(@job), class: 'btn btn-primary' %>
 
 
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    Add comment
-  </button>
-  <div class="collapse" id="collapseExample">
-    <div class="well">
-      <%= form_for [@job, @comment] do |f| %>
-        <%= f.text_area :comment %>
-        <%= f.button :submit, class: 'btn btn-primary' %>
-      <% end %>
-    </div>
-  </div>
-
   <div>
     <%= link_to 'All jobs', [:jobs], class: 'btn btn-primary' %>
   </div>
@@ -72,12 +60,18 @@
   </tbody>
 </table>
 
-<div>
-    <%= form_for [@job, @application] do |a| %>  
-      <% current_user %>    
-      <%= a.button :submit, class: 'btn btn-primary' %>
-    <% end %>
-</div>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Add comment
+  </button>
+  <div class="collapse" id="collapseExample">
+    <div class="well">
+      <%= form_for [@job, @comment] do |f| %>
+        <%= f.text_area :comment %>
+        <%= f.button :submit, class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+
 
 <table class="table">
   <thead>
@@ -94,3 +88,10 @@
     <% end %>
   </tbody>
 </table>
+
+<div>
+    <%= form_for [@job, @application] do |a| %>  
+      <% current_user %>    
+      <%= a.button :submit, class: 'btn btn-primary' %>
+    <% end %>
+</div>
