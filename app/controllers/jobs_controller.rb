@@ -41,8 +41,9 @@ class JobsController < ApplicationController
 
   def index
     @userjobs = Job.find_by user_id: current_user.id
-    @jobs = Job.all
+    @jobs = Job.all      
   end
+  
 
   def destroy
     @job = Job.find params[:id]

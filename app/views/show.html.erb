@@ -1,2 +1,111 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h2>Profile page</h2>
+      <div class="col-md-7 ">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 >Profile</h4>
+          </div>
+           <div class="panel-body">
+            <div class="box box-info">
+              <div class="box-body">
+                <div class="col-sm-6">
+                  <div  align="center"> <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive">
+                  </div>
+                    <br>
+                  </div>
+                  <div class="col-sm-6">
+                    <h4 style="color:#00b1b1;"><%= @user.first_name %> <%= @user.last_name %></h4></span>
+                  </div>
+                  <div class="clearfix"></div>
+                    <hr style="margin:5px 0 5px 0;">
+                    <div class="col-sm-5 col-xs-6 tital " >Restautant:
+                    </div>
+                    <div class="col-sm-7"><%= @user.restaurant_name %>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <div class="bot-border">
+                    </div>
+                    <div class="col-sm-5 col-xs-6 tital " >First Name:
+                    </div>
+                    <div class="col-sm-7 col-xs-6 "><%= @user.first_name %>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <div class="bot-border">
+                    </div>
+                    <div class="col-sm-5 col-xs-6 tital " >Last Name:
+                    </div>
+                    <div class="col-sm-7"><%= @user.last_name %>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <div class="bot-border">
+                    </div>
+                    <div class="col-sm-5 col-xs-6 tital " >Cell Phone:
+                    </div>
+                    <div class="col-sm-7"><%= @user.cell %><br>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <div class="bot-border">
+                    </div>
+                    <div class="col-sm-5 col-xs-6 tital " >Email:
+                    </div>
+                    <div class="col-sm-7"><%= @user.email %><br>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <div class="bot-border">
+                    </div>
+                    <div class="col-sm-5 col-xs-6 tital " >City:
+                    </div>
+                    <div class="col-sm-7"><%= @user.city %><br>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <div class="col-sm-5 col-xs-6 tital " >Street address:
+                    </div>
+                    <div class="col-sm-7"><%= @user.street_address %><br>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <div class="bot-border">
+                    </div>
+                    <div class="col-sm-5 col-xs-6 tital " >Province:
+                    </div>
+                    <div class="col-sm-7"><%= @user.province %><br>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <div class="bot-border">
+                    </div>
+                    <div class="col-sm-5 col-xs-6 tital " >Postal code:
+                    </div>
+                    <div class="col-sm-7"><%= @user.postal_code %><br><br>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <div class="bot-border">
+                    </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <script>
+          $(function() {
+            $('#profile-image1').on('click', function() {
+              $('#profile-image-upload').click();
+            });
+          });
+        ` </script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

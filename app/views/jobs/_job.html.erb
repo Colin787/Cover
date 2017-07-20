@@ -1,9 +1,11 @@
+<%= link_to job do %>
 <div class="container">
   <div class="row">
     <div class="col-lg-3 col-sm-6">
       <div class="card hovercard">
         <div class="cardheader">
-          </div>
+
+        </div>
         <div class="avatar">
           <img alt="" src="http://lorempixel.com/100/100/people/9/">
         </div>
@@ -12,16 +14,14 @@
           <div class="title">
             <a target="_blank" href="https://www.cactusclubcafe.com/">Cactus Club</a>
           </div>
+
           <div class="desc">Start time: <%= job.start_time %></div>
           <div class="desc">End time: <%= job.end_time %></div>
-          <div class="desc">Job description: <%= job.description %></div>
-          <div class="desc">Rate: <%= job.rate %></div>
-          </div>
 
           <%= link_to 'Delete Job', job, class: 'btn btn-info', :method => :delete %>
-          <%= link_to 'See details (temporary button)', job, class: 'btn btn-info' %>
         </div>
       </div>
     </div>
   </div>
 </div>
+<% end %>
