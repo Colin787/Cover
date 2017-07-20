@@ -8,6 +8,8 @@ class User < ApplicationRecord
   
   has_many :applications
 
+  validates_uniqueness_of :email
+
   validate :user_validation
   private
 
@@ -15,49 +17,49 @@ class User < ApplicationRecord
   def user_validation
     puts "usertype is #{usertype}"
     if usertype.name == "worker"
-      if first_name == false
-        error.add(:firs_name, "First name can't be blank")
+      if first_name == ""
+        errors.add(:base, "First name can't be empty")
       end
-      if last_name == false
-        error.add(:last_name, "Last name can't be blank")
+      if last_name == ""
+        errors.add(:base, "Last name can't be empty")
       end
-      if email == false
-        error.add(:email, "Email can't be blank")
+      if email == ""
+        errors.add(:base, "Email can't be empty")
       end
-      if cell == false
-        error.add(:cell, "Cell can't be blank")
+      if cell == ""
+        errors.add(:base, "Cell can't be empty")
       end
-      if postal_code == false
-        error.add(:postal_code, "Postal code can't be blank")
+      if postal_code == ""
+        errors.add(:base, "Postal code can't be empty")
       end
     end
     if usertype.name == "restaurant"
-      if restaurant_name == false
-        error.add(:restaurant_name, "Restaurant name can't be blank")
+      if restaurant_name == ""
+        errors.add(:base, "Restaurant name can't be empty")
       end
-      if first_name == false
-        error.add(:firs_name, "First name can't be blank")
+      if first_name == ""
+        errors.add(:base, "First name can't be empty")
       end
-      if last_name == false
-        error.add(:last_name, "Last name can't be blank")
+      if last_name == ""
+        errors.add(:base, "Last name can't be empty")
       end
-      if email == false
-        error.add(:email, "Email can't be blank")
+      if email == ""
+        errors.add(:base, "Email can't be empty")
       end
-      if street_address == false
-        error.add(:street_address, "Adress can't be blank")
+      if street_address == ""
+        errors.add(:base, "Adress can't be empty")
       end
-      if city == false
-        error.add(:city, "City can't be blank")
+      if city == ""
+        errors.add(:base, "City can't be empty")
       end
-      if province == false
-        error.add(:province, "Province can't be blank")
+      if province == ""
+        errors.add(:base, "Province can't be empty")
       end
-      if postal_code == false
-        error.add(:postal_code, "Postal code can't be blank")
+      if postal_code == ""
+        errors.add(:base, "Postal code can't be empty")
       end
-      if cell == false
-        error.add(:cell, "Cell can't be blank")
+      if cell == ""
+        errors.add(:base, "Cell can't be empty")
       end
     end
   end

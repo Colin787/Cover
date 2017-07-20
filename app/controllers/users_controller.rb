@@ -34,16 +34,16 @@ class UsersController < ApplicationController
     user = User.new(user_params)
 
     # binding.pry
-    if user.save!
+    if user.save
       session[:users_id] = user.id
       redirect_to '/login'
     else
 
-
-      if usertype.name == "restaurant"
-        render :restaurant
+    flash[:danger] = "Problem with one or more fields"
+      if user.usertype.name == "restaurant"
+        redirect_to '/users/restaurant'
       else
-        render :worker
+        redirect_to '/users/worker'
       end
 
 

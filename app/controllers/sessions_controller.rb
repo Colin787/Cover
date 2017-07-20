@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to '/jobs'
     else
+      flash[:danger] = "Check your login credentials"
       redirect_to '/login'
     end
   end
