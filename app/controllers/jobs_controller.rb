@@ -41,7 +41,8 @@ class JobsController < ApplicationController
 
   def index
     @userjobs = Job.find_by user_id: current_user.id
-    @jobs = Job.all      
+    @jobs = Job.all   
+    @comments = Comment.all   
   end
   
 

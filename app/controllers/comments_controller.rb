@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.job_id = params[:job_id]
-    # @comment.user = current_user
+    @comment.user = current_user
 
     if @comment.save
       puts "saved comment"
@@ -15,6 +15,11 @@ class CommentsController < ApplicationController
       redirect_to @comment.job
     end
   end 
+
+  def index 
+    @comments = Comment.all
+    
+  end  
 
   private
   def comment_params

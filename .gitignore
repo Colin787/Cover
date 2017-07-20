@@ -56,3 +56,4 @@ bower.json
 
 .DS_Store
 /.idea/
+config/.desktop

@@ -32,3 +32,19 @@
 <div>
   <%= link_to 'All jobs', [:jobs], class: 'btn btn-primary' %>
 </div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th> Comments </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @job.comments.each do |c| %>
+      <tr>
+        <td> <%= c.user.first_name %></td>
+        <td> <%= c.comment %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
