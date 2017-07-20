@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170717210325) do
+ActiveRecord::Schema.define(version: 20170720220328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,16 @@ ActiveRecord::Schema.define(version: 20170717210325) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "experiences", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "jobtype_id"
+    t.string "employer_name"
+    t.integer "months"
+    t.text "description"
+    t.index ["jobtype_id"], name: "index_experiences_on_jobtype_id"
+    t.index ["user_id"], name: "index_experiences_on_user_id"
+  end
+
   create_table "jobs", force: :cascade do |t|
     t.bigint "user_id"
     t.datetime "start_time"
@@ -40,6 +50,20 @@ ActiveRecord::Schema.define(version: 20170717210325) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "jobtype_id"
+  end
+
+  create_table "jobtypes", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "user_by"
+    t.bigint "user_about"
+    t.bigint "rating"
+    t.text "comment"
+    t.index ["user_about"], name: "index_reviews_on_user_about"
+    t.index ["user_by"], name: "index_reviews_on_user_by"
   end
 
   create_table "users", force: :cascade do |t|
