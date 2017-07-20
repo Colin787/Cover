@@ -55,3 +55,19 @@
       <%= a.button :submit, class: 'btn btn-primary' %>
     <% end %>
 </div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th> Applications </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @job.applications.reverse_each do |c| %>
+      <tr>
+        <td> <%= c.user.first_name %></td>
+        <td> <%= c.status %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
