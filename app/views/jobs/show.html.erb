@@ -63,10 +63,33 @@
     </tr>
   </thead>
   <tbody>
-    <% @job.comments.each do |c| %>
+    <% @job.comments.reverse_each do |c| %>
       <tr>
         <td> <%= c.user.first_name %></td>
         <td> <%= c.comment %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div>
+    <%= form_for [@job, @application] do |a| %>  
+      <% current_user %>    
+      <%= a.button :submit, class: 'btn btn-primary' %>
+    <% end %>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th> Applications </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @job.applications.reverse_each do |c| %>
+      <tr>
+        <td> <%= c.user.first_name %></td>
+        <td> <%= c.status %> </td>
       </tr>
     <% end %>
   </tbody>
