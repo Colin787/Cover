@@ -3,10 +3,11 @@ class JobsController < ApplicationController
   #before_action
 
   def new
+    if current_user.usertype_id == 2
+      redirect_to '/jobs'
+    else
     @job = Job.new
-
-    render :new
-
+  end
     # there should be new.html.erb
     # AND it uses @job
 
@@ -22,16 +23,12 @@ class JobsController < ApplicationController
     if @job.save
       redirect_to @job
     else
-
-      render :new
-      # renders new.html.erb
-      # with @job filled with params
-      # @job.errors.full_messages
+      redirect_to '/jobs'
     end
   end
-  
 
-  
+
+
   def show
     @job = Job.find params[:id]
 
@@ -41,10 +38,12 @@ class JobsController < ApplicationController
 
   def index
     @userjobs = Job.find_by user_id: current_user.id
-    @jobs = Job.all   
-    @comments = Comment.all   
+
+    @jobs = Job.all
+    @comments = Comment.all
+
   end
-  
+
 
   def destroy
     @job = Job.find params[:id]
@@ -52,7 +51,16 @@ class JobsController < ApplicationController
     redirect_to jobs_path(@job)
   end
 
+  def edit
+    @job = Job.find params[:id]
+  end
+
   def update
+    if @job = Job.update(job_params)
+      redirect_to job_path(@job)
+    else
+      redirect_to edit_job_path(@job)
+    end
   end
 
   def job_params
