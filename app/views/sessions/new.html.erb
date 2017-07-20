@@ -7,6 +7,9 @@
 						<strong>Login</strong>
 					</div>
 					<div class="panel-body">
+						<% flash.each do |key, value| %>
+							<div class="alert alert-<%= key %>"><%= value %></div>
+						<% end %>
 						<%= form_tag '/login', :class => "form-horizontal" do %>
 							<div class="form-group">
 								<label for="email" class="col-sm-3 control-label">
