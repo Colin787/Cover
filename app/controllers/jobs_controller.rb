@@ -3,10 +3,11 @@ class JobsController < ApplicationController
   #before_action
 
   def new
+    if current_user.usertype_id == 2
+      redirect_to '/jobs'
+    else
     @job = Job.new
-
-    render :new
-
+  end
     # there should be new.html.erb
     # AND it uses @job
 
@@ -22,7 +23,7 @@ class JobsController < ApplicationController
     if @job.save
       redirect_to @job
     else
-      render :new
+      redirect_to '/jobs'
     end
   end
 
@@ -37,12 +38,8 @@ class JobsController < ApplicationController
 
   def index
     @userjobs = Job.find_by user_id: current_user.id
-<<<<<<< HEAD
     @jobs = Job.all   
     @comments = Comment.all   
-=======
-    @jobs = Job.all
->>>>>>> 71b33db5e9b4d318b3e54750d41feab273dd3ab6
   end
 
 
