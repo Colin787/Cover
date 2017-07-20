@@ -6,8 +6,9 @@ class SessionsController < ApplicationController
     user = User.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to '/'
+      redirect_to '/jobs'
     else
+      flash[:danger] = "Check your login credentials"
       redirect_to '/login'
     end
   end
