@@ -7,7 +7,7 @@
           <dd><%= @job.start_time %></dd>
           <dt>End time</dt>
           <dd><%= @job.end_time %></dd>
-          <dt>Rate</dt>
+          <dt>Rate $</dt>
           <dd><%= @job.rate %></dd>
           <dt>Description</dt>
           <dd><%= @job.description %></dd>
@@ -18,13 +18,61 @@
 
   <%= link_to 'Delete Job', @job, class: 'btn btn-primary', :method => :delete %>
   <%= link_to 'Update Job', edit_job_path(@job), class: 'btn btn-primary' %>
+  <div>
+    <%= link_to 'All jobs', [:jobs], class: 'btn btn-primary' %>
+  </div>
 
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Add comment
+  </button>
+  <div class="collapse" id="collapseExample">
+    <div class="well">
+      <%= form_for [@job, @comment] do |f| %>
+        <%= f.text_area :comment %>
+        <%= f.button :submit, class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+
+  <table class="table">
+  <thead>
+    <tr>
+      <th> Comments </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @job.comments.reverse_each do |c| %>
+      <tr>
+        <td> <%= c.user.first_name %></td>
+        <td> <%= c.comment %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th> Applications </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @job.applications.reverse_each do |c| %>
+      <tr>
+        <td> <%= c.user.first_name %></td>
+        <td> <%= c.status %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
   <div>
     <%= link_to 'All jobs', [:jobs], class: 'btn btn-primary' %>
   </div>
 
+
 <% else %>
+
   <div class="container">
     <div class="row">
       <div class="col-sm-8">
@@ -33,7 +81,7 @@
           <dd><%= @job.start_time %></dd>
           <dt>End time</dt>
           <dd><%= @job.end_time %></dd>
-          <dt>Rate</dt>
+          <dt>Rate $</dt>
           <dd><%= @job.rate %></dd>
           <dt>Description</dt>
           <dd><%= @job.description %></dd>
@@ -41,9 +89,6 @@
       </div>
     </div>
   </div>
-<% end %>
-
-
 <table class="table">
   <thead>
     <tr>
@@ -60,18 +105,17 @@
   </tbody>
 </table>
 
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
     Add comment
-  </button>
-  <div class="collapse" id="collapseExample">
-    <div class="well">
-      <%= form_for [@job, @comment] do |f| %>
-        <%= f.text_area :comment %>
-        <%= f.button :submit, class: 'btn btn-primary' %>
-      <% end %>
-    </div>
+</button>
+<div class="collapse" id="collapseExample">
+  <div class="well">
+    <%= form_for [@job, @comment] do |f| %>
+      <%= f.text_area :comment %>
+      <%= f.button :submit, class: 'btn btn-primary' %>
+    <% end %>
   </div>
-
+</div>
 
 <table class="table">
   <thead>
@@ -95,3 +139,4 @@
       <%= a.button :submit, class: 'btn btn-primary' %>
     <% end %>
 </div>
+
