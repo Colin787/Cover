@@ -22,7 +22,6 @@
     <%= link_to 'All jobs', [:jobs], class: 'btn btn-primary' %>
   </div>
 
-
   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
     Add comment
   </button>
@@ -66,6 +65,11 @@
     <% end %>
   </tbody>
 </table>
+
+  <div>
+    <%= link_to 'All jobs', [:jobs], class: 'btn btn-primary' %>
+  </div>
+
 
 <% else %>
 
@@ -130,9 +134,9 @@
 </table>
 
 <div>
-    <%= form_for [@job, @application] do |a| %>
-      <% current_user %>
+    <%= form_for [@job, @application] do |a| %>  
+      <% current_user %>    
       <%= a.button :submit, class: 'btn btn-primary' %>
     <% end %>
 </div>
-<% end %>
+
