@@ -40,9 +40,10 @@
     </tr>
   </thead>
   <tbody>
-    <% @comment.each do |c| %>
+    <% @job.comments.each do |c| %>
       <tr>
-        <td> <%= c.user %> </td> <td> <%= c.comment %> </td>
+        <td> <%= c.user.first_name %></td>
+        <td> <%= c.comment %> </td>
       </tr>
     <% end %>
   </tbody>

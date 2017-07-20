@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
   end 
 
   def index 
-    @comment = Comment.find_by job_id: params[:id]
+    @comments = Comment.all
     
   end  
 
