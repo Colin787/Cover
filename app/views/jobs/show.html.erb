@@ -40,7 +40,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @job.comments.each do |c| %>
+    <% @job.comments.reverse_each do |c| %>
       <tr>
         <td> <%= c.user.first_name %></td>
         <td> <%= c.comment %> </td>
@@ -48,3 +48,9 @@
     <% end %>
   </tbody>
 </table>
+
+<div>
+    <%= form_for [@job, @application] do |a| %>      
+      <%= a.button :submit, class: 'btn btn-primary' %>
+    <% end %>
+</div>

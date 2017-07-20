@@ -36,13 +36,12 @@ class JobsController < ApplicationController
     @job = Job.find params[:id]
 
     @comment = Comment.new
-    # @comment.job_id = @job.id
+    @application = Application.new
   end
 
   def index
     @userjobs = Job.find_by user_id: current_user.id
-    @jobs = Job.all   
-    @comments = Comment.all   
+    @jobs = Job.all          
   end
   
 
