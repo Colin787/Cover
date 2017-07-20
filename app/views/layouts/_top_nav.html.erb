@@ -23,8 +23,8 @@
             <span class="caret"></span>
             <ul class="dropdown-menu">
               <li><a href="/logout">Logout</a></li>
-              <li><a href="#">placeholder</a></li>
-              <li><a href="#">placeholder</a></li>
+              <li><a href="/users/<%= current_user.id %>">Profile</a></li>
+              <li><a href="/jobs">Job Posts</a></li>
             </ul>
         </ul>
       <% else %>
