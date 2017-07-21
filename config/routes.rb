@@ -7,7 +7,10 @@ Rails.application.routes.draw do
 
   get '/users/restaurant' => 'users#restaurant'
   get '/users/worker' => 'users#worker'
-  resources :users, except: [:index]
+  resources :users, except: [:index] do
+    resources :experiences
+  end
+
   resources :usertypes, only: [:new, :create, :destroy, :update]
 
   shallow do
