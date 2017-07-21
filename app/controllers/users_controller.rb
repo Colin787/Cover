@@ -37,6 +37,7 @@ class UsersController < ApplicationController
     if user.save
       session[:users_id] = user.id
       redirect_to '/login'
+      flash[:success] = "Login to complete your registration process"
 
     else
       if User.find_by(email: user.email)

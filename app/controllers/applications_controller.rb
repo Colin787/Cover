@@ -1,6 +1,9 @@
 #This is unfortunately named, but is the controller for the applications model, and not the core controller named 'application_controller'
 
 class ApplicationsController < ApplicationController
+  
+
+
 
   def create
     @application = Application.new
@@ -21,6 +24,12 @@ class ApplicationsController < ApplicationController
   
   def index
     @application = Application.all
+  end
+
+  def list 
+    @application = Application.all
+    @userapps = Application.find_by user_id: current_user.id
+    @filter = Application.find_by status: "Accepted"
   end
 
   def show
