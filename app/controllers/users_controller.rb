@@ -37,17 +37,15 @@ class UsersController < ApplicationController
     if user.save
       session[:users_id] = user.id
       redirect_to '/login'
+
     else
-
-    flash[:danger] = "Problem with one or more fields"
-      if user.usertype.name == "restaurant"
-        redirect_to '/users/restaurant'
+      if User.find_by(email: user.email)
+        flash[:danger] = "A user with this email already exists"
+        redirect_to "/users/#{user.usertype.name}"
       else
-        redirect_to '/users/worker'
+      flash[:danger] = "An unexpected error has occured, please try again later"
+      redirect_to "/users/#{user.usertype.name}"
       end
-
-
-
     end
   end
 
