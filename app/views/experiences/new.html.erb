@@ -1,0 +1,8 @@
+<% f.fields_for :experiences do |experiences_form| %>
+                    <div class="form-group">
+
+                      <%= experiences_form.text_field :months, class: "form-control input-sm", placeholder: "Year(s) of experence", required: false %>
+                      <p> class="error error-empty"> year(s) of experence. </p>
+
+                    </div>
+                <% end %>
