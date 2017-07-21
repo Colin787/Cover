@@ -31,9 +31,10 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find params[:id]
-
     @comment = Comment.new
     @application = Application.new
+    @review = @job.reviews.new
+    
   end
 
   def index
