@@ -20,6 +20,8 @@ class UsersController < ApplicationController
   def worker
     @usertype = Usertype.where(name: "worker").first
     @user = User.new
+    @user.experiences.new
+    pp @user
     # user = User.new(user_params)
     # if user.save!
     #   session[:users_id] = user.id
