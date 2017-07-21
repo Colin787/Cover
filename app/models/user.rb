@@ -13,8 +13,21 @@ class User < ApplicationRecord
   validates_uniqueness_of :email
   validate :user_validation
 
-  private
 
+  validates :street_address,
+            :city,
+            :province,
+            :postal_code,
+            presence: true
+
+  geocoded_by :full_street_address
+  after_validation :geocode
+
+  def full_street_address
+    "#{street_address}, #{city}, #{province}, #{postal_code}"
+  end
+
+  private
 
   def user_validation
     puts "usertype is #{usertype}"
