@@ -7,13 +7,11 @@ class ApplicationsController < ApplicationController
     @application.job_id = params[:job_id]
     @application.user = current_user
     @application.status = "active"
-    puts @application.job_id
+   
     
-    if @application.save
-      puts "saved application"
+    if @application.save     
       redirect_to @application.job
-    else
-      puts "applicationing failed"
+    else      
       @application.errors.each {|e|
         puts e    
       }

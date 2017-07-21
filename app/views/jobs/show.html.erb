@@ -142,3 +142,44 @@
 </div>
 <% end %>
 
+<% if current_user %>
+  <%= form_for [@job, @review] do |form| %>
+    <% if form.object.errors.any? %>
+      <div class="alert alert-danger">
+        <strong>The following errors prevented saving:</strong>
+        <ul>
+          <% form.object.errors.full_messages.each do |error| %>
+            <li><%= error %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="field">
+      <div> Please add a comment and rate this product </div>
+      <%= form.text_area :comment %>
+      <%= form.select :rating, 1..5 %>
+    </div>
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+<% end %>
+
+<table class="table">
+<caption><h4>Reviews</h4></caption>
+<thead>            
+  <th>Rating</th>
+  <th>Content</th>
+  <th>User</th>
+</thead>
+<tbody>
+  <% @job.reviews.reverse_each do |item| %>
+    <tr>
+      <td><%= item.rating %></td>
+      <td><%= item.comment %></td>
+      <td><%= item.job.user.first_name %> <%= item.job.user.last_name %></td>
+    </tr>
+  <% end %>  
+</tbody>  
+</table>
+
