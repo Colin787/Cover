@@ -135,9 +135,10 @@
 </table>
 
 <div>
-    <%= form_for [@job, @application] do |a| %>  
-      <% current_user %>    
+    <%= form_for [@job, @application] do |a| %>
+      <% current_user %>
       <%= a.button :submit, class: 'btn btn-primary' %>
     <% end %>
 </div>
+<% end %>
 

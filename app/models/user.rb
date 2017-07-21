@@ -5,16 +5,29 @@ class User < ApplicationRecord
   belongs_to :usertype
 
   has_many :jobs
-
   has_many :applications
+  has_many :experiences
+  has_many :reviews, foreign_key: "user_by"
+  has_many :reviews, foreign_key: "user_about"
 
   validates_uniqueness_of :email
   validate :user_validation
 
 
+  validates :street_address,
+            :city,
+            :province,
+            :postal_code,
+            presence: true
+
+  geocoded_by :full_street_address
+  after_validation :geocode
+
+  def full_street_address
+    "#{street_address}, #{city}, #{province}, #{postal_code}"
+  end
 
   private
-
 
   def user_validation
     puts "usertype is #{usertype}"
