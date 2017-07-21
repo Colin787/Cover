@@ -18,9 +18,6 @@
 
   <%= link_to 'Delete Job', @job, class: 'btn btn-primary', :method => :delete %>
   <%= link_to 'Update Job', edit_job_path(@job), class: 'btn btn-primary' %>
-  <div>
-    <%= link_to 'All jobs', [:jobs], class: 'btn btn-primary' %>
-  </div>
 
   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
     Add comment
@@ -89,56 +86,56 @@
       </div>
     </div>
   </div>
-<% end %>
-<table class="table">
-  <thead>
-    <tr>
-      <th> Comments </th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @job.comments.reverse_each do |c| %>
-      <tr>
-        <td> <%= c.user.first_name %></td>
-        <td> <%= c.comment %> </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    Add comment
-</button>
-<div class="collapse" id="collapseExample">
-  <div class="well">
-    <%= form_for [@job, @comment] do |f| %>
-      <%= f.text_area :comment %>
-      <%= f.button :submit, class: 'btn btn-primary' %>
-    <% end %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th> Comments </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @job.comments.reverse_each do |c| %>
+        <tr>
+          <td> <%= c.user.first_name %></td>
+          <td> <%= c.comment %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      Add comment
+  </button>
+  <div class="collapse" id="collapseExample">
+    <div class="well">
+      <%= form_for [@job, @comment] do |f| %>
+        <%= f.text_area :comment %>
+        <%= f.button :submit, class: 'btn btn-primary' %>
+      <% end %>
+    </div>
   </div>
-</div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th> Applications </th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @job.applications.reverse_each do |c| %>
+  <table class="table">
+    <thead>
       <tr>
-        <td> <%= c.user.first_name %></td>
-        <td> <%= c.status %> </td>
+        <th> Applications </th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @job.applications.reverse_each do |c| %>
+        <tr>
+          <td> <%= c.user.first_name %></td>
+          <td> <%= c.status %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<div>
-    <%= form_for [@job, @application] do |a| %>
-      <% current_user %>
-      <%= a.button :submit, class: 'btn btn-primary' %>
-    <% end %>
-</div>
+  <div>
+      <%= form_for [@job, @application] do |a| %>
+        <% current_user %>
+        <%= a.button :submit, class: 'btn btn-primary' %>
+      <% end %>
+  </div>
 <% end %>
 
