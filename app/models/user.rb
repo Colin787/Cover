@@ -13,7 +13,6 @@ class User < ApplicationRecord
   validates_uniqueness_of :email
   validate :user_validation
 
-
   geocoded_by :full_street_address
   after_validation :geocode
 

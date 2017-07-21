@@ -4,6 +4,7 @@ class Job < ApplicationRecord
   belongs_to :jobtype
   has_many :applications
   has_many :comments
+  has_many :reviews
 
   validates :start_time,
             :end_time,
