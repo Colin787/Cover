@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
+  post 'notifications/notify' => 'notifications#notify'
+
 
   #custom get  user/new/restaurant routes to user/restaurant
 
