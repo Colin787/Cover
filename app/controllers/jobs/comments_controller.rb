@@ -1,2 +1,2 @@
-class Jobs::CommentsController < ApplicationController
+class Jobs::CommentsController < ApplicationBaseController
 end

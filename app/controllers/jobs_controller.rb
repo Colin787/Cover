@@ -1,4 +1,4 @@
-class JobsController < ApplicationController
+class JobsController < ApplicationBaseController
 
   def new
     if current_user.usertype_id == 2

@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class UsersController < ApplicationBaseController
   def new
     if current_user
       flash[:info] = "You are currently logged in, please logout to create a new account"

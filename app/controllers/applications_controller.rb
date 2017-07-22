@@ -1,6 +1,6 @@
 #This is unfortunately named, but is the controller for the applications model, and not the core controller named 'application_controller'
 
-class ApplicationsController < ApplicationController
+class ApplicationsController < ApplicationBaseController
   
 
 
@@ -23,12 +23,14 @@ class ApplicationsController < ApplicationController
   end
   
   def index
-    @application = Application.all
+    # @userapps = Application.all
+    @userapps = Application.all#.find_by status: "active"
+    @filter = Application.all#.find_by status: "accepted"
+    
   end
 
   def list 
-    @userapps = Application.find_by status: "active"
-    @filter = Application.find_by status: "accepted"
+
     @application = Application.all
   end
 

@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+class SessionsController < ApplicationBaseController
   def new
     if current_user
       redirect_to '/jobs'

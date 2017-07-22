@@ -1,4 +1,4 @@
-class ExperienceController < ApplicationController
+class ExperienceController < ApplicationBaseController
 
   def new
   end
