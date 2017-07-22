@@ -58,8 +58,9 @@ class UsersController < ApplicationBaseController
 
 
   def show
-    @user = User.find(params[:id])
-    render :template => 'show'
+   @usertype = Usertype.find_by({ name: 'restaurant' })
+   @review = @user.reviews_about.new
+   @user
   end
 
   private
