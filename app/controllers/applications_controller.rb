@@ -1,7 +1,6 @@
 #This is unfortunately named, but is the controller for the applications model, and not the core controller named 'application_controller'
 
 class ApplicationsController < ApplicationBaseController
-
   def create
     @application = Application.new
     @application.job_id = params[:job_id]

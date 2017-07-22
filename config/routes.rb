@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/users/restaurant' => 'users#restaurant'
   get '/users/worker' => 'users#worker'
 
+
   resources :users, except: [:index] do
     resources :experiences, only: [:index, :new, :create]
   end
