@@ -12,12 +12,10 @@ class Review < ApplicationRecord
   # must be unique *together* in the table
   validates :job, uniqueness: { scope: :user_by }
   validates :comment, presence: true
-  validates :rating, presence: true , 
+  validates :rating, presence: true ,
                      numericality: {
-                     greater_than: 0, 
+                     greater_than: 0,
                      less_than_or_equal_to: 5
                      }
-  def job
-    Job.find(job_id)
-  end
+
 end

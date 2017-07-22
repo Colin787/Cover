@@ -6,17 +6,11 @@ class JobsController < ApplicationBaseController
     else
       @job = Job.new
     end
-    # there should be new.html.erb
-    # AND it uses @job
-    # it probably will use
-    # form_for(@job) do |form| ...
   end
 
   def create
     @job = Job.new(job_params)
-    puts "IM HERE"
     @job.user_id = current_user.id
-    puts "I AM HERE AGAIN"
     @job.user = current_user
     if @job.save
       redirect_to @job
@@ -32,7 +26,7 @@ class JobsController < ApplicationBaseController
     @comment = Comment.new
     @application = Application.new
     @review = @job.reviews.new
-    
+
   end
 
   def index
