@@ -10,10 +10,8 @@ class ExperiencesController < ApplicationController
   end
 
   def create
-
     @experience = Experience.new(experience_params)
     @experience.user = current_user
-    @experience.jobtype = params[:jobtype_id]
 
     if @experience.save
       puts "saved experience"

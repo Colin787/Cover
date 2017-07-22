@@ -7,7 +7,6 @@ class ApplicationsController < ApplicationBaseController
     @application.user = current_user
     @application.status = "active"
 
-
     if @application.save
       redirect_to @application.job
     else
@@ -23,11 +22,9 @@ class ApplicationsController < ApplicationBaseController
     @application = Application.all
     @userapps = @application.where(status: "active")
     @filter = @application.where(status: "accepted")
-
   end
 
   def list
-
     @application = Application.all
   end
 
