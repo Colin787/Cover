@@ -17,13 +17,13 @@ class ExperiencesController < ApplicationController
 
     if @experience.save
       puts "saved experience"
-      redirect_to @experience.user
+      redirect_to '/users/' + @current_user.id
     else
       puts "experience failed"
       @experience.errors.each {|e|
         puts e
       }
-      redirect_to @experience.user
+      redirect_to '/users/' + @current_user.id.to_s
     end
   end
 
