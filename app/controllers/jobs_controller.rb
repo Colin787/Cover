@@ -51,9 +51,9 @@ class JobsController < ApplicationBaseController
 
   def update
     if @job = Job.update(job_params)
-      redirect_to job_path(@job)
+      redirect_to action: "show"
     else
-      redirect_to edit_job_path(@job)
+      redirect_to action: "show"
     end
   end
 
