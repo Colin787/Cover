@@ -1,6 +1,14 @@
+<<<<<<< HEAD
 class UsersController < ApplicationController
   
   def new
+=======
+class UsersController < ApplicationBaseController
+  def new
+    if current_user
+      flash[:info] = "You are currently logged in, please logout to create a new account"
+    end
+>>>>>>> master
     @user = User.new
   end
 
@@ -38,6 +46,11 @@ class UsersController < ApplicationController
     if user.save
       session[:users_id] = user.id
       redirect_to '/login'
+<<<<<<< HEAD
+=======
+      flash[:success] = "Login to complete your registration process"
+
+>>>>>>> master
     else
       if User.find_by(email: user.email)
         flash[:danger] = "A user with this email already exists"

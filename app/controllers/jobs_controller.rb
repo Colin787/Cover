@@ -1,11 +1,15 @@
-class JobsController < ApplicationController
+class JobsController < ApplicationBaseController
 
   def new
     if current_user.usertype_id == 2
       redirect_to '/jobs'
     else
-    @job = Job.new
+      @job = Job.new
     end
+    # there should be new.html.erb
+    # AND it uses @job
+    # it probably will use
+    # form_for(@job) do |form| ...
   end
 
   def create
@@ -16,9 +20,15 @@ class JobsController < ApplicationController
     @job.user = current_user
     if @job.save
       redirect_to @job
+      puts "saved job"
     else
+<<<<<<< HEAD
       @job.errors.each {|e| puts e }
       redirect_to '/jobs'
+=======
+      redirect_to @job
+      puts "Job not saved"
+>>>>>>> master
     end
   end
 

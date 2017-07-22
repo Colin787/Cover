@@ -10,25 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170721011857) do
+ActiveRecord::Schema.define(version: 20170722022151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "applications", force: :cascade do |t|
-    t.bigint "job_id"
-    t.bigint "user_id"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "job_id"
+    t.bigint "user_id"
+    t.index ["job_id"], name: "index_applications_on_job_id"
+    t.index ["user_id"], name: "index_applications_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
-    t.bigint "job_id"
-    t.bigint "user_id"
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "job_id"
+    t.bigint "user_id"
+    t.index ["job_id"], name: "index_comments_on_job_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "experiences", force: :cascade do |t|
@@ -42,7 +46,6 @@ ActiveRecord::Schema.define(version: 20170721011857) do
   end
 
   create_table "jobs", force: :cascade do |t|
-    t.bigint "user_id"
     t.datetime "start_time"
     t.datetime "end_time"
     t.bigint "rate"
@@ -51,6 +54,9 @@ ActiveRecord::Schema.define(version: 20170721011857) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "jobtype_id"
+    t.bigint "user_id"
+    t.index ["jobtype_id"], name: "index_jobs_on_jobtype_id"
+    t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
   create_table "jobtypes", force: :cascade do |t|
@@ -95,5 +101,11 @@ ActiveRecord::Schema.define(version: 20170721011857) do
     t.string "name"
   end
 
+  add_foreign_key "applications", "jobs"
+  add_foreign_key "applications", "users"
+  add_foreign_key "comments", "jobs"
+  add_foreign_key "comments", "users"
+  add_foreign_key "jobs", "jobtypes"
+  add_foreign_key "jobs", "users"
   add_foreign_key "users", "usertypes"
 end
