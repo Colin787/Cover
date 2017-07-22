@@ -1,1 +1,15 @@
-<h1> suh </h1>
+<div>
+  Name :<%= f.user.first_name %>
+</div>
+
+<div>
+  Status: <%= f.status%>
+</div>
+
+<div>
+  Title : <%= f.job.jobtype.name %>
+</div>
+
+<div>
+  Restaurant: <%= f.job.user.restaurant_name %>
+</div>

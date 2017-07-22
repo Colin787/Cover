@@ -10,7 +10,7 @@
         <h4> Accepted </h4>
         <div>
         <% @filter.each do |f| %>
-          <%= render 'filter', filter: f %>
+          <%= render 'filter', f: f %>
         <% end %>
         </div>
     <% else %>
@@ -28,7 +28,7 @@
       <h4> Accepted </h4>
       <div>
         <% @filter.each do |f| %>
-          <%= render 'filter', f: f %>
+          <%= render 'filter', f: f %> <br>
         <% end %>
       </div>
     <% else %>

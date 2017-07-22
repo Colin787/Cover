@@ -24,8 +24,9 @@ class ApplicationsController < ApplicationBaseController
   
   def index
     # @userapps = Application.all
-    @userapps = Application.all#.find_by status: "active"
-    @filter = Application.all#.find_by status: "accepted"
+    @application = Application.all
+    @userapps = @application.where(status: "active")
+    @filter = @application.where(status: "accepted")
     
   end
 
