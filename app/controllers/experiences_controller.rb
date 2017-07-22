@@ -1,13 +1,16 @@
 class ExperiencesController < ApplicationController
 
-  def index
-    @experience = experience.all
+  def new
+    @experience = Experience.new
   end
 
-  def new
+  def index
+    @experience = Experience.all
   end
+
 
   def create
+
     @experience = Experience.new(experience_params)
     @experience.user = current_user
     @experience.jobtype = params[:jobtype_id]
