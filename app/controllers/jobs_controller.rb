@@ -17,9 +17,7 @@ class JobsController < ApplicationController
     if @job.save
       redirect_to @job
     else
-      @job.errors.each {|e|
-        puts e
-      }
+      @job.errors.each {|e| puts e }
       redirect_to '/jobs'
     end
   end
@@ -27,9 +25,7 @@ class JobsController < ApplicationController
   def show
     @job = Job.find params[:id]
     @comment = Comment.new
-    @application = Application.new
-    @review = @job.reviews.new
-    
+    @application = Application.new    
   end
 
   def index
