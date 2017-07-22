@@ -1,6 +1,8 @@
-class UsersController < ApplicationController
+class UsersController < ApplicationBaseController
   def new
-
+    if current_user
+      flash[:info] = "You are currently logged in, please logout to create a new account"
+    end
     @user = User.new
   end
 
@@ -20,6 +22,7 @@ class UsersController < ApplicationController
   def worker
     @usertype = Usertype.where(name: "worker").first
     @user = User.new
+    @user.experiences.new
     # user = User.new(user_params)
     # if user.save!
     #   session[:users_id] = user.id
@@ -37,6 +40,7 @@ class UsersController < ApplicationController
     if user.save
       session[:users_id] = user.id
       redirect_to '/login'
+      flash[:success] = "Login to complete your registration process"
 
     else
       if User.find_by(email: user.email)

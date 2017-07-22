@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
+  get '/users/:id/applications' => 'applications#index'
 
   get '/users/restaurant' => 'users#restaurant'
   get '/users/worker' => 'users#worker'

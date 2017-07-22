@@ -14,6 +14,9 @@
                 <% if @user.errors.any? %>
                 <p><%= @user.errors.full_messages %></p>
                 <% end %>
+                <% flash.each do |type, content| %>
+                  <%= content_tag :div, content, class: "alert alert-#{type}" %>
+                <% end %>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group">
                     <%= f.text_field :first_name, class: "form-control input-sm", placeholder: "First Name", required: false%>
@@ -54,8 +57,8 @@
                   </div>
                 </div>
                   <div class="col-xs-12">
-                    <p class="error error-matching"> Passwords do not match. </p> 
-                  </div>  
+                    <p class="error error-matching"> Passwords do not match. </p>
+                  </div>
               </div>
               <%= f.submit "Submit", class: "btn btn-info btn-block" %>
               <% end %>

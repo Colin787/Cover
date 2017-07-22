@@ -1,33 +1,31 @@
-class JobsController < ApplicationController
-
-  #before_action
+class JobsController < ApplicationBaseController
 
   def new
     if current_user.usertype_id == 2
       redirect_to '/jobs'
     else
-    @job = Job.new
-  end
+      @job = Job.new
+    end
     # there should be new.html.erb
     # AND it uses @job
-
     # it probably will use
     # form_for(@job) do |form| ...
-
-
   end
 
   def create
     @job = Job.new(job_params)
+    puts "IM HERE"
     @job.user_id = current_user.id
+    puts "I AM HERE AGAIN"
+    @job.user = current_user
     if @job.save
       redirect_to @job
+      puts "saved job"
     else
-      redirect_to '/jobs'
+      redirect_to @job
+      puts "Job not saved"
     end
   end
-
-
 
   def show
     @job = Job.find params[:id]
@@ -39,9 +37,8 @@ class JobsController < ApplicationController
 
   def index
     @userjobs = Job.find_by user_id: current_user.id
-    @jobs = Job.all          
+    @jobs = Job.all
   end
-
 
   def destroy
     @job = Job.find params[:id]
@@ -62,7 +59,7 @@ class JobsController < ApplicationController
   end
 
   def job_params
-    params.require(:job).permit(:start_time, :end_time, :user_id, :description, :rate, :status)
+    params.require(:job).permit(:start_time, :end_time, :user_id, :description, :rate, :status, :jobtype_id)
   end
 
 end

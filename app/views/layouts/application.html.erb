@@ -12,10 +12,6 @@
     <%= render 'layouts/top_nav' %>
   </main>
 
-  <% flash.each do |type, content| %>
-    <%= content_tag :div, content, class: "alert alert-#{type}" %>
-  <% end %>
-
   <body>
     <%= yield %>
   </body>

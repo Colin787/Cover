@@ -1,4 +1,4 @@
-class CommentsController < ApplicationController
+class CommentsController < ApplicationBaseController
   def create
     @comment = Comment.new(comment_params)
     @comment.job_id = params[:job_id]

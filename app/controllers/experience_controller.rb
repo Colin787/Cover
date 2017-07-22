@@ -1,8 +1,10 @@
-class UsertypesController < ApplicationBaseController
+class ExperienceController < ApplicationBaseController
+
   def new
   end
 
   def create
+
   end
 
   def destroy
