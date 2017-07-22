@@ -37,5 +37,13 @@
           <%= form.text_field :rate, class: 'form-control' %>
         </div>
 
+        <div>
+          <%= form.select(:jobtype_id) do %>
+            <% [['dishwasher', 1], ['line cook', 2], ['sous chef', 3], ['prep chef', 4], ['waiter', 5], ['hostess', 6]].each do |c| -%>
+              <%= content_tag(:option, c.first, value: c.last) %>
+            <% end %>
+          <% end %>
+        </div>
+
         <%= form.submit 'Create Job', class: 'btn btn-primary' %>
 <% end %>
