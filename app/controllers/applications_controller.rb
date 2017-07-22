@@ -27,9 +27,9 @@ class ApplicationsController < ApplicationController
   end
 
   def list 
+    @userapps = Application.find_by status: "active"
+    @filter = Application.find_by status: "accepted"
     @application = Application.all
-    @userapps = Application.find_by user_id: current_user.id
-    @filter = Application.find_by status: "Accepted"
   end
 
   def show

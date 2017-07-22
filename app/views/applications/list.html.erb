@@ -4,14 +4,28 @@
       <h2> No new applicants </h2>
       <a href="/jobs"> Return to jobs</a>
     <% else %>
-      <%= render @filter %>
+        <h4> Pending </h4>
+        <div>
+        <%= render @userapps %>
+        </div>
+        <h4> Accepted </h4>
+        <div>
+        <%= render @filter %>
+        </div>
     <% end %>
     <% else %>
       <% if @userapps == nil %>
         <h2> No applications have been accepted yet </h2>
         <a href="/jobs"> Look for more </a>
       <% else %>
+        <h4> Pending </h4>
+        <div>
+        <%= render @userapps %>
+        </div>
+        <h4> Accepted </h4>
+        <div>
         <%= render @filter %>
+        </div>
       <% end %>
   <% end %>
 </div>

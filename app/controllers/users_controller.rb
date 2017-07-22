@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   def new
-
+    if current_user
+      flash[:info] = "You are currently logged in, please logout to create a new account"
+    end
     @user = User.new
   end
 
@@ -21,7 +23,6 @@ class UsersController < ApplicationController
     @usertype = Usertype.where(name: "worker").first
     @user = User.new
     @user.experiences.new
-    pp @user
     # user = User.new(user_params)
     # if user.save!
     #   session[:users_id] = user.id
