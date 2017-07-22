@@ -1,4 +1,4 @@
-class HomeController < ApplicationController
+class HomeController < ApplicationBaseController
   # def index
   #   @jobs = Job.all.order(created_at: :desc)
   # end

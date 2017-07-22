@@ -32,36 +32,36 @@
   </div>
 
   <table class="table">
-  <thead>
-    <tr>
-      <th> Comments </th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @job.comments.reverse_each do |c| %>
+    <thead>
       <tr>
-        <td> <%= c.user.first_name %></td>
-        <td> <%= c.comment %> </td>
+        <th> Comments </th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @job.comments.reverse_each do |c| %>
+        <tr>
+          <td> <%= c.user.first_name %></td>
+          <td> <%= c.comment %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th> Applications </th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @job.applications.reverse_each do |c| %>
+  <table class="table">
+    <thead>
       <tr>
-        <td> <%= c.user.first_name %></td>
-        <td> <%= c.status %> </td>
+        <th> Applications </th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @job.applications.reverse_each do |c| %>
+        <tr>
+          <td> <%= c.user.first_name %></td>
+          <td> <%= c.status %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
   <div>
     <%= link_to 'All jobs', [:jobs], class: 'btn btn-primary' %>
@@ -163,20 +163,20 @@
 <% end %>
 
 <table class="table">
-<caption><h4>Reviews</h4></caption>
-<thead>            
-  <th>Rating</th>
-  <th>Content</th>
-  <th>User</th>
-</thead>
-<tbody>
-  <% @job.reviews.reverse_each do |item| %>
-    <tr>
-      <td><%= item.rating %></td>
-      <td><%= item.comment %></td>
-      <td><%= item.job.user.first_name %> <%= item.job.user.last_name %></td>
-    </tr>
-  <% end %>  
-</tbody>  
+  <caption><h4>Reviews</h4></caption>
+  <thead>            
+    <th>Rating</th>
+    <th>Content</th>
+    <th>User</th>
+  </thead>
+  <tbody>
+    <% @job.reviews.reverse_each do |item| %>
+      <tr>
+        <td><%= item.rating %></td>
+        <td><%= item.comment %></td>
+        <td><%= item.job.user.first_name %> <%= item.job.user.last_name %></td>
+      </tr>
+    <% end %>  
+  </tbody>  
 </table>
 
