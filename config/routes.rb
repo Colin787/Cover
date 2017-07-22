@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   get '/users/:id/experiences/new' => 'experiences#new'
   get '/users/restaurant' => 'users#restaurant'
   get '/users/worker' => 'users#worker'
+
   resources :users, except: [:index] do
-    resources :experiences
+    resources :experiences, only: [:index, :new, :create]
   end
 
   resources :usertypes, only: [:new, :create, :destroy, :update]
@@ -24,8 +25,6 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
-
-
 
   #custom get  user/new/restaurant routes to user/restaurant
 

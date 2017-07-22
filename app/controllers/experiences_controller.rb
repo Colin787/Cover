@@ -1,13 +1,13 @@
 class ExperiencesController < ApplicationController
 
   def new
+    @user = User.find(params[:id])
     @experience = Experience.new
   end
 
   def index
     @experience = Experience.all
   end
-
 
   def create
 
@@ -26,16 +26,6 @@ class ExperiencesController < ApplicationController
       redirect_to @experience.user
     end
   end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
-  end
-
 
   private
 

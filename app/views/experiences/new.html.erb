@@ -1,4 +1,5 @@
-<% form_for [:user, @experience] do |f| %>
-  <%= employer_name %>
+<h1>Render You Motherfucker!</h1>
 
+<% form_for [@user, @experience] do |f| %>
+    <%= f.text_field :employer_name %>
 <% end %>
