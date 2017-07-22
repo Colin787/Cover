@@ -14,11 +14,11 @@ class CommentsController < ApplicationBaseController
       }
       redirect_to @comment.job
     end
-  end 
+  end
 
-  def index 
-    @comments = Comment.all    
-  end  
+  def index
+    @comments = Comment.all
+  end
 
   private
   def comment_params
