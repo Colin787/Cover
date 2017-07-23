@@ -24,7 +24,9 @@
             <ul class="dropdown-menu">
               <li><a href="/users/<%= current_user.id %>">Profile</a></li>
               <li><a href="/jobs">Job Posts</a></li>
+              <% if current_user.usertype_id != 1 %>
               <li><a href="/users/<%= current_user.id %>/applications"> Applications </a></li>
+              <% end %>
               <li><a href="/logout">Logout</a></li>
             
             </ul>
