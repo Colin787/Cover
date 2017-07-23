@@ -1,10 +1,9 @@
-<!-- View for a user, restaurant -->
-<%= form_tag('/jobs', method: :get) %>
-<p>
-  <%= text_field_tag :search %>
-  <%= submit_tag 'Search' %>
-</p>
+<%= form_tag(jobs_path, method: :get) do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag 'Search', name: nil %>
+<% end %>
 
+<!-- View for a user, restaurant -->
 <div class="container">
   <% if current_user.usertype_id == 1 %>
       <section>
