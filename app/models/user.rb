@@ -4,13 +4,19 @@ class User < ApplicationRecord
 
   belongs_to :usertype
 
-  has_many :jobs
-  has_many :applications
+  has_many :jobs, dependent: :destroy
+  has_many :applications, dependent: :destroy
 
-  has_many :experiences
+  has_many :experiences, dependent: :destroy
 
+<<<<<<< HEAD
   has_many :reviews_by, foreign_key: "user_by", class_name: 'Review'
   has_many :reviews_about, foreign_key: "user_about", class_name: 'Review'
+=======
+  has_many :reviews, foreign_key: "user_by", dependent: :destroy
+  has_many :reviews, foreign_key: "user_about", dependent: :destroy
+
+>>>>>>> master
 
 
   validates_uniqueness_of :email

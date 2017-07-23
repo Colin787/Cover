@@ -24,10 +24,13 @@ class ApplicationsController < ApplicationBaseController
   
   def index
     # @userapps = Application.all
+    if current_user.usertype_id == 1
+      redirect_to '/jobs'
+    else
     @application = Application.all
-    @userapps = @application.where(status: "active")
-    @filter = @application.where(status: "accepted")
-    
+    @userapps = @application.where({ user_id: current_user.id, status: 'active' })
+    @filter = @application.where({ user_id: current_user.id, status: 'accepted' })
+    end
   end
 
   def list 

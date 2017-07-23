@@ -25,18 +25,18 @@ class JobsController < ApplicationBaseController
     @job = Job.find params[:id]
     @comment = Comment.new
     @application = Application.new
-
+    @review = @job.reviews.new
   end
 
   def index
-    @userjobs = Job.find_by user_id: current_user.id
+    @userjobs = Job.where(user_id: current_user.id)
     @jobs = Job.all
   end
 
   def destroy
     @job = Job.find params[:id]
     @job.destroy
-    redirect_to jobs_path(@job)
+    redirect_to action: "index"
   end
 
   def edit
@@ -45,9 +45,9 @@ class JobsController < ApplicationBaseController
 
   def update
     if @job = Job.update(job_params)
-      redirect_to job_path(@job)
+      redirect_to action: "show"
     else
-      redirect_to edit_job_path(@job)
+      redirect_to action: "show"
     end
   end
 

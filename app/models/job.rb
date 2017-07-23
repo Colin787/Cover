@@ -2,9 +2,9 @@ class Job < ApplicationRecord
 
   belongs_to :user
   belongs_to :jobtype
-  has_many :applications
-  has_many :comments
-  has_many :reviews
+  has_many :applications, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
   validates :start_time,
             :end_time,
