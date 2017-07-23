@@ -16,13 +16,6 @@ class UsersController < ApplicationBaseController
     @usertype = Usertype.where(name: "worker").first
     @user = User.new
     @user.experiences.new
-    # user = User.new(user_params)
-    # if user.save!
-    #   session[:users_id] = user.id
-    #   redirect_to '/'
-    # else
-    #   render :worker
-    # end
   end
 
   def create
@@ -45,10 +38,9 @@ class UsersController < ApplicationBaseController
     end
   end
 
-
   def show
     @user = User.find(params[:id])
-    render :template => 'show'
+    @experience = Experience.new
   end
 
   private
