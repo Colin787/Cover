@@ -69,17 +69,31 @@
             </div>
           </div>
         </div>
-         <button type="button" class="btn btn-primary">Experience</button>
-
-          <% if current_user %>
-            <%= form_for [@user, @review] do |f| %>
-            <%= f.text_field :rating, placeholder: "Rating" %>
-            <% end %>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        See review
+        </button>
+        <div class="collapse" id="collapseExample">
+          <div class="well">
+            <table class="table">
+              <caption><h4>Reviews</h4></caption>
+              <thead>
+                <th>Rating</th>
+                <th>Content</th>
+                <th>User</th>
+              </thead>
+              <tbody>
+                <% @user.reviews_by.reverse_each do |item| %>
+                  <tr>
+                    <td><%= item.rating %></td>
+                    <td><%= item.comment %></td>
+                    <td><%= item.user.first_name %> <%= item.user.last_name %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-

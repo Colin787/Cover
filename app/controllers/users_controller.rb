@@ -10,26 +10,12 @@ class UsersController < ApplicationBaseController
    @usertype = Usertype.where(name: "restaurant").first
 
    @user = User.new
-   # user = User.new(user_params)
-   #  if user.save!
-   #    session[:users_id] = user.id
-   #    redirect_to '/'
-   #  else
-   #    render :restaurant
-   #  end
   end
 
   def worker
     @usertype = Usertype.where(name: "worker").first
     @user = User.new
     @user.experiences.new
-    # user = User.new(user_params)
-    # if user.save!
-    #   session[:users_id] = user.id
-    #   redirect_to '/'
-    # else
-    #   render :worker
-    # end
   end
 
 
@@ -54,12 +40,11 @@ class UsersController < ApplicationBaseController
   end
 
 
-
-
-
   def show
     @user = User.find(params[:id])
-    render :template => 'show'
+    @usertype = Usertype.find_by({ name: 'restaurant' })
+    @review = @user.reviews_about.new
+    @user
   end
 
   private

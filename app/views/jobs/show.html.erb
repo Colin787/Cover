@@ -137,10 +137,9 @@
         <%= a.button :submit, class: 'btn btn-primary' %>
       <% end %>
   </div>
-<% end %>
 
-<% if current_user %>
-  <%= form_for [@job, @review] do |form| %>
+  <% if current_user %>
+  <%= form_for [@job, @review_by] do |form| %>
     <% if form.object.errors.any? %>
       <div class="alert alert-danger">
         <strong>The following errors prevented saving:</strong>
@@ -161,22 +160,6 @@
     </div>
   <% end %>
 <% end %>
+<% end %>
 
-<table class="table">
-  <caption><h4>Reviews</h4></caption>
-  <thead>
-    <th>Rating</th>
-    <th>Content</th>
-    <th>User</th>
-  </thead>
-  <tbody>
-    <% @job.reviews.reverse_each do |item| %>
-      <tr>
-        <td><%= item.rating %></td>
-        <td><%= item.comment %></td>
-        <td><%= item.job.user.first_name %> <%= item.job.user.last_name %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 

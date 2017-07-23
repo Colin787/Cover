@@ -1,8 +1,9 @@
 class Review < ApplicationRecord
 
-  belongs_to :user_by, foreign_key: "user_by", class_name: "User"
-  belongs_to :user_about, foreign_key: "user_about", class_name: "User"
+  belongs_to :users_by, foreign_key: "user_by", class_name: "User"
+  belongs_to :users_about, foreign_key: "user_about", class_name: "User"
   belongs_to :job
+
 
 
   validates :job, presence: true
