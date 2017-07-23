@@ -1,38 +1,41 @@
-
 <!-- View for a user, restaurant -->
-<div class="container">
-<% if current_user.usertype_id == 1 %>
-    <section>
-      <header>
-        <h3>Here are your current jobs, <%= current_user.restaurant_name %>.</h3>
-      </header>
-      <body>
-      <div class="jobs">
-        <% if @userjobs == nil %>
-            <h4>You have no jobs!</h4>
-            <div class="well">
-              <%= link_to '+ New Job', [:new, :job], class: 'btn btn-info' %>
-            </div>
-        <% else %>
-            <%= render @userjobs %>
-            <div class="well">
-              <%= link_to '+ New Job', [:new, :job], class: 'btn btn-info' %>
-        <% end %>
-        </div>
-      </div>
-      </body>
-    </section>
-<% else %>
+<%= form_tag('/jobs', method: :get) %>
+<p>
+  <%= text_field_tag :search %>
+  <%= submit_tag 'Search' %>
+</p>
 
-    <!-- View for a user, worker -->
-    <h3>Here are the available jobs, <%= current_user.first_name %>.</h3>
-    <section>
-      <header>
-        <h1>Jobs</h1>
-      </header>
-      <div class="jobs">
-        <%= render @jobs %>
-      </div>
-    </section>
-<% end %>
+<div class="container">
+  <% if current_user.usertype_id == 1 %>
+      <section>
+        <header>
+          <h3>Here are your current jobs, <%= current_user.restaurant_name %>.</h3>
+        </header>
+        <div class="jobs">
+          <% if @userjobs == nil %>
+              <h4>You have no jobs!</h4>
+              <div class="well">
+                <%= link_to '+ New Job', [:new, :job], class: 'btn btn-info' %>
+              </div>
+          <% else %>
+              <%= render @userjobs %>
+              <div class="well">
+                <%= link_to '+ New Job', [:new, :job], class: 'btn btn-info' %>
+              </div>
+          <% end %>
+        </div>
+      </section>
+  <% else %>
+
+      <!-- View for a user, worker -->
+      <h3>Here are the available jobs, <%= current_user.first_name %>.</h3>
+      <section>
+        <header>
+          <h1>Jobs</h1>
+        </header>
+        <div class="jobs">
+          <%= render @jobs %>
+        </div>
+      </section>
+  <% end %>
 </div>
