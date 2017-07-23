@@ -35,7 +35,7 @@ class JobsController < ApplicationBaseController
   end
 
   def index
-    @userjobs = Job.find_by user_id: current_user.id
+    @userjobs = Job.where(user_id: current_user.id)
     @jobs = Job.all
   end
 
