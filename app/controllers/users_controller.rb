@@ -1,4 +1,5 @@
 class UsersController < ApplicationBaseController
+
   def new
     if current_user
       flash[:info] = "You are currently logged in, please logout to create a new account"
@@ -7,9 +8,8 @@ class UsersController < ApplicationBaseController
   end
 
   def restaurant
-   @usertype = Usertype.where(name: "restaurant").first
-
-   @user = User.new
+    @user = User.new
+    @usertype = Usertype.where(name: "restaurant").first
   end
 
   def worker
@@ -17,7 +17,6 @@ class UsersController < ApplicationBaseController
     @user = User.new
     @user.experiences.new
   end
-
 
   def create
     user = User.new(user_params)
@@ -33,23 +32,22 @@ class UsersController < ApplicationBaseController
         flash[:danger] = "A user with this email already exists"
         redirect_to "/users/#{user.usertype.name}"
       else
-      flash[:danger] = "An unexpected error has occured, please try again later"
-      redirect_to "/users/#{user.usertype.name}"
+        flash[:danger] = "An unexpected error has occured, please try again later"
+        redirect_to "/users/#{user.usertype.name}"
       end
     end
   end
 
-
   def show
     @user = User.find(params[:id])
-    @usertype = Usertype.find_by({ name: 'restaurant' })
+    @experience = Experience.new
     @review = @user.reviews_about.new
-    @user
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:usertype_id, :first_name, :email, :password, :password_confirmation, :cell,:last_name, :city, :province, :postal_code, :restaurant_name, :street_address)
+    params.require(:user).permit(:usertype_id, :first_name, :email, :password, :password_confirmation, :cell, :last_name, :city, :province, :postal_code, :restaurant_name, :street_address)
   end
+
 end

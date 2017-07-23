@@ -4,13 +4,15 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
-  get '/users/:id/applications' => 'applications#index'
-
+  get '/users/:id/experiences/new' => 'experiences#new'
   get '/users/restaurant' => 'users#restaurant'
   get '/users/worker' => 'users#worker'
+
+
   resources :users, except: [:index] do
-    resources :reviews
+    resources :experiences, only: [:index, :new, :create]
   end
+
   resources :usertypes, only: [:new, :create, :destroy, :update]
 
   shallow do
