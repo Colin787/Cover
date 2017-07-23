@@ -88,18 +88,16 @@
               </div>
               <div class="clearfix">
                <div class="col-sm-5 col-xs-6 title ">type of job:
-              </div>
+              </div><br>
               <div class="clearfix">
-
-                <!-- Form for a user to add experience -->
                 <%= link_to link_to "Add experiences", controller: "experiences", action: "new" %>
-
               </div>
               <div class="bot-border">
               </div>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -111,3 +109,4 @@
     });
   });
 </script>
+<%= @user.experiences.take.employer_name %>

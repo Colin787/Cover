@@ -40,6 +40,7 @@ class UsersController < ApplicationBaseController
 
   def show
     @user = User.find(params[:id])
+    @experience = Experience.new
   end
 
   private
