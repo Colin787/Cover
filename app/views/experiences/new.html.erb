@@ -8,20 +8,20 @@
         <div class="panel-body">
           <%= form_for [@user, @experience] do |f| %>
               <div class="form-group">
-                <%= f.label :jobtype_id, 'Job description' %>
-                <%= f.collection_select :jobtype_id, class: "form-control input-sm" %>
+                <%= f.label :jobtype_id, 'Job description' %>:
+                <%= f.collection_select(:jobtype_id, Jobtype.all, :id, :name) %>
               </div>
               <div class="form-group">
-                <%= f.label :employer_name, 'Employer' %>
+                <%= f.label :employer_name, 'Employer' %>:
                 <%= f.text_field :employer_name, class: "form-control input-sm" %>
               </div>
               <div class="form-group">
-                <%= f.label :months, 'Months of experience' %>
+                <%= f.label :months, 'Months of experience' %>:
                 <%= f.text_field :months, class: "form-control input-sm" %>
               </div>
               <div class="form-group">
-                <%= f.label :description, 'Additional description (optional)' %>
-                <%= f.text_field :description, class: "form-control input-sm" %>
+                <%= f.label :description, 'Additional description (optional)' %>:
+                <%= f.text_area :description, class: "form-control input-sm" %>
               </div>
               <div class="form-group">
                 <%= f.submit "Add", class: "btn btn-info btn-block" %>

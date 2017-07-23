@@ -15,20 +15,20 @@ class ExperiencesController < ApplicationController
 
     if @experience.save
       puts "saved experience"
-      redirect_to '/users/' + @current_user.id
+      redirect_to controller: 'users', action: 'show', id: @current_user.id
     else
       puts "experience failed"
       @experience.errors.each {|e|
         puts e
       }
-      redirect_to '/users/' + @current_user.id.to_s
+      redirect_to controller: 'users', action: 'show', id: @experience.user_id
     end
   end
 
   private
 
   def experience_params
-    params.require(:experience).permit(:experience)
+    params.require(:experience).permit(:jobtype_id, :employer_name, :months, :description)
   end
 
 end
