@@ -4,13 +4,13 @@ class User < ApplicationRecord
 
   belongs_to :usertype
 
-  has_many :jobs
-  has_many :applications
+  has_many :jobs, dependent: :destroy
+  has_many :applications, dependent: :destroy
 
-  has_many :experiences
+  has_many :experiences, dependent: :destroy
 
-  has_many :reviews, foreign_key: "user_by"
-  has_many :reviews, foreign_key: "user_about"
+  has_many :reviews, foreign_key: "user_by", dependent: :destroy
+  has_many :reviews, foreign_key: "user_about", dependent: :destroy
 
 
 
