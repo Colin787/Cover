@@ -1,24 +1,10 @@
 <div class="container">
   <% if current_user.usertype_id == 1 %>
-    <% if @userapps %>
-        <h4> Pending </h4>
-        <div>
-        <% @userapps.each do |userapp| %>
-          <%= render 'userapp', userapp: userapp %>
-        <% end %>
-        </div>
-        <h4> Accepted </h4>
-        <div>
-        <% @filter.each do |f| %>
-          <%= render 'filter', f: f %>
-        <% end %>
-        </div>
-    <% else %>
-      <h2> No new applicants </h2>
-      <a href="/jobs"> Return to jobs</a>
+    <% current_user.jobs.each do |o| %>
+      <% render 'owner', o: o %>
     <% end %>
   <% else %>
-    <% if @userapps %>
+    <% if current_user.usertype_id == 2 %>
       <h4> Pending </h4>
       <div>
         <% @userapps.each do |userapp| %>
