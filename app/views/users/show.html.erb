@@ -1,6 +1,6 @@
+
 <div class="container">
   <div class="row">
-    <h2>Profile page</h2>
     <div class="col-md-7 ">
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -18,8 +18,11 @@
               <div class="col-sm-6">
                 <h4 style="color:#00b1b1;"><%= @user.first_name %> <%= @user.last_name %></h4></span>
               </div>
-              <div class="clearfix"></div>
+              <div class="clearfix">
+              </div>
               <hr style="margin:5px 0 5px 0;">
+
+              <% if current_user.usertype_id == 1 %>
               <div class="col-sm-5 col-xs-6 title ">Restaurant:
               </div>
               <div class="col-sm-7"><%= @user.restaurant_name %>
@@ -28,11 +31,12 @@
               </div>
               <div class="bot-border">
               </div>
+              <% end %>
               <div class="col-sm-5 col-xs-6 title ">First Name:
               </div>
-              <div class="col-sm-7 col-xs-6 "><%= @user.first_name %>
+              <div class="col-sm-7 col-xs-6"><%= @user.first_name %>
               </div>
-              <div class="clearfix">
+              <div class="clearfix ">
               </div>
               <div class="bot-border">
               </div>
@@ -62,6 +66,7 @@
               </div>
               <div class="col-sm-5 col-xs-6 title ">City:
               </div>
+              <% if current_user.usertype_id == 1 %>
               <div class="col-sm-7"><%= @user.city %><br>
               </div>
               <div class="clearfix">
@@ -84,20 +89,16 @@
               </div>
               <div class="col-sm-5 col-xs-6 title ">Postal code:
               </div>
+              <% end %>
               <div class="col-sm-7"><%= @user.postal_code %><br>
               </div>
               <div class="clearfix">
-               <div class="col-sm-5 col-xs-6 title ">type of job:
-              </div><br>
-              <div class="clearfix">
-                <%= link_to link_to "Add experiences", controller: "experiences", action: "new" %>
               </div>
               <div class="bot-border">
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -109,4 +110,71 @@
     });
   });
 </script>
-<%= @user.experiences.take.employer_name %>
+
+<% if current_user.usertype_id == 2 %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2 ">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= link_to link_to "Add experience", controller: "experiences", action: "new" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+
+<% @user.experiences.each do |e| %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 ">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div>
+              <h5>
+              <%= e.jobtype.name.capitalize %>
+              </h5>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="box box-info">
+              <div class="box-body">
+                <div class="col-sm-14">
+                  <div align="center">
+                    <div class="col-sm-5 col-xs-6 title ">Employer:
+                    </div>
+                    <div class="col-sm-7"><%= e.employer_name %>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <div class="bot-border">
+                    </div>
+                    <div class="col-sm-5 col-xs-6 title ">Month(s):
+                    </div>
+                    <div class="col-sm-7"><%= e.months %>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <div class="bot-border">
+                    </div>
+                    <div class="col-sm-5 col-xs-6 title ">Description:
+                    </div>
+                    <div class="col-sm-7"><%= e.description %>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <div class="bot-border">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
