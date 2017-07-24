@@ -93,7 +93,7 @@
         </div>
 
   <% else %>
-
+      <!-- Workers view -->
       <div class="container">
         <div class="row">
           <div class="col-lg-3 col-sm-6">
@@ -107,7 +107,7 @@
 
               <div class="info">
                 <div class="title">
-                  <%= current_user.restaurant_name %>
+                  <%= @job.user.restaurant_name %>
                 </div>
 
                 <div style="font-size:20px; font-weight:bold;" class="desc">Job position: <%= @job.jobtype.name %>
@@ -116,7 +116,6 @@
                 <br>
 
                 <div class="desc">Start time: <%= @job.start_time %>
-
                 </div>
                 <div class="desc">End time: <%= @job.end_time %>
                 </div>
