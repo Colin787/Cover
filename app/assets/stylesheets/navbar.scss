@@ -12,7 +12,7 @@ li.first-name {
     background-color:rgba(255,255,255,.8);
 }
 #login-dp .help-block{
-    font-size:12px    
+    font-size:12px
 }
 #login-dp .bottom{
     background-color:rgba(255,255,255,.8);
@@ -21,7 +21,7 @@ li.first-name {
     padding:14px;
 }
 #login-dp .social-buttons{
-    margin:12px 0    
+    margin:12px 0
 }
 #login-dp .social-buttons a{
     width: 49%;
@@ -35,7 +35,7 @@ li.first-name {
 }
 .btn-fb:hover{
     color: #fff;
-    background-color:#496ebc 
+    background-color:#496ebc
 }
 .btn-tw{
     color: #fff;
@@ -44,6 +44,27 @@ li.first-name {
 .btn-tw:hover{
     color: #fff;
     background-color:#59b5fa;
+}
+.worker{
+    margin-right:10px;
+}
+
+.restaurant{
+    margin-left:10px;
+}
+
+.signup, .login{
+    margin-top:15px;
+    margin-right: 15px;
+}
+
+.select-job{
+    width:100px;
+}
+
+.new-job{
+    width:100%;
+    margin:auto;
 }
 @media(max-width:768px){
     #login-dp{

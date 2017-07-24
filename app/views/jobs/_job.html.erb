@@ -15,20 +15,23 @@
             <a target="_blank" href="https://www.cactusclubcafe.com/">Cactus Club</a>
           </div>
 
-          <div class="desc">Start time: <%= job.start_time %>
-
-          </div>
-          <div class="desc">End time: <%= job.end_time %>
-          </div>
-
-          </div>
-          <div class="desc">Job position: <%= job.jobtype.name %>
+          <div style="font-size:20px; font-weight:bold;" class="desc">Job position: <%= job.jobtype.name %>
           </div>
 
           <br>
 
+          <div class="desc">Start time: <%= job.start_time %>
+          </div>
+
+          <div class="desc">End time: <%= job.end_time %>
+          </div>
+
+        </div>
+
+          <br>
+
           <div>
-            <img src="<%= googleMapBuilder(job.user.latitude, job.user.longitude) %>">
+            <img src="<%= googleMapBuilderIndex(job.user.latitude, job.user.longitude) %>">
           </div>
         </div>
       </div>

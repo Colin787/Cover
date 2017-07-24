@@ -1,26 +1,22 @@
 
 <!-- View for a user, restaurant -->
 <div class="container">
+
 <% if current_user.usertype_id == 1 %>
     <section>
-      <header>
-        <h3>Here are your current jobs, <%= current_user.restaurant_name %>.</h3>
-      </header>
-      <body>
+      <h3>Here are your current jobs, <%= current_user.restaurant_name %>.</h3>
       <div class="jobs">
         <% if @userjobs == nil %>
             <h4>You have no jobs!</h4>
-            <div class="well">
-              <%= link_to '+ New Job', [:new, :job], class: 'btn btn-info' %>
-            </div>
+              <%= link_to '+ New Job', [:new, :job], class: 'btn btn-primary' %>
         <% else %>
             <%= render @userjobs %>
-            <div class="well">
-              <%= link_to '+ New Job', [:new, :job], class: 'btn btn-info' %>
+
+            <%= link_to '+ New Job', [:new, :job], class: 'btn btn-primary new-job' %>
+
         <% end %>
-        </div>
       </div>
-      </body>
+
     </section>
 <% else %>
 
@@ -35,4 +31,5 @@
       </div>
     </section>
 <% end %>
+
 </div>
