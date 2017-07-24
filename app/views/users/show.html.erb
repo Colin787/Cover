@@ -32,15 +32,15 @@
               <div class="bot-border">
               </div>
               <% end %>
-              <div class="col-sm-5 col-xs-6 title ">First Name:
+              <div class="col-sm-5 col-xs-5 title ">First Name:
               </div>
-              <div class="col-sm-7 col-xs-6"><%= @user.first_name %>
+              <div class="col-sm-7 col-xs-7"><%= @user.first_name %>
               </div>
               <div class="clearfix ">
               </div>
               <div class="bot-border">
               </div>
-              <div class="col-sm-5 col-xs-6 title ">Last Name:
+              <div class="col-sm-5 col-xs-5 title ">Last Name:
               </div>
               <div class="col-sm-7"><%= @user.last_name %>
               </div>
@@ -48,7 +48,7 @@
               </div>
               <div class="bot-border">
               </div>
-              <div class="col-sm-5 col-xs-6 title ">Cell Phone:
+              <div class="col-sm-5 col-xs-5 title ">Cell Phone:
               </div>
               <div class="col-sm-7"><%= @user.cell %><br>
               </div>
@@ -56,7 +56,7 @@
               </div>
               <div class="bot-border">
               </div>
-              <div class="col-sm-5 col-xs-6 title ">Email:
+              <div class="col-sm-5 col-xs-5 title ">Email:
               </div>
               <div class="col-sm-7"><%= @user.email %><br>
               </div>
@@ -64,14 +64,14 @@
               </div>
               <div class="bot-border">
               </div>
-              <div class="col-sm-5 col-xs-6 title ">City:
+              <div class="col-sm-5 col-xs-5 title ">City:
               </div>
               <% if current_user.usertype_id == 1 %>
               <div class="col-sm-7"><%= @user.city %><br>
               </div>
               <div class="clearfix">
               </div>
-              <div class="col-sm-5 col-xs-6 title ">Street address:
+              <div class="col-sm-5 col-xs-5 title ">Street address:
               </div>
               <div class="col-sm-7"><%= @user.street_address %><br>
               </div>
@@ -79,7 +79,7 @@
               </div>
               <div class="bot-border">
               </div>
-              <div class="col-sm-5 col-xs-6 title ">Province:
+              <div class="col-sm-5 col-xs-5 title ">Province:
               </div>
               <div class="col-sm-7"><%= @user.province %><br>
               </div>
@@ -87,7 +87,7 @@
               </div>
               <div class="bot-border">
               </div>
-              <div class="col-sm-5 col-xs-6 title ">Postal code:
+              <div class="col-sm-5 col-xs-5 title ">Postal code:
               </div>
               <% end %>
               <div class="col-sm-7"><%= @user.postal_code %><br>
@@ -145,7 +145,7 @@
                   <div align="center">
                     <div class="col-sm-5 col-xs-6 title ">Employer:
                     </div>
-                    <div class="col-sm-7"><%= e.employer_name %>
+                    <div class="col-xs-5 col-sm-7"><%= e.employer_name %>
                     </div>
                     <div class="clearfix">
                     </div>
