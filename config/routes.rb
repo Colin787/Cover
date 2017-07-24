@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
 
-  get 'home/index'
-
   root to: 'home#index'
-  get '/users/:id/applications' => 'applications#index'
-  get '/users/:id/experiences/new' => 'experiences#new'
+
   get '/users/restaurant' => 'users#restaurant'
   get '/users/worker' => 'users#worker'
 
+  get '/users/:id/applications' => 'applications#index'
 
   resources :users, except: [:index] do
     resources :experiences, only: [:index, :new, :create]
@@ -27,7 +25,5 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
-
-  #custom get  user/new/restaurant routes to user/restaurant
 end
 
