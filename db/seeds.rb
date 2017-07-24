@@ -216,4 +216,18 @@ jobMike1 = userMike.jobs.create!({
                                      jobtype_id: '4',
                                  })
 
+## EXPERIENCES
+
+puts "Creates experiences..."
+
+Experience.destroy_all
+
+Experience.find_or_create_by!({
+                                  user_id: '1',
+                                  jobtype_id: '1',
+                                  employer_name: 'Cactus Club',
+                                  months: '24',
+                                  description: 'Test test test test',
+                              })
+
 puts "Done y'all..."
