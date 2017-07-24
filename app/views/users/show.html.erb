@@ -1,0 +1,180 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-7 ">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Profile</h4>
+        </div>
+        <div class="panel-body">
+          <div class="box box-info">
+            <div class="box-body">
+              <div class="col-sm-6">
+                <div align="center">
+                  <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive">
+                </div>
+                <br>
+              </div>
+              <div class="col-sm-6">
+                <h4 style="color:#00b1b1;"><%= @user.first_name %> <%= @user.last_name %></h4></span>
+              </div>
+              <div class="clearfix">
+              </div>
+              <hr style="margin:5px 0 5px 0;">
+
+              <% if current_user.usertype_id == 1 %>
+              <div class="col-sm-5 col-xs-6 title ">Restaurant:
+              </div>
+              <div class="col-sm-7"><%= @user.restaurant_name %>
+              </div>
+              <div class="clearfix">
+              </div>
+              <div class="bot-border">
+              </div>
+              <% end %>
+              <div class="col-sm-5 col-xs-5 title ">First Name:
+              </div>
+              <div class="col-sm-7 col-xs-7"><%= @user.first_name %>
+              </div>
+              <div class="clearfix ">
+              </div>
+              <div class="bot-border">
+              </div>
+              <div class="col-sm-5 col-xs-5 title ">Last Name:
+              </div>
+              <div class="col-sm-7"><%= @user.last_name %>
+              </div>
+              <div class="clearfix">
+              </div>
+              <div class="bot-border">
+              </div>
+              <div class="col-sm-5 col-xs-5 title ">Cell Phone:
+              </div>
+              <div class="col-sm-7"><%= @user.cell %><br>
+              </div>
+              <div class="clearfix">
+              </div>
+              <div class="bot-border">
+              </div>
+              <div class="col-sm-5 col-xs-5 title ">Email:
+              </div>
+              <div class="col-sm-7"><%= @user.email %><br>
+              </div>
+              <div class="clearfix">
+              </div>
+              <div class="bot-border">
+              </div>
+              <div class="col-sm-5 col-xs-5 title ">City:
+              </div>
+              <% if current_user.usertype_id == 1 %>
+              <div class="col-sm-7"><%= @user.city %><br>
+              </div>
+              <div class="clearfix">
+              </div>
+              <div class="col-sm-5 col-xs-5 title ">Street address:
+              </div>
+              <div class="col-sm-7"><%= @user.street_address %><br>
+              </div>
+              <div class="clearfix">
+              </div>
+              <div class="bot-border">
+              </div>
+              <div class="col-sm-5 col-xs-5 title ">Province:
+              </div>
+              <div class="col-sm-7"><%= @user.province %><br>
+              </div>
+              <div class="clearfix">
+              </div>
+              <div class="bot-border">
+              </div>
+              <div class="col-sm-5 col-xs-5 title ">Postal code:
+              </div>
+              <% end %>
+              <div class="col-sm-7"><%= @user.postal_code %><br>
+              </div>
+              <div class="clearfix">
+              </div>
+              <div class="bot-border">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(function () {
+    $('#profile-image1').on('click', function () {
+      $('#profile-image-upload').click();
+    });
+  });
+</script>
+
+<% if current_user.usertype_id == 2 %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2 ">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= link_to link_to "Add experience", controller: "experiences", action: "new" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+
+<% @user.experiences.each do |e| %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 ">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div>
+              <h5>
+              <%= e.jobtype.name.capitalize %>
+              </h5>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="box box-info">
+              <div class="box-body">
+                <div class="col-sm-14">
+                  <div align="center">
+                    <div class="col-sm-5 col-xs-6 title ">Employer:
+                    </div>
+                    <div class="col-xs-5 col-sm-7"><%= e.employer_name %>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <div class="bot-border">
+                    </div>
+                    <div class="col-sm-5 col-xs-6 title ">Month(s):
+                    </div>
+                    <div class="col-sm-7"><%= e.months %>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <div class="bot-border">
+                    </div>
+                    <div class="col-sm-5 col-xs-6 title ">Description:
+                    </div>
+                    <div class="col-sm-7"><%= e.description %>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <div class="bot-border">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+

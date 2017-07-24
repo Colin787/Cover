@@ -31,12 +31,11 @@ class JobsController < ApplicationBaseController
     @job = Job.find params[:id]
     @comment = Comment.new
     @application = Application.new
-    @review = @job.reviews.new
   end
 
   def index
+    @jobs = Job.search(params[:search])
     @userjobs = Job.where(user_id: current_user.id)
-    @jobs = Job.all
   end
 
   def destroy
@@ -58,7 +57,7 @@ class JobsController < ApplicationBaseController
   end
 
   def job_params
-    params.require(:job).permit(:start_time, :end_time, :user_id, :description, :rate, :status, :jobtype_id)
+    params.require(:job).permit(:start_time, :end_time, :user_id, :description, :rate, :status, :jobtype_id, :search)
   end
 
 end
