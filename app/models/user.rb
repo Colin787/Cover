@@ -9,9 +9,11 @@ class User < ApplicationRecord
 
   has_many :experiences, dependent: :destroy
 
+  has_many :reviews_by, foreign_key: "user_by", class_name: 'Review'
+  has_many :reviews_about, foreign_key: "user_about", class_name: 'Review'
+
   has_many :reviews, foreign_key: "user_by", dependent: :destroy
   has_many :reviews, foreign_key: "user_about", dependent: :destroy
-
 
 
   validates_uniqueness_of :email

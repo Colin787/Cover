@@ -8,8 +8,10 @@ class UsersController < ApplicationBaseController
   end
 
   def restaurant
+
     @user = User.new
     @usertype = Usertype.where(name: "restaurant").first
+
   end
 
   def worker
@@ -40,7 +42,9 @@ class UsersController < ApplicationBaseController
 
   def show
     @user = User.find(params[:id])
-    @experience = Experience.new
+    @usertype = Usertype.find_by({ name: 'restaurant' })
+    @review = @user.reviews_about.new
+    @user
   end
 
   private
