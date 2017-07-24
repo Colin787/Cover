@@ -1,41 +1,41 @@
 <%= link_to job do %>
-<div class="container">
-  <div class="row">
-    <div class="col-lg-3 col-sm-6">
-      <div class="card hovercard">
-        <div class="cardheader">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-sm-6">
+          <div class="card hovercard">
+            <div class="cardheader">
 
-        </div>
-        <div class="avatar">
-          <img alt="" src="http://lorempixel.com/100/100/people/9/">
-        </div>
+            </div>
+            <div class="avatar">
+              <img alt="" src="http://lorempixel.com/100/100/people/9/">
+            </div>
 
-        <div class="info">
-          <div class="title">
-            <a target="_blank" href="https://www.cactusclubcafe.com/">Cactus Club</a>
-          </div>
+            <div class="info">
+              <%= job.user.restaurant_name %>
+              <div class="title">
+              </div>
 
-          <div style="font-size:20px; font-weight:bold;" class="desc">Job position: <%= job.jobtype.name %>
-          </div>
+              <div style="font-size:20px; font-weight:bold;" class="desc">Job position: <%= job.jobtype.name %>
+              </div>
 
-          <br>
+              <br>
 
-          <div class="desc">Start time: <%= job.start_time %>
-          </div>
+              <div class="desc">Start time: <%= job.start_time %>
+              </div>
 
-          <div class="desc">End time: <%= job.end_time %>
-          </div>
+              <div class="desc">End time: <%= job.end_time %>
+              </div>
 
-        </div>
+            </div>
 
-          <br>
+            <br>
 
-          <div>
-            <img src="<%= googleMapBuilderIndex(job.user.latitude, job.user.longitude) %>">
+            <div>
+              <img src="<%= googleMapBuilderIndex(job.user.latitude, job.user.longitude) %>">
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
+    </div>
 <% end %>
