@@ -27,7 +27,7 @@ class ApplicationsController < ApplicationBaseController
     @userapps = @application.where({ user_id: current_user.id, status: 'active' })
     @filter = @application.where({ user_id: current_user.id, status: 'accepted' })
     end
-
+  end
 
   def list
     @application = Application.all
