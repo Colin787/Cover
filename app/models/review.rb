@@ -7,12 +7,12 @@ class Review < ApplicationRecord
 
 
   validates :job, presence: true
+
+
   validates :user_by, presence: true
 
-  # this validates that the pair (job_id, user_by)
-  # must be unique *together* in the table
-  validates :job, uniqueness: { scope: :user_by }
   validates :comment, presence: true
+
   validates :rating, presence: true ,
                      numericality: {
                      greater_than: 0,

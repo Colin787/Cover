@@ -1,3 +1,7 @@
+<%= form_tag(jobs_path, method: :get) do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag 'Search', name: nil %>
+<% end %>
 
 <!-- View for a user, restaurant -->
 <div class="container">
@@ -31,5 +35,4 @@
       </div>
     </section>
 <% end %>
-
 </div>
