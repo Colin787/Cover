@@ -8,8 +8,8 @@ class UsersController < ApplicationBaseController
   end
 
   def restaurant
-    @usertype = Usertype.where(name: "restaurant").first
     @user = User.new
+    @usertype = Usertype.where(name: "restaurant").first
   end
 
   def worker
@@ -48,4 +48,5 @@ class UsersController < ApplicationBaseController
   def user_params
     params.require(:user).permit(:usertype_id, :first_name, :email, :password, :password_confirmation, :cell, :last_name, :city, :province, :postal_code, :restaurant_name, :street_address)
   end
+
 end
