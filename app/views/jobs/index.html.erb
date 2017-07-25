@@ -15,11 +15,11 @@
             <div class="jobs">
               <% if @userjobs == nil %>
                   <h4>You have no jobs!</h4>
-                    <%= link_to '+ New Job', [:new, :job], class: 'btn btn-primary' %>
+                    <%= link_to '+ New Job', [:new, :job], class: 'btn btn-primary btn-xs' %>
               <% else %>
                   <%= render @userjobs %>
 
-                  <%= link_to '+ New Job', [:new, :job], class: 'btn btn-primary new-job' %>
+                  <%= link_to '+ New Job', [:new, :job], class: 'btn btn-primary btn-xs' %>
 
               <% end %>
             </div>
