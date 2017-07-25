@@ -1,116 +1,175 @@
-<div class="container">
-  <div class="panel panel-default">
+<!-- This page renders differently depending on whether the user is a restaurant or a worker -->
 
-    <div class="panel-heading">
-      <h4><%= @user.first_name %> <%= @user.last_name %></h4>
-    </div>
+<!-- If a restaurant -->
+<% if @user.usertype_id == 1 %>
+    <div class="container">
+      <div class="panel panel-default">
 
-    <div class="panel-body" align="center">
-      <img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" class="img-circle img-responsive">
-    </div>
-    <table class="table">
-      <tr>
-        <td>Restaurant:</td>
-        <td><%= @user.restaurant_name %></td>
-      </tr>
-      <tr>
-        <td>Phone:</td>
-        <td><%= @user.cell %></td>
-      </tr>
-      <tr>
-        <td>
-          Email:
-        </td>
-        <td>
-          <%= @user.email %><br>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Address:
-        </td>
-        <td>
-          <%= @user.street_address %><br>
-          <%= @user.city %>,&nbsp<%= @user.province %><br>
-          <%= @user.postal_code %>
-        </td>
-      </tr>
-    </table>
-
-    <hr>
-
-    <!-- Displays each user 'experience' -->
-    <% %>
-    <table class="table">
-      <% @user.experiences.each do |e| %>
-          <tr>
-            <td>Employer:</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Job type:</td>
-            <td><%= e.jobtype.name %></td>
-          </tr>
-          <tr>
-            <td>Months:</td>
-            <td><%= e.months %></td>
-          </tr>
-          <tr>
-            <td>Additional description:</td>
-            <td><%= e.description %></td>
-          </tr>
-      <% end %>
-    </table>
-
-    <!-- Logged-in users can see form to create reviews -->
-    <% if current_user %>
-        <div class="panel-body" align="center">
-          <%= form_for [@user, @review] do |f| %>
-              <div class="field">
-                <h5>Add Rating</h5>
-                <%= f.text_area :comment %>
-                <%= f.select :rating, 1..5 %>
-              </div>
-              <div class="actions">
-                <%= f.submit %>
-              </div>
-          <% end %>
+        <div class="panel-heading">
+          <h4><%= @user.restaurant_name %></h4>
         </div>
-    <% end %>
 
-    <hr>
+        <div class="panel-body" align="center">
+          <img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" class="img-rounded img-responsive">
+        </div>
 
-    <!-- Button shows/hides all reviews -->
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-      See reviews
-    </button>
-    <div class="collapse" id="collapseExample">
-      <div class="well">
+        <!-- Table showing restaurant details -->
         <table class="table">
-          <thead>
-          <th>Content</th>
-          <th>Rating</th>
-          </thead>
-          <tbody>
-          <% @user.reviews_by.reverse_each do |item| %>
-              <tr>
-                <td><%= item.comment %></td>
-                <td><%= item.rating %></td>
-              </tr>
-          <% end %>
-          </tbody>
+          <caption>Details</caption>
+          <tr>
+            <td>Manager:</td>
+            <td><%= @user.first_name %>&nbsp;<%= @user.last_name %></td>
+          </tr>
+          <tr>
+            <td>Phone:</td>
+            <td><%= number_to_phone(17783895004, area_code: true) %></td>
+          </tr>
+          <tr>
+            <td>
+              Email:
+            </td>
+            <td>
+              <%= @user.email %><br>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Address:
+            </td>
+            <td>
+              <%= @user.street_address %><br>
+              <%= @user.city %>,&nbsp<%= @user.province %><br>
+              <%= @user.postal_code %>
+            </td>
+          </tr>
         </table>
+
+
       </div>
     </div>
+<% end %>
 
-    <hr>
 
-    <!-- Shows a button to 'worker' users, allowing that user to add experience -->
-    <% if current_user.usertype_id == 2 %>
-        <!--<= link_to "Add experience", %>-->
-    <% end %>
+<!-- If a worker -->
+<% if @user.usertype_id == 2 %>
 
-    <hr>
+    <div class="container">
+      <div class="panel panel-default">
 
-  </div>
-</div>
+        <div class="panel-heading">
+          <h4><%= @user.first_name %> <%= @user.last_name %></h4>
+        </div>
+
+        <div class="panel-body" align="center">
+          <img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" class="img-circle img-responsive">
+        </div>
+
+        <!-- Table showing worker details -->
+        <table class="table">
+          <caption>Details</caption>
+          <tr>
+            <td>Restaurant:</td>
+            <td><%= @user.restaurant_name %></td>
+          </tr>
+          <tr>
+            <td>Phone:</td>
+            <td><%= @user.cell %></td>
+          </tr>
+          <tr>
+            <td>
+              Email:
+            </td>
+            <td>
+              <%= @user.email %><br>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Address:
+            </td>
+            <td>
+              <%= @user.street_address %><br>
+              <%= @user.city %>,&nbsp<%= @user.province %><br>
+              <%= @user.postal_code %>
+            </td>
+          </tr>
+        </table>
+
+        <!-- Table for displaying worker experience -->
+        <!--< if @user.experience %>-->
+        <table class="table">
+          <caption>Experience</caption>
+          <% @user.experiences.each do |e| %>
+              <tr>
+                <td>Employer:</td>
+                <td><%= e.employer_name %></td>
+              </tr>
+              <tr>
+                <td>Job type:</td>
+                <td><%= e.jobtype.name %></td>
+              </tr>
+              <tr>
+                <td>Months:</td>
+                <td><%= e.months %></td>
+              </tr>
+              <tr>
+                <td>Additional description:</td>
+                <td><%= e.description %></td>
+              </tr>
+          <% end %>
+          <= link_to "Add experience", %>
+        </table>
+
+        <!-- Logged-in users can see form to create reviews -->
+        <% if current_user %>
+            <div class="panel-body" align="center">
+              <%= form_for [@user, @review] do |f| %>
+                  <div class="field">
+                    <h5>Add Rating</h5>
+                    <%= f.text_area :comment %>
+                    <%= f.select :rating, 1..5 %>
+                  </div>
+                  <div class="actions">
+                    <%= f.submit %>
+                  </div>
+              <% end %>
+            </div>
+        <% end %>
+
+        <hr>
+
+        <!-- Button shows/hides all reviews -->
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          See reviews
+        </button>
+        <div class="collapse" id="collapseExample">
+          <div class="well">
+            <table class="table">
+              <thead>
+              <th>Content</th>
+              <th>Rating</th>
+              </thead>
+              <tbody>
+              <% @user.reviews_by.reverse_each do |item| %>
+                  <tr>
+                    <td><%= item.comment %></td>
+                    <td><%= item.rating %></td>
+                  </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <hr>
+
+        <!-- Shows a button to 'worker' users, allowing that user to add experience -->
+        < if current_user.usertype_id == 2 %>
+        <!--->
+        < end %>
+
+        <hr>
+
+      </div>
+    </div>
+<% end %>
