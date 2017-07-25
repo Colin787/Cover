@@ -14,16 +14,19 @@ class Job < ApplicationRecord
 
   def self.search(search)
     if search
-      joins(:jobtype).where('cast(start_time as text) 
-      LIKE ? OR cast(end_time as text) LIKE ?
-       OR cast(rate as text) LIKE ?
-        OR description LIKE ?
-         OR jobtypes.name LIKE ?', 
-        "%#{search}%", 
-        "%#{search}%", 
-        "%#{search}%",
-        "%#{search}%", 
-        "%#{search}%")
+      joins(:jobtype, :user).where(
+        'cast(start_time as text) LIKE ?
+         OR cast(end_time as text) LIKE ?
+          OR cast(rate as text) LIKE ?
+            OR users.restaurant_name LIKE ?
+              OR jobtypes.name LIKE ?
+                  OR jobs.description LIKE ?', 
+                  "%#{search}%", 
+                  "%#{search}%", 
+                  "%#{search}%",
+                  "%#{search}%",
+                  "%#{search}%", 
+                  "%#{search}%")
     else
       all
     end
