@@ -39,7 +39,7 @@ class UsersController < ApplicationBaseController
 
   def show
     @user = User.find(params[:id])
-    @usertype = Usertype.find_by({name: 'restaurant'})
+    @experience = Experience.new
     @review = @user.reviews_about.new
   end
 

@@ -9,9 +9,9 @@ class ReviewsController < ApplicationBaseController
     @review.user_about = @review.user_id
 
     if @review.save
-      redirect_to controller: 'users', action: 'show', id: @current_user.id
+      redirect_to controller: 'users', action: 'show', id: @review.user_id
     else
-      redirect_to controller: 'users', action: 'show', id: @current_user.id
+      redirect_to controller: 'users', action: 'show', id: @review.user_id
     end
   end
 
@@ -23,6 +23,7 @@ class ReviewsController < ApplicationBaseController
   end
 
   private
+
   def review_params
     params.require(:review).permit(:comment, :rating)
   end
