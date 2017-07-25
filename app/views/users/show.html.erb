@@ -1,305 +1,289 @@
-<<<<<<< HEAD
-=======
+<!-- This page renders differently depending on whether the user is a restaurant or a worker -->
 
->>>>>>> master
-<div class="container">
-  <div class="row">
-    <div class="col-md-7 ">
+<!-- If a restaurant -->
+<% if @user.usertype_id == 1 %>
+
+    <div class="container">
       <div class="panel panel-default">
+
+        <!-- Panel heading -->
         <div class="panel-heading">
-<<<<<<< HEAD
-          <h4 >Profile</h4>
-=======
-          <h4>Profile</h4>
->>>>>>> master
+          <h4><%= @user.restaurant_name %></h4>
         </div>
+
+        <!-- Table showing restaurant details -->
         <div class="panel-body">
-          <div class="box box-info">
-            <div class="box-body">
-<<<<<<< HEAD
 
-              <div class="col-sm-6">
-                <div  align="center"> <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive">
-                </div>
-                <br>
-              </div>
+          <img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" class="img-rounded img-responsive">
 
+          <table class="table">
+            <tr>
+              <td>
+                Description:
+              </td>
+              <td>
+                <%= @user.description %>
+              </td>
+            </tr>
+            <tr>
+              <td>Manager:</td>
+              <td><%= @user.first_name %>&nbsp;<%= @user.last_name %></td>
+            </tr>
+            <tr>
+              <td>Phone:</td>
+              <td><%= number_to_phone(17783895004, area_code: true) %></td>
+            </tr>
+            <tr>
+              <td>
+                Email:
+              </td>
+              <td>
+                <%= @user.email %><br>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Address:
+              </td>
+              <td>
+                <%= @user.street_address %><br>
+                <%= @user.city %>,&nbsp;<%= @user.province %><br>
+                <%= @user.postal_code %>
+              </td>
+            </tr>
+          </table>
 
-              <div>
-                <h4 class="col-sm-6" style="color:#00b1b1;"><%= @user.first_name %> <%= @user.last_name %></h4>
-              </div>
+        </div>
 
-              <div class="clearfix"></div>
-              <hr style="margin:5px 0 5px 0;">
-              <div class="col-sm-5 col-xs-6 tital" >Restaurant:
-              </div>
-              <div class="col-sm-7 "><%= @user.restaurant_name %>
-              </div>
+        <!-- Button shows/hides all reviews and form to create reviews -->
+        <div class="panel-body">
 
-              <div class="col-sm-5 col-xs-6 tital" >First Name:
-              </div>
-              <div class="col-sm-7"><%= @user.first_name %>
-              </div>
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            See reviews
+          </button>
 
-              <div class="col-sm-5 col-xs-6 tital " >Last Name:
-              </div>
-              <div class="col-sm-7"><%= @user.last_name %>
-              </div>
+          <div class="collapse" id="collapseExample">
 
-              <div class="col-sm-5 col-xs-6 tital " >Cell Phone:
-              </div>
-              <div class="col-sm-7"><%= @user.cell %><br>
-              </div>
-
-              <div class="col-sm-5 col-xs-6 tital " >Email:
-              </div>
-              <div class="col-sm-7"><%= @user.email %><br>
-              </div>
-
-              <div class="col-sm-5 col-xs-6 tital " >City:
-              </div>
-              <div class="col-sm-7"><%= @user.city %><br>
-              </div>
-
-              <div class="col-sm-5 col-xs-6 tital " >Street address:
-              </div>
-              <div class="col-sm-7"><%= @user.street_address %><br>
-              </div>
-
-              <div class="col-sm-5 col-xs-6 tital " >Province:
-              </div>
-              <div class="col-sm-7"><%= @user.province %><br>
-              </div>
-
-              <div class="col-sm-5 col-xs-6 tital " >Postal code:
-              </div>
-              <div class="col-sm-7"><%= @user.postal_code %><br><br>
-              </div>
-            </div>
-          </div>
-
-        <% if current_user %>
-          <%= form_for [@user, @review] do |f| %>
-            <% if f.object.errors.any? %>
-              <div class="alert alert-danger">
-                <strong>The following errors prevented saving:</strong>
-                <ul>
-                  <% f.object.errors.full_messages.each do |error| %>
-                <li><%= error %></li>
-                  <% end %>
-                </ul>
-              </div>
-            <% end %>
-            <div class="field">
-              <div> Please add a comment and rate this product </div>
-              <%= f.text_area :comment %>
-              <%= f.select :rating, 1..5 %>
-            </div>
-            <div class="actions">
-              <%= f.submit %>
-            </div>
-          <% end %>
-        <% end %>
-
-        <br>
-
-        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        See review
-        </button>
-        <div class="collapse" id="collapseExample">
-          <div class="well">
-            <table class="table">
-              <caption><h4>Reviews</h4></caption>
-              <thead>
+            <div class="well">
+              <table class="table">
+                <thead>
                 <th>Rating</th>
-                <th>Content</th>
-                <th>User</th>
-              </thead>
-              <tbody>
-                <% @user.reviews_by.reverse_each do |item| %>
-                  <tr>
-                    <td><%= item.rating %></td>
-                    <td><%= item.comment %></td>
-                    <td><%= item.user.first_name %> <%= item.user.last_name %></td>
-                  </tr>
+                <th>Comment</th>
+                </thead>
+                <tbody>
+                <% if @user.reviews.exists? %>
+                    <% @user.reviews.reverse_each do |item| %>
+                        <tr>
+                          <td><%= item.rating %></td>
+                          <td><%= item.comment %></td>
+                        </tr>
+                    <% end %>
+                <% else %>
+                    <tr>
+                      <td>No reviews yet! Registered users can add one below.</td>
+                    </tr>
                 <% end %>
-              </tbody>
-            </table>
-=======
-              <div class="col-sm-6">
-                <div align="center">
-                  <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive">
-                </div>
-                <br>
-              </div>
-              <div class="col-sm-6">
-                <h4 style="color:#00b1b1;"><%= @user.first_name %> <%= @user.last_name %></h4></span>
-              </div>
-              <div class="clearfix">
-              </div>
-              <hr style="margin:5px 0 5px 0;">
-
-              <% if current_user.usertype_id == 1 %>
-              <div class="col-sm-5 col-xs-6 title ">Restaurant:
-              </div>
-              <div class="col-sm-7"><%= @user.restaurant_name %>
-              </div>
-              <div class="clearfix">
-              </div>
-              <div class="bot-border">
-              </div>
-              <% end %>
-              <div class="col-sm-5 col-xs-5 title ">First Name:
-              </div>
-              <div class="col-sm-7 col-xs-7"><%= @user.first_name %>
-              </div>
-              <div class="clearfix ">
-              </div>
-              <div class="bot-border">
-              </div>
-              <div class="col-sm-5 col-xs-5 title ">Last Name:
-              </div>
-              <div class="col-sm-7"><%= @user.last_name %>
-              </div>
-              <div class="clearfix">
-              </div>
-              <div class="bot-border">
-              </div>
-              <div class="col-sm-5 col-xs-5 title ">Cell Phone:
-              </div>
-              <div class="col-sm-7"><%= @user.cell %><br>
-              </div>
-              <div class="clearfix">
-              </div>
-              <div class="bot-border">
-              </div>
-              <div class="col-sm-5 col-xs-5 title ">Email:
-              </div>
-              <div class="col-sm-7"><%= @user.email %><br>
-              </div>
-              <div class="clearfix">
-              </div>
-              <div class="bot-border">
-              </div>
-              <div class="col-sm-5 col-xs-5 title ">City:
-              </div>
-              <% if current_user.usertype_id == 1 %>
-              <div class="col-sm-7"><%= @user.city %><br>
-              </div>
-              <div class="clearfix">
-              </div>
-              <div class="col-sm-5 col-xs-5 title ">Street address:
-              </div>
-              <div class="col-sm-7"><%= @user.street_address %><br>
-              </div>
-              <div class="clearfix">
-              </div>
-              <div class="bot-border">
-              </div>
-              <div class="col-sm-5 col-xs-5 title ">Province:
-              </div>
-              <div class="col-sm-7"><%= @user.province %><br>
-              </div>
-              <div class="clearfix">
-              </div>
-              <div class="bot-border">
-              </div>
-              <div class="col-sm-5 col-xs-5 title ">Postal code:
-              </div>
-              <% end %>
-              <div class="col-sm-7"><%= @user.postal_code %><br>
-              </div>
-              <div class="clearfix">
-              </div>
-              <div class="bot-border">
-              </div>
+                </tbody>
+              </table>
             </div>
+
+            <!-- Logged-in users can see form to create reviews -->
+            <% if current_user %>
+                <div class="well">
+                  <%= form_for [@user, @review], class: 'form-inline' do |f| %>
+                      <div class="form-group">
+                        <%= f.label :rating, 'Add rating:' %>
+                        <%= f.select :rating, 1..5 %>
+                      </div>
+                      <div class="form-group">
+                        <%= f.label :comment, 'Add comment:' %>
+                        <%= f.text_area :comment, class: 'form-control' %>
+                      </div>
+                      <%= f.submit 'Add review', class: 'btn btn-default' %>
+                  <% end %>
+                </div>
+            <% end %>
+
           </div>
+
         </div>
+
       </div>
     </div>
-  </div>
-</div>
-<script>
-  $(function () {
-    $('#profile-image1').on('click', function () {
-      $('#profile-image-upload').click();
-    });
-  });
-</script>
 
-<% if current_user.usertype_id == 2 %>
-<div class="container">
-  <div class="row">
-    <div class="col-md-2 ">
+<% end %>
+
+<!-- If a worker -->
+<% if @user.usertype_id == 2 %>
+
+    <div class="container">
       <div class="panel panel-default">
+
+        <!-- Panel heading -->
         <div class="panel-heading">
-          <%= link_to link_to "Add experience", controller: "experiences", action: "new" %>
+          <h4><%= @user.first_name %> <%= @user.last_name %></h4>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-<% end %>
 
+        <!-- Table showing worker details  -->
+        <div class="panel-body">
 
-<% @user.experiences.each do |e| %>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-7 ">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <div>
-              <h5>
-              <%= e.jobtype.name.capitalize %>
-              </h5>
+          <img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" class="img-circle img-responsive">
+
+          <table class="table">
+            <tr>
+              <td>Phone:</td>
+              <td><%= @user.cell %></td>
+            </tr>
+            <tr>
+              <td>
+                Email:
+              </td>
+              <td>
+                <%= @user.email %><br>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Postal code:
+              </td>
+              <td>
+                <%= @user.postal_code %>
+              </td>
+            </tr>
+          </table>
+
+        </div>
+
+        <!-- Button shows/hides all experience and form to create experience -->
+        <div class="panel-body">
+
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            See experience
+          </button>
+
+          <div class="collapse" id="collapseExample">
+
+            <div class="well">
+              <% if @user.experiences.exists? %>
+                  <table class="table">
+                    <% @user.experiences.each do |e| %>
+                        <tbody>
+                        <tr>
+                          <td>Employer:</td>
+                          <td><%= e.employer_name %></td>
+                        </tr>
+                        <tr>
+                          <td>Job type:</td>
+                          <td><%= e.jobtype.name %></td>
+                        </tr>
+                        <tr>
+                          <td>Months:</td>
+                          <td><%= e.months %></td>
+                        </tr>
+                        <tr>
+                          <td>Additional description:</td>
+                          <td><%= e.description %></td>
+                        </tr>
+                        </tbody>
+                    <% end %>
+              <% else %>
+                  <tbody>
+                  <tr>
+                    <td>No experience added!</td>
+                  </tr>
+                  </tbody>
+              <% end %>
+              </table>
             </div>
-          </div>
-          <div class="panel-body">
-            <div class="box box-info">
-              <div class="box-body">
-                <div class="col-sm-14">
-                  <div align="center">
-                    <div class="col-sm-5 col-xs-6 title ">Employer:
-                    </div>
-                    <div class="col-xs-5 col-sm-7"><%= e.employer_name %>
-                    </div>
-                    <div class="clearfix">
-                    </div>
-                    <div class="bot-border">
-                    </div>
-                    <div class="col-sm-5 col-xs-6 title ">Month(s):
-                    </div>
-                    <div class="col-sm-7"><%= e.months %>
-                    </div>
-                    <div class="clearfix">
-                    </div>
-                    <div class="bot-border">
-                    </div>
-                    <div class="col-sm-5 col-xs-6 title ">Description:
-                    </div>
-                    <div class="col-sm-7"><%= e.description %>
-                    </div>
-                    <div class="clearfix">
-                    </div>
-                    <div class="bot-border">
-                    </div>
-                  </div>
+
+            <!-- Logged-in users that are viewing their own profile can see form to create experience -->
+            <% if current_user == @user %>
+                <div class="well">
+                  <fieldset>
+                    <legend>Add experience</legend>
+                    <%= form_for [@user, @experience], class: 'form-inline' do |f| %>
+                        <div class="form-group">
+                          <%= f.label :jobtype_id, 'Job description' %>:
+                          <%= f.collection_select(:jobtype_id, Jobtype.all, :id, :name) %>
+                        </div>
+                        <div class="form-group">
+                          <%= f.label :employer_name, 'Employer' %>:
+                          <%= f.text_field :employer_name, class: 'form-control input-sm' %>
+                        </div>
+                        <div class="form-group">
+                          <%= f.label :months, 'Months of experience' %>:
+                          <%= f.text_field :months, class: 'form-control input-sm' %>
+                        </div>
+                        <div class="form-group">
+                          <%= f.label :description, 'Additional description (optional)' %>:
+                          <%= f.text_area :description, class: 'form-control input-sm' %>
+                        </div>
+                        <%= f.submit 'Add experience', class: 'btn btn-default btn-block' %>
+                    <% end %>
+                  </fieldset>
                 </div>
-              </div>
-            </div>
->>>>>>> master
+            <% end %>
+
           </div>
         </div>
+
+
+        <!-- Button shows/hides all reviews and form to create reviews -->
+        <div class="panel-body">
+
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+            See reviews
+          </button>
+
+          <div class="collapse" id="collapseExample2">
+
+            <div class="well">
+              <table class="table">
+                <% if @user.reviews.exists? %>
+                    <thead>
+                    <th>Rating</th>
+                    <th>Comment</th>
+                    </thead>
+                    <tbody>
+                    <% @user.reviews.reverse_each do |item| %>
+                        <tr>
+                          <td><%= item.rating %></td>
+                          <td><%= item.comment %></td>
+                        </tr>
+                    <% end %>
+                    </tbody>
+                <% else %>
+                    <tbody>
+                    No reviews yet!
+                    </tbody>
+                <% end %>
+              </table>
+            </div>
+
+            <!-- Logged-in users can see form to create reviews -->
+            <% if current_user %>
+                <div class="well">
+                  <fieldset>
+                    <legend>Add a review</legend>
+                    <%= form_for [@user, @review], class: 'form-inline' do |f| %>
+                        <div class="form-group">
+                          <%= f.label :rating, 'Add rating:' %>
+                          <%= f.select :rating, 1..5 %>
+                        </div>
+                        <div class="form-group">
+                          <%= f.label :comment, 'Add comment:' %>
+                          <%= f.text_area :comment, class: 'form-control input-sm' %>
+                        </div>
+                        <%= f.submit 'Add review', class: 'btn btn-default btn-block' %>
+                    <% end %>
+                  </fieldset>
+                </div>
+            <% end %>
+
+          </div>
+
+        </div>
+
       </div>
     </div>
-  </div>
-<<<<<<< HEAD
-</div>
-
-
-
-=======
 <% end %>
->>>>>>> master
-
