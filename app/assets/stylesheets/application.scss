@@ -2,12 +2,11 @@
 @import "bootstrap";
 @import "font-awesome";
 @import url('https://fonts.googleapis.com/css?family=Oswald:400,700');
-@import url('../images');
 
 // App
 @import "navbar";
-@import "home";
 @import "jobs";
+@import "signup";
 $oswald: 'Oswald', sans-serif;
 // Global
 body {
@@ -21,8 +20,12 @@ body {
 
 }
 
+a{
+  color: #000000;
+}
+
 .homepage-bg {
-  background: url('home2.jpeg') no-repeat center center fixed; 
+  background: url('home2.jpeg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -38,10 +41,12 @@ body {
 }
 
 .signup-bg {
-  background: url('signup.jpeg') no-repeat center center fixed; 
+  background: url('signup.jpeg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
+
+
 

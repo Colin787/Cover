@@ -1,6 +1,6 @@
 class Jobtype < ApplicationRecord
 
-  has_many :jobs
-  has_many :experiences
+  has_many :jobs, dependent: :destroy
+  has_many :experiences, dependent: :destroy
 
 end

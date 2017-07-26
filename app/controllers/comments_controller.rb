@@ -1,4 +1,4 @@
-class CommentsController < ApplicationController
+class CommentsController < ApplicationBaseController
   def create
     @comment = Comment.new(comment_params)
     @comment.job_id = params[:job_id]
@@ -14,11 +14,15 @@ class CommentsController < ApplicationController
       }
       redirect_to @comment.job
     end
-  end 
+  end
 
-  def index 
-    @comments = Comment.all    
-  end  
+  def index
+    @comments = Comment.all
+  end
+
+
+
+
 
   private
   def comment_params

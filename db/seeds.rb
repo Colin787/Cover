@@ -19,11 +19,28 @@ unless Rails.env.development?
   exit 0
 end
 
+## JOBTYPES
+
+Jobtype.destroy_all
+
+Jobtype.find_or_create_by! name: 'dishwasher'
+
+Jobtype.find_or_create_by! name: 'line cook'
+
+Jobtype.find_or_create_by! name: 'sous chef'
+
+Jobtype.find_or_create_by! name: 'prep chef'
+
+Jobtype.find_or_create_by! name: 'waiter'
+
+Jobtype.find_or_create_by! name: 'hostess'
+
+
 ## USERTYPES
 
-puts "Finding or creating Usertypes..."
-
 Usertype.destroy_all
+
+puts "Finding or creating Usertypes..."
 
 typeRestaurant = Usertype.find_or_create_by! name: 'restaurant'
 
@@ -169,6 +186,7 @@ jobColin1 = userColin.jobs.create!({
                                        rate: '2000',
                                        description: 'This will be a very busy shift so tips should be good!',
                                        status: 'open',
+                                       jobtype_id: '1',
                                    })
 
 jobColin2 = userColin.jobs.create!({
@@ -177,6 +195,7 @@ jobColin2 = userColin.jobs.create!({
                                        rate: '1400',
                                        description: 'Breakfast rush.',
                                        status: 'closed',
+                                       jobtype_id: '2',
                                    })
 
 jobManuel1 = userManuel.jobs.create!({
@@ -185,6 +204,7 @@ jobManuel1 = userManuel.jobs.create!({
                                          rate: '1800',
                                          description: 'We are looking for an experienced busboy. Five years of experience at minimum please!',
                                          status: 'open',
+                                         jobtype_id: '3',
                                      })
 
 jobMike1 = userMike.jobs.create!({
@@ -193,18 +213,21 @@ jobMike1 = userMike.jobs.create!({
                                      rate: '2400',
                                      description: 'We really need a line cook ASAP!',
                                      status: 'open',
+                                     jobtype_id: '4',
                                  })
 
+## EXPERIENCES
 
-## APPLICATIONS
+puts "Creates experiences..."
 
-# puts "Creates Applications..."
-#
-# Application.destroy_all
-#
-# jobColin1.applications.create!({
-#                                   user_id: '5',
-#                                   status: 'open',
-#                                })
+Experience.destroy_all
+
+Experience.find_or_create_by!({
+                                  user_id: '1',
+                                  jobtype_id: '1',
+                                  employer_name: 'Cactus Club',
+                                  months: '24',
+                                  description: 'Test test test test',
+                              })
 
 puts "Done y'all..."

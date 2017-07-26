@@ -1,34 +1,24 @@
-class UsersController < ApplicationController
-  def new
+class UsersController < ApplicationBaseController
 
+  def new
+    if current_user
+      flash[:info] = "You are currently logged in, please logout to create a new account"
+    end
     @user = User.new
   end
 
   def restaurant
-   @usertype = Usertype.where(name: "restaurant").first
 
-   @user = User.new
-   # user = User.new(user_params)
-   #  if user.save!
-   #    session[:users_id] = user.id
-   #    redirect_to '/'
-   #  else
-   #    render :restaurant
-   #  end
+    @user = User.new
+    @usertype = Usertype.where(name: "restaurant").first
+
   end
 
   def worker
     @usertype = Usertype.where(name: "worker").first
     @user = User.new
-    # user = User.new(user_params)
-    # if user.save!
-    #   session[:users_id] = user.id
-    #   redirect_to '/'
-    # else
-    #   render :worker
-    # end
+    @user.experiences.new
   end
-
 
   def create
     user = User.new(user_params)
@@ -37,32 +27,30 @@ class UsersController < ApplicationController
     if user.save
       session[:users_id] = user.id
       redirect_to '/login'
+      flash[:success] = "Login to complete your registration process"
+
     else
-
-    flash[:danger] = "Problem with one or more fields"
-      if user.usertype.name == "restaurant"
-        redirect_to '/users/restaurant'
+      if User.find_by(email: user.email)
+        flash[:danger] = "A user with this email already exists"
+        redirect_to "/users/#{user.usertype.name}"
       else
-        redirect_to '/users/worker'
+        flash[:danger] = "An unexpected error has occured, please try again later"
+        redirect_to "/users/#{user.usertype.name}"
       end
-
-
-
     end
   end
 
-
-
-
-
   def show
     @user = User.find(params[:id])
-    render :template => 'show'
+    @usertype = Usertype.find_by({ name: 'restaurant' })
+    @review = @user.reviews_about.new
+    @user
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:usertype_id, :first_name, :email, :password, :password_confirmation, :cell,:last_name, :city, :province, :postal_code, :restaurant_name, :street_address)
+    params.require(:user).permit(:usertype_id, :first_name, :email, :password, :password_confirmation, :cell, :last_name, :city, :province, :postal_code, :restaurant_name, :street_address)
   end
+
 end

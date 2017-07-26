@@ -10,11 +10,6 @@
       <a class="navbar-brand" href="/">Cover</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li>
-          <%= link_to 'Home', :root %>
-        </li>
-      </ul>
       <% if current_user %>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
@@ -22,15 +17,23 @@
             You are Signed in, <%= current_user.first_name %>
             <span class="caret"></span>
             <ul class="dropdown-menu">
-              <li><a href="/logout">Logout</a></li>
               <li><a href="/users/<%= current_user.id %>">Profile</a></li>
               <li><a href="/jobs">Job Posts</a></li>
+              <% if current_user.usertype_id != 1 %>
+              <li><a href="/users/<%= current_user.id %>/applications"> Applications </a></li>
+              <% end %>
+              <li><a href="/logout">Logout</a></li>
+
             </ul>
         </ul>
       <% else %>
-       <ul class="nav navbar-nav navbar-right">
-         <a href="" class="btn btn-info" role="button" data-toggle="modal" data-target="#myModal"><strong> Sign up</strong>
-          <%= link_to 'Login', '/login', class: "btn btn-info" %>
+       <div class="nav navbar-nav navbar-right">
+          <a href="" class="btn btn-primary btn-xs signup" role="button" data-toggle="modal" data-target="#myModal">
+          <strong> Sign up</strong>
+          </a>
+
+          <%= link_to 'Login', '/login', class: "btn btn-primary btn-xs login" %>
+        </div>
       <% end %>
     </div>
   </div>
@@ -43,8 +46,8 @@
         <h4 class="modal-title">Register as:</h4>
       </div>
       <div class="modal-body">
-        <a href = "/users/worker" class="btn btn-info" role="button">Worker</a> or
-        <a href = "/users/restaurant" class="btn btn-info" role="button">Restaurant Owner</a>
+        <a href = "/users/worker" class="btn btn-primary worker" role="button">Worker</a> or
+        <a href = "/users/restaurant" class="btn btn-primary restaurant" role="button">Restaurant Owner</a>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
