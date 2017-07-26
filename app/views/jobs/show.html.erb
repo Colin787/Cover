@@ -37,7 +37,13 @@
             <div style="font-size:20px; font-weight:bold;" class="desc">Job position: <%= @job.jobtype.name %>
               </div>
 
-              <br>
+              <div class="info">
+                <div class="title">
+                  <%= @job.user.restaurant_name %>
+                </div>
+
+                <div style="font-size:20px; font-weight:bold;" class="desc">Job position: <%= @job.jobtype.name %>
+                </div>
 
               <div class="desc">Start time: <%= @job.start_time.strftime("%e %b %Y %H:%M:%p") %>
               </div>
