@@ -3,7 +3,7 @@
 <!-- View for a user, restaurant -->
 <div class="container">
   <div class="row">
-    <div class=".col-xs-12 .col-sm-6 .col-md-8">
+    <div class="col-lg-3 col-sm-6">
       <%= form_tag(jobs_path, method: :get) do %>
         <%= text_field_tag :search, params[:search] %>
         <%= submit_tag 'Search', name: nil %>
