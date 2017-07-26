@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get '/users/restaurant' => 'users#restaurant'
   get '/users/worker' => 'users#worker'
-
+  get 'users/:id' => 'users#show'
   get '/users/:id/applications' => 'applications#index'
 
   resources :users, except: [:index] do

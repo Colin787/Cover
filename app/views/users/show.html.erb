@@ -1,81 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-7 ">
 <!-- This page renders differently depending on whether the user is a restaurant or a worker -->
 
 <!-- If a restaurant -->
 <% if @user.usertype_id == 1 %>
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-7 ">
       <div class="panel panel-default">
-
         <!-- Panel heading -->
         <div class="panel-heading">
           <h4 >Profile</h4>
+          <h4><%= @user.restaurant_name %></h4>
         </div>
 
         <!-- Table showing restaurant details -->
         <div class="panel-body">
-          <div class="box box-info">
-            <div class="box-body">
-              <div class="col-sm-6">
-                <div  align="center"> <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive">
-                </div>
-                <br>
-              </div>
 
-
-              <div>
-                <h4 class="col-sm-6" style="color:#00b1b1;"><%= @user.first_name %> <%= @user.last_name %></h4>
-              </div>
-
-              <div class="clearfix"></div>
-              <hr style="margin:5px 0 5px 0;">
-              <div class="col-sm-5 col-xs-6 tital" >Restaurant:
-              </div>
-              <div class="col-sm-7 "><%= @user.restaurant_name %>
-              </div>
-
-              <div class="col-sm-5 col-xs-6 tital" >First Name:
-              </div>
-              <div class="col-sm-7"><%= @user.first_name %>
-              </div>
-
-              <div class="col-sm-5 col-xs-6 tital " >Last Name:
-              </div>
-              <div class="col-sm-7"><%= @user.last_name %>
-              </div>
-
-              <div class="col-sm-5 col-xs-6 tital " >Cell Phone:
-              </div>
-              <div class="col-sm-7"><%= @user.cell %><br>
-              </div>
-
-              <div class="col-sm-5 col-xs-6 tital " >Email:
-              </div>
-              <div class="col-sm-7"><%= @user.email %><br>
-              </div>
-
-              <div class="col-sm-5 col-xs-6 tital " >City:
-              </div>
-              <div class="col-sm-7"><%= @user.city %><br>
-              </div>
-
-              <div class="col-sm-5 col-xs-6 tital " >Street address:
-              </div>
-              <div class="col-sm-7"><%= @user.street_address %><br>
-              </div>
-
-              <div class="col-sm-5 col-xs-6 tital " >Province:
-              </div>
-              <div class="col-sm-7"><%= @user.province %><br>
-              </div>
-
-              <div class="col-sm-5 col-xs-6 tital " >Postal code:
-              </div>
-              <div class="col-sm-7"><%= @user.postal_code %><br><br>
-              </div>
-            </div>
-          </div>
+          <img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" class="img-rounded img-responsive">
 
           <table class="table">
             <tr>
@@ -113,65 +53,58 @@
               </td>
             </tr>
           </table>
+            <!-- Button shows/hides all reviews and form to create reviews -->
+            <div class="panel-body">
 
-        </div>
+              <button class="btn btn-primary btn-xs" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                See reviews
+              </button>
 
-        <!-- Button shows/hides all reviews and form to create reviews -->
-        <div class="panel-body">
+              <div class="collapse" id="collapseExample">
 
-          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            See reviews
-          </button>
-
-          <div class="collapse" id="collapseExample">
-
-            <div class="well">
-              <table class="table">
-                <thead>
-                <th>Rating</th>
-                <th>Comment</th>
-                </thead>
-                <tbody>
-                <% if @user.reviews.exists? %>
-                    <% @user.reviews.reverse_each do |item| %>
+                <div class="well">
+                  <table class="table">
+                    <thead>
+                    <th>Rating</th>
+                    <th>Comment</th>
+                    </thead>
+                    <tbody>
+                    <% if @user.reviews.exists? %>
+                        <% @user.reviews.reverse_each do |item| %>
+                            <tr>
+                              <td><%= item.rating %></td>
+                              <td><%= item.comment %></td>
+                            </tr>
+                        <% end %>
+                    <% else %>
                         <tr>
-                          <td><%= item.rating %></td>
-                          <td><%= item.comment %></td>
+                          <td>No reviews yet! Registered users can add one below.</td>
                         </tr>
                     <% end %>
-                <% else %>
-                    <tr>
-                      <td>No reviews yet! Registered users can add one below.</td>
-                    </tr>
-                <% end %>
-                </tbody>
-              </table>
+                    </tbody>
+                  </table>
+                </div>
             </div>
-
             <!-- Logged-in users can see form to create reviews -->
             <% if current_user %>
-                <div class="well">
-                  <%= form_for [@user, @review], class: 'form-inline' do |f| %>
-                      <div class="form-group">
-                        <%= f.label :rating, 'Add rating:' %>
-                        <%= f.select :rating, 1..5 %>
-                      </div>
-                      <div class="form-group">
-                        <%= f.label :comment, 'Add comment:' %>
-                        <%= f.text_area :comment, class: 'form-control' %>
-                      </div>
-                      <%= f.submit 'Add review', class: 'btn btn-default' %>
-                  <% end %>
-                </div>
+              <div class="well">
+                <%= form_for [@user, @review], class: 'form-inline' do |f| %>
+                    <div class="form-group">
+                      <%= f.label :rating, 'Add rating:' %>
+                      <%= f.select :rating, 1..5 %>
+                    </div>
+                    <div class="form-group">
+                      <%= f.label :comment, 'Add comment:' %>
+                      <%= f.text_area :comment, class: 'form-control' %>
+                    </div>
+                    <%= f.submit 'Add review', class: 'btn btn-default' %>
+                <% end %>
+              </div>
             <% end %>
-
           </div>
-
         </div>
-
       </div>
     </div>
-
 <% end %>
 
 <!-- If a worker -->
@@ -179,7 +112,6 @@
 
     <div class="container">
       <div class="panel panel-default">
-
         <!-- Panel heading -->
         <div class="panel-heading">
           <h4><%= @user.first_name %> <%= @user.last_name %></h4>
@@ -218,7 +150,7 @@
         <!-- Button shows/hides all experience and form to create experience -->
         <div class="panel-body">
 
-          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          <button class="btn btn-primary btn-xs" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             See experience
           </button>
 
@@ -283,17 +215,17 @@
                     <% end %>
                   </fieldset>
                 </div>
-              </div>
-            </div>
+            <% end %>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-<% end %>
 
+        <!-- Button shows/hides all reviews and form to create reviews -->
+        <div class="panel-body">
 
+          <button class="btn btn-primary btn-xs" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+            See reviews
+          </button>
+          <div class="collapse" id="collapseExample2">
             <div class="well">
               <table class="table">
                 <% if @user.reviews.exists? %>
@@ -331,16 +263,13 @@
                           <%= f.label :comment, 'Add comment:' %>
                           <%= f.text_area :comment, class: 'form-control input-sm' %>
                         </div>
-                        <%= f.submit 'Add review', class: 'btn btn-default btn-block' %>
+                        <%= f.submit 'Add review', class: 'btn btn-default' %>
                     <% end %>
                   </fieldset>
                 </div>
             <% end %>
-
           </div>
-
         </div>
-
       </div>
     </div>
 <% end %>
