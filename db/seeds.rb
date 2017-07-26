@@ -98,7 +98,7 @@ User.find_or_create_by!({
                             email: 'mark.bickford@icloud.com',
                             password_digest: '1234',
                             cell: '7783895004',
-                   3         first_name: 'Mark',
+                            first_name: 'Mark',
                             last_name: 'Bickford',
                             restaurant_name: '',
                             street_address: '',
@@ -152,41 +152,43 @@ Jobtype.find_or_create_by! name: 'cashier'
 
 Job.destroy_all
 
-jobColin1 = userColin.jobs.create!({
-                                       start_time: '2017-07-22 14:00:00',
-                                       end_time: '2017-07-22 20:00:00',
-                                       rate: '2000',
-                                       description: 'This will be a very busy shift so tips should be good!',
-                                       status: 'open',
-                                       jobtype_id: '1',
-                                   })
+Job.find_or_create_by!({
+                           start_time: '2017-07-22 14:00:00',
+                           end_time: '2017-07-22 20:00:00',
+                           rate: '2000',
+                           description: 'This will be a very busy shift so tips should be good!',
+                           status: 'open',
+                           jobtype_id: '1',
+                       })
 
-jobColin2 = userColin.jobs.create!({
-                                       start_time: '2017-06-28 06:00:00',
-                                       end_time: '2017-06-28 12:00:00',
-                                       rate: '1400',
-                                       description: 'Breakfast rush.',
-                                       status: 'closed',
-                                       jobtype_id: '2',
-                                   })
+Job.find_or_create_by!({
+                           start_time: '2017-06-28 06:00:00',
+                           end_time: '2017-06-28 12:00:00',
+                           rate: '1400',
+                           description: 'Breakfast rush.',
+                           status: 'closed',
+                           jobtype_id: '2',
+                       })
 
-jobManuel1 = userManuel.jobs.create!({
-                                         start_time: '2017-07-20 18:00:00',
-                                         end_time: '2017-07-20 23:30:00',
-                                         rate: '1800',
-                                         description: 'We are looking for an experienced busboy. Five years of experience at minimum please!',
-                                         status: 'open',
-                                         jobtype_id: '3',
-                                     })
+Job.find_or_create_by!({
+                           start_time: '2017-07-20 18:00:00',
+                           end_time: '2017-07-20 23:30:00',
+                           rate: '1800',
+                           description: 'We are looking for an experienced busboy. Five years of experience at minimum please!',
+                           status: 'open',
+                           jobtype_id: '3',
+                       })
 
-jobMike1 = userMike.jobs.create!({
-                                     start_time: '2017-07-21 10:00:00',
-                                     end_time: '2017-07-21 19:00:00',
-                                     rate: '2400',
-                                     description: 'We really need a line cook ASAP!',
-                                     status: 'open',
-                                     jobtype_id: '4',
-                                 })
+Job.find_or_create_by!({
+                           start_time: '2017-07-21 10:00:00',
+                           end_time: '2017-07-21 19:00:00',
+                           rate: '2400',
+                           description: 'We really need a line cook ASAP!',
+                           status: 'open',
+                           jobtype_id: '4',
+                       })
+
+
 
 ## EXPERIENCES
 
