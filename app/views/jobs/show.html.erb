@@ -50,9 +50,8 @@
                       <tr>
                         <td> <%= c.user.first_name %></td>
                         <td> <%= c.status %> </td>
-                        <td> <%= form_for [@job, @application] do |f|%> 
-                                <%= f.button :Accept, class: 'btn btn-primary btn-xs' %>
-                             <% end %>
+                        <td> 
+                          <%= link_to 'Accepted',application_path, class: 'btn btn-primary btn-xs', :method => :update %>
                         </td>
                       </tr>
                   <% end %>

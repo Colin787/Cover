@@ -48,7 +48,6 @@ class JobsController < ApplicationBaseController
     else
       redirect_to action: "show"
     end
-    @apply = Application.update()
   end
 
   def job_params
