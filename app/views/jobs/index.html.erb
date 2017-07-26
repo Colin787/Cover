@@ -25,7 +25,7 @@
       <% else %>
           <!-- View for a user, worker -->
         <% @jobs.each_slice(3) do |jobs| %>
-                  <%= render :partial => "job", :collection => jobs, :as => :j %>
+          <%= render :partial => "job", :collection => jobs, :as => :j %>
         <% end %>
       <% end %>
 </div>
