@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :users, except: [:index] do
     resources :experiences, only: [:index, :new, :create]
+    resources :reviews
   end
 
   resources :usertypes, only: [:new, :create, :destroy, :update]
@@ -17,7 +18,6 @@ Rails.application.routes.draw do
     resources :jobs do
       resources :applications
       resources :comments
-      resources :reviews
     end
   end
 

@@ -26,6 +26,10 @@ class User < ApplicationRecord
     "#{street_address}, #{city}, #{province}, #{postal_code}"
   end
 
+  def avg_review_rating
+    reviews.average("rating")
+  end
+
   private
 
   def user_validation

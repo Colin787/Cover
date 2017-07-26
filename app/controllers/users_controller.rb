@@ -8,10 +8,8 @@ class UsersController < ApplicationBaseController
   end
 
   def restaurant
-
     @user = User.new
     @usertype = Usertype.where(name: "restaurant").first
-
   end
 
   def worker
@@ -23,7 +21,6 @@ class UsersController < ApplicationBaseController
   def create
     user = User.new(user_params)
 
-    # binding.pry
     if user.save
       session[:users_id] = user.id
       redirect_to '/login'
@@ -42,9 +39,8 @@ class UsersController < ApplicationBaseController
 
   def show
     @user = User.find(params[:id])
-    @usertype = Usertype.find_by({ name: 'restaurant' })
+    @experience = Experience.new
     @review = @user.reviews_about.new
-    @user
   end
 
   private
