@@ -1,19 +1,16 @@
 <table class="table table-hover table-condensed">
-  <tr>
-    <td>
-      Name: <%= userapp.user.first_name %>
-    </td>
-
-    <td>
-      Status: <%= userapp.status %>
-    </td>
-
-    <td>
-      Title: <%= userapp.job.jobtype.name %>
-    </td>
-
-    <td>
-      Restaurant: <%= userapp.job.user.restaurant_name %>
-    </td>
-  </tr>
+  <thread>
+    <tr>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Title</th>
+      <th>Restaurant</th>
+    </tr>
+  </thread>
+  <tbody>
+    <td class="container"><%=userapp.user.first_name%></td>
+    <td class="container"><%=userapp.job.jobtype.name%></td>
+    <td class="container"><%=userapp.job.jobtype.name%></td>
+    <td class="container"><%=userapp.job.user.restaurant_name%></td>
+  </tbody>
 </table>
