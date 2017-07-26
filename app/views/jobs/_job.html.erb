@@ -18,10 +18,10 @@
 
         <br>
 
-        <div class="desc">Start time: <%= j.start_time %>
+        <div class="desc">Start time: <%= j.start_time.strftime("%e %b %Y %H:%M:%p") %>
         </div>
 
-        <div class="desc">End time: <%= j.end_time %>
+        <div class="desc">End time: <%= j.end_time.strftime("%e %b %Y %H:%M:%p") %>
         </div>
 
       </div>
