@@ -189,7 +189,6 @@ Job.find_or_create_by!({
                        })
 
 
-
 ## EXPERIENCES
 
 Experience.destroy_all

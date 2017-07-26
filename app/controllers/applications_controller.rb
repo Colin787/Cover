@@ -37,4 +37,8 @@ class ApplicationsController < ApplicationBaseController
     @application = Application.new
   end
 
+  def restaurant_accept
+
+  end
+
 end
