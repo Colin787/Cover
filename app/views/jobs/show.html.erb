@@ -48,7 +48,7 @@
                   <% @job.applications.reverse_each do |c| %>
                       <tr>
                         <td>
-                        <%= link_to user_path do %>
+                        <%= link_to (user_path(c.user.id)) do %>
                           <strong><%= c.user.first_name %></strong>
                         <% end %>
                         </td>
