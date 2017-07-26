@@ -1,15 +1,19 @@
-<div>
-  Name :<%= userapp.user.first_name %>
-</div>
+<table class="table table-hover table-condensed">
+  <tr>
+    <td>
+      Name: <%= userapp.user.first_name %>
+    </td>
 
-<div>
-  Status: <%= userapp.status %>
-</div>
+    <td>
+      Status: <%= userapp.status %>
+    </td>
 
-<div>
-  Title : <%= userapp.job.jobtype.name %>
-</div>
+    <td>
+      Title: <%= userapp.job.jobtype.name %>
+    </td>
 
-<div>
-  Restaurant: <%= userapp.job.user.restaurant_name %>
-</div>
+    <td>
+      Restaurant: <%= userapp.job.user.restaurant_name %>
+    </td>
+  </tr>
+</table>
