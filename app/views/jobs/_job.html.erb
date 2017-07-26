@@ -20,10 +20,10 @@
 
               <br>
 
-              <div class="desc">Start time: <%= job.start_time %>
+              <div class="desc">Start time: <%= job.start_time.strftime("%e %b %Y %H:%M:%p") %>
               </div>
 
-              <div class="desc">End time: <%= job.end_time %>
+              <div class="desc">End time: <%= job.end_time.strftime("%e %b %Y %H:%M:%p") %>
               </div>
 
             </div>

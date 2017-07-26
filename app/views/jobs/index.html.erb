@@ -28,8 +28,8 @@
       <% else %>
 
           <!-- View for a user, worker -->
-          <h3>Here are the available jobs, <%= current_user.first_name %>.</h3>
           <section>
+            <h3>Here are the available jobs, <%= current_user.first_name %>.</h3>
             <div class="jobs">
               <%= render @jobs %>
             </div>
