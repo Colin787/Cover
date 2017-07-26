@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get '/users/restaurant' => 'users#restaurant'
   get '/users/worker' => 'users#worker'
-
+  get 'users/:id' => 'users#show'
   get '/users/:id/applications' => 'applications#index'
 
   resources :users, except: [:index] do
@@ -24,6 +24,12 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
+  get '/test' => 'test#test'
+
+  get '/test_message' => 'twilio#test_message'
+
+  post 'twilio/voice' => 'twilio#voice'
+
 
 end
 
