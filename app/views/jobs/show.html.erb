@@ -27,7 +27,7 @@
                 <div class="desc">End time: <%= @job.end_time %>
                 </div>
 
-                <div class="desc">Rate $: <%= @job.rate %>
+                <div class="desc">Rate: $<%= @job.rate %>
                 </div>
 
                 <div class="desc">Description: <%= @job.description %>
@@ -48,11 +48,14 @@
                   <% @job.applications.reverse_each do |c| %>
                       <tr>
                         <td>
-                        <%= link_to (user_path(c.user.id)) do %>
-                          <strong><%= c.user.first_name %></strong>
-                        <% end %>
+                          <%= link_to (user_path(c.user.id)) do %>
+                              <strong><%= c.user.first_name %></strong>
+                          <% end %>
                         </td>
                         <td> <%= c.status %> </td>
+                        <td>
+                          <%= button_to 'Accept', application_path, params: {application_id: c.id}, method: :put %>
+                        </td>
                       </tr>
                   <% end %>
                   </tbody>
@@ -97,92 +100,92 @@
 
   <% else %>
       <!-- Workers view -->
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3 col-sm-6">
-          <div class="card hovercard">
-            <div class="cardheader">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-sm-6">
+            <div class="card hovercard">
+              <div class="cardheader">
 
-            </div>
-            <div class="avatar">
-              <img alt="" src="http://lorempixel.com/100/100/people">
-            </div>
-
-            <div class="info">
-              <div class="title">
-                <%= @job.user.restaurant_name %>
+              </div>
+              <div class="avatar">
+                <img alt="" src="http://lorempixel.com/100/100/people">
               </div>
 
-              <div style="font-size:20px; font-weight:bold;" class="desc">Job position: <%= @job.jobtype.name %>
-              </div>
+              <div class="info">
+                <div class="title">
+                  <%= @job.user.restaurant_name %>
+                </div>
 
-              <br>
+                <div style="font-size:20px; font-weight:bold;" class="desc">Job position: <%= @job.jobtype.name %>
+                </div>
 
-              <div class="desc">Start time: <%= @job.start_time %>
-              </div>
-              <div class="desc">End time: <%= @job.end_time %>
-              </div>
+                <br>
 
-              <div class="desc">Rate $: <%= @job.rate %>
-              </div>
+                <div class="desc">Start time: <%= @job.start_time %>
+                </div>
+                <div class="desc">End time: <%= @job.end_time %>
+                </div>
 
-              <div class="desc">Description: <%= @job.description %>
-              </div>
-              <br>
+                <div class="desc">Rate $: <%= @job.rate %>
+                </div>
 
-              <div>
-                <img src="<%= googleMapBuilderShow(@job.user.latitude, @job.user.longitude) %>">
-              </div>
-              <br>
+                <div class="desc">Description: <%= @job.description %>
+                </div>
+                <br>
 
-              <table class="table">
-                <thead>
-                <tr>
-                  <th> Comments</th>
-                </tr>
-                </thead>
-                <tbody>
-                <% @job.comments.reverse_each do |c| %>
-                    <tr>
-                      <td> <%= c.user.first_name %></td>
-                      <td> <%= c.comment %> </td>
-                    </tr>
-                <% end %>
-                </tbody>
-              </table>
+                <div>
+                  <img src="<%= googleMapBuilderShow(@job.user.latitude, @job.user.longitude) %>">
+                </div>
+                <br>
 
-
-              <table class="table">
-                <tr>
-                  <td>
-                    <button class="btn btn-primary btn-xs" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                      Add comment
-                    </button>
-                  </td>
-                  <td>
-                  <%= form_for [@job, @application] do |a| %>
-                  <% current_user %>
-                  <%= a.button :Apply, class: 'btn btn-primary btn-xs' %>
+                <table class="table">
+                  <thead>
+                  <tr>
+                    <th> Comments</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <% @job.comments.reverse_each do |c| %>
+                      <tr>
+                        <td> <%= c.user.first_name %></td>
+                        <td> <%= c.comment %> </td>
+                      </tr>
                   <% end %>
-                  </td>
-                </tr>
-                <tr>
-                  <div class="collapse" id="collapseExample">
-                    <div class="well">
-                      <%= form_for [@job, @comment] do |f| %>
-                      <%= f.text_area :comment %>
-                      <%= f.button :submit, class: 'btn btn-primary btn-xs' %>
+                  </tbody>
+                </table>
+
+
+                <table class="table">
+                  <tr>
+                    <td>
+                      <button class="btn btn-primary btn-xs" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Add comment
+                      </button>
+                    </td>
+                    <td>
+                      <%= form_for [@job, @application] do |a| %>
+                          <% current_user %>
+                          <%= a.button :Apply, class: 'btn btn-primary btn-xs' %>
                       <% end %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <div class="collapse" id="collapseExample">
+                      <div class="well">
+                        <%= form_for [@job, @comment] do |f| %>
+                            <%= f.text_area :comment %>
+                            <%= f.button :submit, class: 'btn btn-primary btn-xs' %>
+                        <% end %>
+                      </div>
                     </div>
-                  </div>
-                </tr>
-              </table>
+                  </tr>
+                </table>
                 <%= link_to 'Go back to Jobs', [:jobs], class: 'btn btn-primary btn-xs' %>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
   <% end %>
 </section>
 

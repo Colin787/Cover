@@ -19,13 +19,12 @@ class ApplicationsController < ApplicationBaseController
   end
 
   def index
-    # @userapps = Application.all
     if current_user.usertype_id == 1
       redirect_to '/jobs'
     else
-    @application = Application.all
-    @userapps = @application.where({ user_id: current_user.id, status: 'active' })
-    @filter = @application.where({ user_id: current_user.id, status: 'accepted' })
+      @application = Application.all
+      @userapps = @application.where({user_id: current_user.id, status: 'active'})
+      @filter = @application.where({user_id: current_user.id, status: 'accepted'})
     end
   end
 
@@ -35,6 +34,12 @@ class ApplicationsController < ApplicationBaseController
 
   def show
     @application = Application.new
+  end
+
+  def update
+    @application = Application.find(params[:application_id])
+    @application.status = 'Accepted'
+    @application.save
   end
 
 end
