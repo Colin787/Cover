@@ -23,8 +23,8 @@ class ApplicationsController < ApplicationBaseController
       redirect_to '/jobs'
     else
       @application = Application.all
-      @userapps = @application.where({ user_id: current_user.id, status: 'active' })
-      @filter = @application.where({ user_id: current_user.id, status: 'accepted' })
+      @userapps = @application.where({user_id: current_user.id, status: 'active'})
+      @filter = @application.where({user_id: current_user.id, status: 'accepted'})
     end
   end
 
@@ -37,8 +37,9 @@ class ApplicationsController < ApplicationBaseController
   end
 
   def update
-    @userapps = @application.where({ user_id: current_user.id, status: 'active' })
-    @filter = @application.where({ user_id: current_user.id, status: 'accepted' })
-  end  
+    @application = Application.find(params[:application_id])
+    @application.status = 'Accepted'
+    @application.save
+  end
 
 end

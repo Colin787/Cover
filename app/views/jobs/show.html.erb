@@ -27,7 +27,7 @@
                 <div class="desc">End time: <%= @job.end_time %>
                 </div>
 
-                <div class="desc">Rate $: <%= @job.rate %>
+                <div class="desc">Rate: $<%= @job.rate %>
                 </div>
 
                 <div class="desc">Description: <%= @job.description %>
@@ -54,7 +54,7 @@
                         </td>
                         <td> <%= c.status %> </td>
                         <td>
-                          <%= button_to "Accept", update_applications_path %>
+                          <%= button_to 'Accept', application_path, params: {application_id: c.id}, method: :put %>
                         </td>
                       </tr>
                   <% end %>
