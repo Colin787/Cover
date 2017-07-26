@@ -53,6 +53,10 @@
                         <% end %>
                         </td>
                         <td> <%= c.status %> </td>
+                        <td> <%= form_for [@job, @application] do |f|%> 
+                                <%= f.button :Accept, class: 'btn btn-primary btn-xs' %>
+                             <% end %>
+                        </td>
                       </tr>
                   <% end %>
                   </tbody>
