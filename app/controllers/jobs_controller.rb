@@ -25,7 +25,6 @@ class JobsController < ApplicationBaseController
     @job = Job.find params[:id]
     @comment = Comment.new
     @application = Application.new
-
   end
 
   def index
@@ -49,6 +48,7 @@ class JobsController < ApplicationBaseController
     else
       redirect_to action: "show"
     end
+    @apply = Application.update()
   end
 
   def job_params
