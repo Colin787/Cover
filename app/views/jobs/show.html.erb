@@ -50,8 +50,8 @@
                       <tr>
                         <td> <%= c.user.first_name %></td>
                         <td> <%= c.status %> </td>
-                        <td> 
-                          <%= link_to 'Accepted',application_path, class: 'btn btn-primary btn-xs', :method => :update %>
+                        <td>
+                          <%= button_to "Accept", update_applications_path %>
                         </td>
                       </tr>
                   <% end %>
