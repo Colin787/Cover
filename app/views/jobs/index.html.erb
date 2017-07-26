@@ -1,38 +1,38 @@
-<%= form_tag(jobs_path, method: :get) do %>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag 'Search', name: nil %>
-<% end %>
-
 <!-- View for a user, restaurant -->
 <div class="container">
+  <div class="row">
+    <div class=".col-xs-12 .col-sm-6 .col-md-8">
+      <%= form_tag(jobs_path, method: :get) do %>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag 'Search', name: nil %>
+      <% end %>
 
-<% if current_user.usertype_id == 1 %>
-    <section>
-      <h3>Here are your current jobs, <%= current_user.restaurant_name %>.</h3>
-      <div class="jobs">
-        <% if @userjobs == nil %>
-            <h4>You have no jobs!</h4>
-              <%= link_to '+ New Job', [:new, :job], class: 'btn btn-primary' %>
-        <% else %>
-            <%= render @userjobs %>
+      <% if current_user.usertype_id == 1 %>
+          <section>
+            <h3>Here are your current jobs, <%= current_user.restaurant_name %>.</h3>
+            <div class="jobs">
+              <% if @userjobs == nil %>
+                  <h4>You have no jobs!</h4>
+                    <%= link_to '+ New Job', [:new, :job], class: 'btn btn-primary btn-xs' %>
+              <% else %>
+                  <%= render @userjobs %>
 
-            <%= link_to '+ New Job', [:new, :job], class: 'btn btn-primary new-job' %>
+                  <%= link_to '+ New Job', [:new, :job], class: 'btn btn-primary btn-xs' %>
 
-        <% end %>
-      </div>
+              <% end %>
+            </div>
 
-    </section>
-<% else %>
+          </section>
+      <% else %>
 
-    <!-- View for a user, worker -->
-    <h3>Here are the available jobs, <%= current_user.first_name %>.</h3>
-    <section>
-      <header>
-        <h1>Jobs</h1>
-      </header>
-      <div class="jobs">
-        <%= render @jobs %>
-      </div>
-    </section>
-<% end %>
+          <!-- View for a user, worker -->
+          <h3>Here are the available jobs, <%= current_user.first_name %>.</h3>
+          <section>
+            <div class="jobs">
+              <%= render @jobs %>
+            </div>
+          </section>
+      <% end %>
+    </div>
+  </div>
 </div>

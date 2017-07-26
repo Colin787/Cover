@@ -3,18 +3,79 @@
 <!-- If a restaurant -->
 <% if @user.usertype_id == 1 %>
 
-    <div class="container">
+<div class="container">
+  <div class="row">
+    <div class="col-md-7 ">
       <div class="panel panel-default">
 
         <!-- Panel heading -->
         <div class="panel-heading">
-          <h4><%= @user.restaurant_name %></h4>
+          <h4 >Profile</h4>
         </div>
 
         <!-- Table showing restaurant details -->
         <div class="panel-body">
+          <div class="box box-info">
+            <div class="box-body">
+              <div class="col-sm-6">
+                <div  align="center"> <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive">
+                </div>
+                <br>
+              </div>
 
-          <img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" class="img-rounded img-responsive">
+
+              <div>
+                <h4 class="col-sm-6" style="color:#00b1b1;"><%= @user.first_name %> <%= @user.last_name %></h4>
+              </div>
+
+              <div class="clearfix"></div>
+              <hr style="margin:5px 0 5px 0;">
+              <div class="col-sm-5 col-xs-6 tital" >Restaurant:
+              </div>
+              <div class="col-sm-7 "><%= @user.restaurant_name %>
+              </div>
+
+              <div class="col-sm-5 col-xs-6 tital" >First Name:
+              </div>
+              <div class="col-sm-7"><%= @user.first_name %>
+              </div>
+
+              <div class="col-sm-5 col-xs-6 tital " >Last Name:
+              </div>
+              <div class="col-sm-7"><%= @user.last_name %>
+              </div>
+
+              <div class="col-sm-5 col-xs-6 tital " >Cell Phone:
+              </div>
+              <div class="col-sm-7"><%= @user.cell %><br>
+              </div>
+
+              <div class="col-sm-5 col-xs-6 tital " >Email:
+              </div>
+              <div class="col-sm-7"><%= @user.email %><br>
+              </div>
+
+              <div class="col-sm-5 col-xs-6 tital " >City:
+              </div>
+              <div class="col-sm-7"><%= @user.city %><br>
+              </div>
+
+              <div class="col-sm-5 col-xs-6 tital " >Street address:
+              </div>
+              <div class="col-sm-7"><%= @user.street_address %><br>
+              </div>
+
+              <div class="col-sm-5 col-xs-6 tital " >Province:
+              </div>
+              <div class="col-sm-7"><%= @user.province %><br>
+              </div>
+
+              <div class="col-sm-5 col-xs-6 tital " >Postal code:
+              </div>
+              <div class="col-sm-7"><%= @user.postal_code %><br><br>
+              </div>
+            </div>
+          </div>
 
           <table class="table">
             <tr>
@@ -222,20 +283,16 @@
                     <% end %>
                   </fieldset>
                 </div>
-            <% end %>
-
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
 
-
-        <!-- Button shows/hides all reviews and form to create reviews -->
-        <div class="panel-body">
-
-          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
-            See reviews
-          </button>
-
-          <div class="collapse" id="collapseExample2">
 
             <div class="well">
               <table class="table">
