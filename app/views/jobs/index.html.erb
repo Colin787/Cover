@@ -4,6 +4,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Here are your job posts
+                  <%= link_to '+ New Job', [:new, :job], class: 'btn btn-primary btn-xs' %>
                     </h1>
                 </div>
             </div>
@@ -12,9 +13,9 @@
                   <h4>You have no jobs!</h4>
                     <%= link_to '+ New Job', [:new, :job], class: 'btn btn-primary btn-xs' %>
               <% else %>
-                  <%= render @userjobs %>
-
-                  <%= link_to '+ New Job', [:new, :job], class: 'btn btn-primary btn-xs' %>
+                  <% @userjobs.each_slice(3) do |jobs| %>
+                    <%= render :partial => "job", :collection => jobs, :as => :j %>
+                    <% end %>
 
               <% end %>
             </div>
