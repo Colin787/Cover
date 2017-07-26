@@ -1,40 +1,31 @@
-
-
 <!-- View for a user, restaurant -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-3 col-sm-6">
-      <%= form_tag(jobs_path, method: :get) do %>
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag 'Search', name: nil %>
-      <% end %>
-
+<div class="container-fluid">
       <% if current_user.usertype_id == 1 %>
-          <section>
-            <h3>Here are your current jobs, <%= current_user.restaurant_name %>.</h3>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Here are your job posts
+                  <%= link_to '+ New Job', [:new, :job], class: 'btn btn-primary btn-xs' %>
+                    </h1>
+                </div>
+            </div>
             <div class="jobs">
               <% if @userjobs == nil %>
                   <h4>You have no jobs!</h4>
                     <%= link_to '+ New Job', [:new, :job], class: 'btn btn-primary btn-xs' %>
               <% else %>
-                  <%= render @userjobs %>
-
-                  <%= link_to '+ New Job', [:new, :job], class: 'btn btn-primary btn-xs' %>
+                  <% @userjobs.each_slice(3) do |jobs| %>
+                    <%= render :partial => "job", :collection => jobs, :as => :j %>
+                    <% end %>
 
               <% end %>
             </div>
 
           </section>
-      <% else %>
 
+      <% else %>
           <!-- View for a user, worker -->
-          <section>
-            <h3>Here are the available jobs, <%= current_user.first_name %>.</h3>
-            <div class="jobs">
-              <%= render @jobs %>
-            </div>
-          </section>
+        <% @jobs.each_slice(3) do |jobs| %>
+          <%= render :partial => "job", :collection => jobs, :as => :j %>
+        <% end %>
       <% end %>
-    </div>
-  </div>
 </div>
