@@ -1,5 +1,5 @@
 class JobsController < ApplicationBaseController
-
+before_action :authorize
   def new
     if current_user.usertype_id == 2
       redirect_to '/jobs'
