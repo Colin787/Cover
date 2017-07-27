@@ -89,7 +89,9 @@
             </div>
 
             <div class="tab-pane fade in" id="tab2">
-              <img src="<%= googleMapBuilderShow(@job.user.latitude, @job.user.longitude) %>">
+              <div class="map">
+                <img src="<%= googleMapBuilderShow(@job.user.latitude, @job.user.longitude) %>">
+              </div>
             </div>
 
             <div class="tab-pane fade in" id="tab3">
@@ -248,7 +250,9 @@
               </div>
             </div>
             <div class="tab-pane fade in" id="tab2">
-              <img src="<%= googleMapBuilderShow(@job.user.latitude, @job.user.longitude) %>">
+              <div class="map">
+                <img src="<%= googleMapBuilderShow(@job.user.latitude, @job.user.longitude) %>">
+              </div>
             </div>
             <div class="tab-pane fade in" id="tab3">
               <table class="table">
