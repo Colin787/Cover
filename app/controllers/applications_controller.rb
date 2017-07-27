@@ -1,5 +1,3 @@
-#This is unfortunately named, but is the controller for the applications model, and not the core controller named 'application_controller'
-
 class ApplicationsController < ApplicationBaseController
 before_action :authorize
   def create
@@ -35,7 +33,6 @@ before_action :authorize
   def show
     @application = Application.new
   end
-
   def update
     @application = Application.find(params[:application_id])
     @application.status = 'Accepted'
