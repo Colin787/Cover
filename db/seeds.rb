@@ -33,84 +33,56 @@ Usertype.find_or_create_by! name: 'worker'
 
 User.destroy_all
 
-User.find_or_create_by!({
-                            email: 'bergeretforestier.francois@gmail.com',
-                            password_digest: '1234',
-                            cell: '7787071254',
-                            first_name: 'Francois',
-                            last_name: 'Bergeret_Forestier',
-                            restaurant_name: '',
-                            street_address: '',
-                            city: '',
-                            province: '',
-                            postal_code: 'P6A 1Z2',
-                            description: '',
-                            image: 'http://lorempixel.com/400/200/people/',
-                        })
+Users.find_or_create_by!({
+                             email: 'thespice1@hotmail.com',
+                             password_digest: '1234',
+                             cell: '5044054545',
+                             first_name: 'Sean',
+                             last_name: 'Spicer',
+                             restaurant_name: 'Hawksworth Restaurant',
+                             street_address: '801 West Georgia Street',
+                             city: 'Vancouver',
+                             province: 'BC',
+                             postal_code: 'V6C 1P7',
+                             description: 'Inventive Pacific Northwest cuisine & extensive wine list served in the Rosewood Hotel Georgia.',
+                             image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTL-A8kRLKY_AxISxj6diUGNrwlLO61o4XwoVXi7ponKr83Xhbe7A',
+                             usertype_id: '1',
+                         })
+
+Users.find_or_create_by!({
+                             email: 'thespice2@hotmail.com',
+                             password_digest: '1234',
+                             cell: '5044054545',
+                             first_name: 'Sean',
+                             last_name: 'Spicer',
+                             restaurant_name: 'Meat & Bread',
+                             street_address: '370 Cambie Street',
+                             city: 'Vancouver',
+                             province: 'BC',
+                             postal_code: 'V6B 1H7',
+                             description: 'We make sandwiches that are high quality, of good value, and prepared with skill as well as heart. The essence of our food simple, fast, delicious is the foundation of Meat & Bread.',
+                             image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdtrR8w6mYA9934vUiFgQZwJjRRxICExwmEkpdR-Qb82Smh5Ex',
+                             usertype_id: '1',
+                         })
+
+Users.find_or_create_by!({
+                             email: 'thespice3@hotmail.com',
+                             password_digest: '1234',
+                             cell: '5044054545',
+                             first_name: 'Sean',
+                             last_name: 'Spicer',
+                             restaurant_name: 'Bestie',
+                             street_address: '105 E Pender Street',
+                             city: 'Vancouver',
+                             province: 'BC',
+                             postal_code: 'V6A 1T5',
+                             description: 'German-inspired eatery serving sausages, currywurst, pretzels, beer & wine in cool environs.',
+                             image: 'https://vanfoodies.files.wordpress.com/2014/02/img_20140207_185734.jpg',
+                             usertype_id: '1',
+                         })
 
 User.find_or_create_by!({
-                            email: 'colinpark4@gmail.com',
-                            password_digest: '1234',
-                            cell: '7788884322',
-                            first_name: 'Colin',
-                            last_name: 'Park',
-                            restaurant_name: 'Hawksworth Restaurant',
-                            street_address: '801 West Georgia Street',
-                            city: 'Vancouver',
-                            province: 'BC',
-                            postal_code: 'V6C 1P7',
-                            description: 'Inventive Pacific Northwest cuisine & extensive wine list served in the Rosewood Hotel Georgia.',
-                            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTL-A8kRLKY_AxISxj6diUGNrwlLO61o4XwoVXi7ponKr83Xhbe7A',
-                        })
-
-User.find_or_create_by!({
-                            email: 'prezcabellomanuel@gmail.com',
-                            password_digest: '1234',
-                            cell: '6047679548',
-                            first_name: 'Manuel',
-                            last_name: 'Cabello',
-                            restaurant_name: 'Meat & Bread',
-                            street_address: '370 Cambie Street',
-                            city: 'Vancouver',
-                            province: 'BC',
-                            postal_code: 'V6B 1H7',
-                            description: 'We make sandwiches that are high quality, of good value, and prepared with skill as well as heart. The essence of our food simple, fast, delicious is the foundation of Meat & Bread.',
-                            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdtrR8w6mYA9934vUiFgQZwJjRRxICExwmEkpdR-Qb82Smh5Ex',
-                        })
-
-User.find_or_create_by!({
-                            email: 'zlymike@outlook.com',
-                            password_digest: '1234',
-                            cell: '7788620328',
-                            first_name: 'Michael',
-                            last_name: 'Zhu',
-                            restaurant_name: 'Bestie',
-                            street_address: '105 E Pender Street',
-                            city: 'Vancouver',
-                            province: 'BC',
-                            postal_code: 'V6A 1T5',
-                            description: 'German-inspired eatery serving sausages, currywurst, pretzels, beer & wine in cool environs.',
-                            image: 'https://vanfoodies.files.wordpress.com/2014/02/img_20140207_185734.jpg',
-                        })
-
-
-User.find_or_create_by!({
-                            email: 'mark.bickford@icloud.com',
-                            password_digest: '1234',
-                            cell: '7783895004',
-                            first_name: 'Mark',
-                            last_name: 'Bickford',
-                            restaurant_name: '',
-                            street_address: '',
-                            city: '',
-                            province: '',
-                            postal_code: 'T2A 1C8',
-                            description: '',
-                            image: 'http://lorempixel.com/400/200/people/',
-                        })
-
-User.find_or_create_by!({
-                            email: 'thespice@hotmail.com',
+                            email: 'thespice4@hotmail.com',
                             password_digest: '1234',
                             cell: '5044054545',
                             first_name: 'Sean',
@@ -122,6 +94,7 @@ User.find_or_create_by!({
                             postal_code: 'V2P 2M1',
                             description: '',
                             image: 'app/assets/images/spicer2.jpg',
+                            usertype_id: '2',
                         })
 
 
@@ -153,62 +126,52 @@ Jobtype.find_or_create_by! name: 'cashier'
 Job.destroy_all
 
 Job.find_or_create_by!({
-                           start_time: '2017-07-22 14:00:00',
+                           start_time: '2017-07-27 12:00:00',
                            end_time: '2017-07-22 20:00:00',
                            rate: '2000',
                            description: 'This will be a very busy shift so tips should be good!',
                            status: 'open',
-                           jobtype_id: '1',
+                           jobtype_id: '6',
+                           user_id: '3',
                        })
 
 Job.find_or_create_by!({
-                           start_time: '2017-06-28 06:00:00',
-                           end_time: '2017-06-28 12:00:00',
+                           start_time: '2017-07-28 06:00:00',
+                           end_time: '2017-07-28 12:00:00',
                            rate: '1400',
-                           description: 'Breakfast rush.',
-                           status: 'closed',
-                           jobtype_id: '2',
+                           description: 'Breakfast rush. Please wear black pants and a white top.',
+                           status: 'open',
+                           jobtype_id: '8',
+                           user_id: '1',
                        })
 
 Job.find_or_create_by!({
-                           start_time: '2017-07-20 18:00:00',
-                           end_time: '2017-07-20 23:30:00',
+                           start_time: '2017-07-27 18:00:00',
+                           end_time: '2017-07-27 23:30:00',
                            rate: '1800',
-                           description: 'We are looking for an experienced busboy. Five years of experience at minimum please!',
+                           description: 'We are looking for an experienced busboy. Two years of experience at minimum please!',
                            status: 'open',
-                           jobtype_id: '3',
+                           jobtype_id: '5',
+                           user_id: '1',
                        })
 
 Job.find_or_create_by!({
-                           start_time: '2017-07-21 10:00:00',
-                           end_time: '2017-07-21 19:00:00',
+                           start_time: '2017-07-27 10:00:00',
+                           end_time: '2017-07-27 16:00:00',
                            rate: '2400',
-                           description: 'We really need a line cook ASAP!',
+                           description: 'We really need a line chef capable of keeping up with a fast-paced restaurant.',
                            status: 'open',
-                           jobtype_id: '4',
+                           jobtype_id: '2',
+                           user_id: '2',
                        })
 
 
 ## EXPERIENCES
 
-Experience.destroy_all
-
-Experience.find_or_create_by!({
-                                  user_id: '1',
-                                  jobtype_id: '1',
-                                  employer_name: 'Cactus Club',
-                                  months: '24',
-                                  description: 'Test test test test',
-                              })
-
 ## APPLICATIONS
-
-
 
 ## REVIEWS
 
 ## COMMENTS
-
-
 
 puts "Finis"
