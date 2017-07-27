@@ -196,7 +196,7 @@
     }
 
     .card.hovercard .cardheader {
-        background: url("http://lorempixel.com/850/280/food");
+        background:#737373;
         background-size: cover;
         height: 135px;
     }
@@ -340,5 +340,11 @@ section.jobs-show {
         text-align: center;
         width:90%;
         margin:auto;
+    }
+    .address{
+        text-align: center;
+        margin-bottom:5px;
+        font-size: 19px;
+        font-weight: bold;
     }
 }

@@ -12,6 +12,9 @@
           <div class="panel-body">
             <%= form_for @user, url: users_path do |f| %>
                 <%= f.hidden_field :usertype_id, value: @usertype.id %>
+                <% if @user.image == nil %>
+                  <%= f.hidden_field :image, value: "https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" %>
+                <% end %>
                 <div class="row">
                   <% if @user.errors.any? %>
                       <p><%= @user.errors.full_messages %></p>
@@ -35,6 +38,9 @@
                 <div class="form-group">
                   <%= f.email_field :email, class: 'form-control input-sm', placeholder: 'Email', required: false %>
                   <p class="error error-empty"> Please enter your Email. </p>
+                </div>
+               <div class="form-group">
+                  <%= f.text_field :image, class: 'form-control input-sm', placeholder: 'www.example.com/image', required: false %>
                 </div>
                 <div class="form-group">
                   <%= f.text_field :restaurant_name, class: 'form-control input-sm', placeholder: 'Company Name', required: false %>

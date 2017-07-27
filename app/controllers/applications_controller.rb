@@ -1,5 +1,5 @@
 class ApplicationsController < ApplicationBaseController
-
+before_action :authorize
   def create
     @application = Application.new
     @application.job_id = params[:job_id]

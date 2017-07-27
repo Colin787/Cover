@@ -38,15 +38,19 @@ class UsersController < ApplicationBaseController
   end
 
   def show
+    if !current_user
+      redirect_to '/login'
+    else
     @user = User.find(params[:id])
     @experience = Experience.new
     @review = @user.reviews_about.new
+    end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:usertype_id, :first_name, :email, :password, :password_confirmation, :cell, :last_name, :city, :province, :postal_code, :restaurant_name, :street_address)
+    params.require(:user).permit(:usertype_id, :first_name, :email, :password, :password_confirmation, :cell, :last_name, :city, :province, :postal_code, :restaurant_name, :street_address, :image)
   end
 
 end

@@ -14,7 +14,9 @@
             </div>
             <div class="card-info">
             <span class="card-title">
-              <%= @job.user.restaurant_name %>
+              <%= link_to (user_path(@job.user.id)) do %>
+                <strong><%= @job.user.restaurant_name %></strong>
+              <% end %>
             </span>
             </div>
           </div>
@@ -87,11 +89,17 @@
                   Description: <%= @job.description %>
                 </div>
               </div>
-            <div class="tab-pane fade in" id="tab2">
-              <div class="map">
-                <img src="<%= googleMapBuilderShow(@job.user.latitude, @job.user.longitude) %>">
+              <div class="tab-pane fade in" id="tab2">
+                <div class="address">
+                <%= @job.user.street_address %>,
+                  <%= @job.user.city %>,
+                  <%= @job.user.province %>,
+                  <%= @job.user.postal_code %>
+                </div>
+                <div class="map">
+                  <img src="<%= googleMapBuilderShow(@job.user.latitude, @job.user.longitude) %>">
+                </div>
               </div>
-            </div>
               <div class="tab-pane fade in" id="tab3">
                 <table class="table">
                   <thead>
@@ -108,7 +116,9 @@
                           <% end %>
                         </td>
                         <td><%= c.status %></td>
+                        <% if c.status != "Accepted" %>
                         <td><%= button_to 'Accept', application_path, params: {application_id: c.id}, method: :put %></td>
+                        <% end %>
                       </tr>
                   <% end %>
                   </tbody>
@@ -221,11 +231,11 @@
                 <br>
 
                 <div class="desc">
-                  Start time: <%= @job.start_time.strftime('%e %b %Y %H:%M:%p') %>
+                  Start time: <%= @job.start_time.strftime('%A, %B %e at %l:%M %P') %>
                 </div>
 
                 <div class="desc">
-                  End time: <%= @job.end_time.strftime('%e %b %Y %H:%M:%p') %>
+                  End time: <%= @job.end_time.strftime('%A, %B %e at %l:%M %P') %>
                 </div>
 
                 <div class="desc">
@@ -243,54 +253,59 @@
                   <% end %>
                 </div>
               </div>
-            </div>
-            <div class="tab-pane fade in" id="tab2">
+              <div class="tab-pane fade in" id="tab2">
+                <div class="address">
+                  <%= @job.user.street_address %>,
+                  <%= @job.user.city %>,
+                  <%= @job.user.province %>,
+                  <%= @job.user.postal_code %>
+                </div>
               <div class="map">
                 <img src="<%= googleMapBuilderShow(@job.user.latitude, @job.user.longitude) %>">
               </div>
-            </div>
-            <div class="tab-pane fade in" id="tab3">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th> Comments</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <% @job.comments.reverse_each do |c| %>
-                      <tr>
-                        <td> <%= c.user.first_name %></td>
-                        <td> <%= c.comment %> </td>
-                      </tr>
-                  <% end %>
-                  </tbody>
-                </table>
-
-
+              </div>
+              <div class="tab-pane fade in" id="tab3">
                 <table class="table">
-                  <tr>
-                    <td>
-                      <button class="btn btn-primary btn-xs"
-                              type="button"
-                              data-toggle="collapse"
-                              data-target="#collapseExample"
-                              aria-expanded="false"
-                              aria-controls="collapseExample">
-                        Add comment
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <div class="collapse" id="collapseExample">
-                      <div class="well">
-                        <%= form_for [@job, @comment] do |f| %>
-                            <%= f.text_area :comment %>
-                            <%= f.button :submit, class: 'btn btn-primary btn-xs' %>
-                        <% end %>
+                  <thead>
+                    <tr>
+                      <th> Comments</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% @job.comments.reverse_each do |c| %>
+                        <tr>
+                          <td> <%= c.user.first_name %></td>
+                          <td> <%= c.comment %> </td>
+                        </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+
+                  <table class="table">
+                    <tr>
+                      <td>
+                        <button class="btn btn-primary btn-xs"
+                                type="button"
+                                data-toggle="collapse"
+                                data-target="#collapseExample"
+                                aria-expanded="false"
+                                aria-controls="collapseExample">
+                          Add comment
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <div class="collapse" id="collapseExample">
+                        <div class="well">
+                          <%= form_for [@job, @comment] do |f| %>
+                              <%= f.text_area :comment %>
+                              <%= f.button :submit, class: 'btn btn-primary btn-xs' %>
+                          <% end %>
+                        </div>
                       </div>
-                    </div>
-                  </tr>
-                </table>
+                    </tr>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
