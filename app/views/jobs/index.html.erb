@@ -1,31 +1,28 @@
 <!-- View for a user, restaurant -->
 <div class="container-fluid">
-      <% if current_user.usertype_id == 1 %>
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Here are your job posts
-                  <%= link_to '+ New Job', [:new, :job], class: 'btn btn-primary btn-xs' %>
-                    </h1>
-                </div>
-            </div>
-            <div class="jobs">
-              <% if @userjobs == nil %>
-                  <h4>You have no jobs!</h4>
-                    <%= link_to '+ New Job', [:new, :job], class: 'btn btn-primary btn-xs' %>
-              <% else %>
-                  <% @userjobs.each_slice(3) do |jobs| %>
-                    <%= render :partial => "job", :collection => jobs, :as => :j %>
-                    <% end %>
-
-              <% end %>
-            </div>
-
-          </section>
-
+  <% if current_user.usertype_id == 1 %>
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">
+          Here are your job posts
+          <%= link_to '+ New Job', [:new, :job], class: 'btn btn-primary btn-xs' %>
+        </h1>
+      </div>
+    </div>
+    <div class="jobs">
+      <% if @userjobs == nil %>
+        <h4>You have no jobs!</h4>
+        <%= link_to '+ New Job', [:new, :job], class: 'btn btn-primary btn-xs' %>
       <% else %>
-          <!-- View for a user, worker -->
-        <% @jobs.each_slice(3) do |jobs| %>
+        <% @userjobs.each_slice(3) do |jobs| %>
           <%= render :partial => "job", :collection => jobs, :as => :j %>
         <% end %>
       <% end %>
+    </div>
+  <% else %>
+    <!-- View for a user, worker -->
+    <% @jobs.each_slice(3) do |jobs| %>
+      <%= render :partial => "job", :collection => jobs, :as => :j %>
+    <% end %>
+  <% end %>
 </div>
