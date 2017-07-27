@@ -14,7 +14,9 @@
             </div>
             <div class="card-info">
             <span class="card-title">
-              <%= @job.user.restaurant_name %>
+              <%= link_to (user_path(@job.user.id)) do %>
+                <strong><%= @job.user.restaurant_name %></strong>
+              <% end %>
             </span>
             </div>
           </div>
@@ -305,4 +307,3 @@
       <%= link_to 'Update Job', edit_job_path(@job), class: 'btn btn-primary btn-xs' %>
   <% end %>
 </div>
-
