@@ -8,26 +8,25 @@
       </div>
 
       <div class="info">
-
         <div class="title">
-        <%= j.user.restaurant_name %>
+          <%= j.user.restaurant_name %>
         </div>
 
-        <div style="font-size:20px; font-weight:bold;" class="desc">job position: <%= j.jobtype.name %>
+        <div style="font-size:20px; font-weight:bold;" class="desc">
+          job position: <%= j.jobtype.name %>
         </div>
 
         <br>
 
-        <div class="desc">Start time: <%= j.start_time.strftime("%e %b %Y %H:%M:%p") %>
+        <div class="desc">
+          Start time: <%= j.start_time.strftime("%e %b %Y %H:%M:%p") %>
         </div>
 
-        <div class="desc">End time: <%= j.end_time.strftime("%e %b %Y %H:%M:%p") %>
+        <div class="desc">
+          End time: <%= j.end_time.strftime("%e %b %Y %H:%M:%p") %>
         </div>
-
       </div>
-
       <br>
-
-      </div>
+    </div>
   </div>
 <% end %>
