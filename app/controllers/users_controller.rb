@@ -38,9 +38,13 @@ class UsersController < ApplicationBaseController
   end
 
   def show
+    if !current_user
+      redirect_to '/login'
+    else
     @user = User.find(params[:id])
     @experience = Experience.new
     @review = @user.reviews_about.new
+    end
   end
 
   private
