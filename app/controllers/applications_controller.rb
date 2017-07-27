@@ -40,6 +40,7 @@ class ApplicationsController < ApplicationBaseController
     @application = Application.find(params[:application_id])
     @application.status = 'Accepted'
     @application.save
+    redirect_back fallback_location: jobs_url
   end
 
 end
