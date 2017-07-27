@@ -90,6 +90,12 @@
                 </div>
               </div>
               <div class="tab-pane fade in" id="tab2">
+                <div class="address">
+                <%= @job.user.street_address %>,
+                  <%= @job.user.city %>,
+                  <%= @job.user.province %>,
+                  <%= @job.user.postal_code %>
+                </div>
                 <div class="map">
                   <img src="<%= googleMapBuilderShow(@job.user.latitude, @job.user.longitude) %>">
                 </div>
@@ -246,6 +252,12 @@
                 </div>
               </div>
               <div class="tab-pane fade in" id="tab2">
+                <div class="address">
+                  <%= @job.user.street_address %>,
+                  <%= @job.user.city %>,
+                  <%= @job.user.province %>,
+                  <%= @job.user.postal_code %>
+                </div>
               <div class="map">
                 <img src="<%= googleMapBuilderShow(@job.user.latitude, @job.user.longitude) %>">
               </div>
