@@ -116,7 +116,9 @@
                           <% end %>
                         </td>
                         <td><%= c.status %></td>
+                        <% if c.status != "Accepted" %>
                         <td><%= button_to 'Accept', application_path, params: {application_id: c.id}, method: :put %></td>
+                        <% end %>
                       </tr>
                   <% end %>
                   </tbody>
@@ -229,11 +231,11 @@
                 <br>
 
                 <div class="desc">
-                  Start time: <%= @job.start_time.strftime('%e %b %Y %H:%M:%p') %>
+                  Start time: <%= @job.start_time.strftime('%A, %B %e at %l:%M %P') %>
                 </div>
 
                 <div class="desc">
-                  End time: <%= @job.end_time.strftime('%e %b %Y %H:%M:%p') %>
+                  End time: <%= @job.end_time.strftime('%A, %B %e at %l:%M %P') %>
                 </div>
 
                 <div class="desc">
