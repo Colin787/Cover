@@ -25,7 +25,6 @@ class JobsController < ApplicationBaseController
     @job = Job.find params[:id]
     @comment = Comment.new
     @application = Application.new
-
   end
 
   def index

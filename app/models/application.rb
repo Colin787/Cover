@@ -18,10 +18,10 @@ class Application < ApplicationRecord
 
     @client = Twilio::REST::Client.new
 
-    @client.api.account.calls.create(
+    @client.api.account.messages.create(
       from: '+16042273817',
       to: '+16047679548',
-      url: 'http://62acb080.ngrok.io'
+      body: 'Someone has applied to your job post!'
     )
   end
 end

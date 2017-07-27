@@ -15,4 +15,5 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require signup
+//= require jobShow
 //= require_tree .
