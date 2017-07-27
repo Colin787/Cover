@@ -14,6 +14,7 @@
 
             <!-- Table showing restaurant details -->
             <div class="panel-body">
+<<<<<<< HEAD
               <div class="wrapper">
                 <img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" class="img-rounded img-responsive profile">
               </div>
@@ -86,9 +87,81 @@
                     <% end %>
                     </tbody>
                   </table>
+=======
+                <div class="wraper">
+                  <img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" class="img-circle img-responsive profile">
                 </div>
+              <table class="table">
+                <tr>
+                  <td>
+                    Description:
+                  </td>
+                  <td>
+                    <%= @user.description %>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Manager:</td>
+                  <td><%= @user.first_name %>&nbsp;<%= @user.last_name %></td>
+                </tr>
+                <tr>
+                  <td>Phone:</td>
+                  <td><%= number_to_phone(17783895004, area_code: true) %></td>
+                </tr>
+                <tr>
+                  <td>
+                    Email:
+                  </td>
+                  <td>
+                    <%= @user.email %><br>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Address:
+                  </td>
+                  <td>
+                    <%= @user.street_address %><br>
+                    <%= @user.city %>,&nbsp;<%= @user.province %><br>
+                    <%= @user.postal_code %>
+                  </td>
+                </tr>
+              </table>
+              <!-- Button shows/hides all reviews and form to create reviews -->
+              <div class="panel-body">
 
+                <button class="btn btn-primary btn-xs" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                  See reviews
+                </button>
+
+                <div class="collapse" id="collapseExample">
+
+                  <div class="well">
+                    <table class="table">
+                      <thead>
+                      <th>Rating</th>
+                      <th>Comment</th>
+                      </thead>
+                      <tbody>
+                      <% if @user.reviews.exists? %>
+                          <% @user.reviews.reverse_each do |item| %>
+                              <tr>
+                                <td><%= item.rating %></td>
+                                <td><%= item.comment %></td>
+                              </tr>
+                          <% end %>
+                      <% else %>
+                          <tr>
+                            <td>No reviews yet! Registered users can add one below.</td>
+                          </tr>
+                      <% end %>
+                      </tbody>
+                    </table>
+                  </div>
+>>>>>>> 20256f661460b1085bc35ba11989ea40d39a7703
+                </div>
                 <!-- Logged-in users can see form to create reviews -->
+<<<<<<< HEAD
                 <div class="well">
                   <% if current_user %>
                       <%= form_for [@user, @review], class: 'form-inline' do |f| %>
@@ -105,6 +178,8 @@
                   <% end %>
                 </div>
 
+=======
+>>>>>>> 20256f661460b1085bc35ba11989ea40d39a7703
               </div>
 
             </div>
@@ -278,7 +353,6 @@
           </div>
 
       <% end %>
-
     </div>
   </div>
 </div>
